@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.alms.mapper.sqlserver.LabAndroidMapper">
+
+  <select id="SearchBusTaskForUser" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" resultType="com.alms.entity.lab.BusTask" >
+    {call dbo.P_Search_BusTaskForUser(
+      #{search.search,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusGetForPrint" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGet" resultType="com.alms.entity.lab.BusGet" >
+    {call dbo.P_Search_BusGetForPrint(
+      #{search.search,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusTaskForTakeSample" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" resultType="com.alms.entity.lab.BusTask" >
+    {call dbo.P_Search_BusTaskForTakeSample(
+      #{search.search,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusTaskBySampeltran" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" resultType="com.alms.entity.lab.BusTaskSingle" >
+    {call dbo.P_Search_BusTaskBySampletran(
+      #{search.search,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusTaskSingleBySampleCode" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" resultType="com.alms.entity.lab.BusTaskSingle" >
+    {call dbo.P_Get_BusTaskSingleBySampleCode(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{testuser,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetBusTaskSingleByUserId" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" resultType="com.alms.entity.lab.BusTaskSingle" >
+    {call dbo.P_Get_BusTaskSingleByUserId(
+      #{testuser,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusTaskBySampeltran" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" resultType="com.alms.entity.lab.BusTaskSingle" >
+    {call dbo.P_Get_BusTaskSingleBySampleTran(
+      #{sampletran,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusRecordBySampletran" statementType="CALLABLE"  resultType="com.alms.entity.dat.BusRecord" >
+    {call dbo.P_Get_BusRecordBySampletran(
+      #{sampletran,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusGetNotice" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGetNotice" resultType="com.alms.entity.lab.BusGetNotice" >
+    {call dbo.P_Search_BusGetNoticeByTime(
+      #{search.search,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusGet" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGet" resultType="com.alms.entity.lab.BusGet" >
+    {call dbo.P_Search_BusGetByTime(
+      #{search.search,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchBusGetForSampling" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGet" resultType="com.alms.entity.lab.BusGet" >
+    {call dbo.P_Search_BusGetForSampling(
+      #{search.search,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusTaskDevBySampletran" statementType="CALLABLE"  resultType="com.alms.entity.lab.BusTaskDev" >
+    {call dbo.P_Search_BusTaskDevBySampletran(
+      #{sampletran,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchAllBasDevForUse" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskDev" resultType="com.alms.entity.lab.BusTaskDev" >
+    {call dbo.P_Search_AllBasDevForUse(
+      #{search.search,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+</mapper>

@@ -1,0 +1,1735 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.alms.mapper.sqlserver.LabMapper">
+
+  <update id="SaveBusProc" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusProc" flushCache="true">
+    {call dbo.P_Save_BusProc(
+      #{procid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="SearchBusGetNotice" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGetNotice" resultType="com.alms.entity.lab.BusGetNotice" >
+    {call dbo.P_Search_BusGetNotice(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusGetNoticeForGet" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGetNotice" resultType="com.alms.entity.lab.BusGetNotice" >
+    {call dbo.P_Search_BusGetNoticeForGet(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusGetNoticeDetail" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGetNoticeDetail" resultType="com.alms.entity.lab.BusGetNoticeDetail" >
+    {call dbo.P_Get_BusGetNoticeDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+ <select id="SearchBusTestedUnit" statementType="CALLABLE" parameterType="com.alms.entity.bas.BusTestedUnit" resultType="com.alms.entity.bas.BusTestedUnit" >
+    {call dbo.P_Search_BusTestedUnit(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+
+  <update id="SaveBusGetNoticeDetail" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGetNoticeDetail" flushCache="true">
+    {call dbo.P_Save_BusGetNoticeDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{getcontent,javaType=String,jdbcType=NVARCHAR},
+      #{getaddress,javaType=String,jdbcType=NVARCHAR},
+      #{isfinish,javaType=boolean,jdbcType=BOOLEAN},
+      #{getdate,javaType=java.util.Date,jdbcType=DATE},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+ <update id="SaveBusGetNotice" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGetNotice" flushCache="true">
+    {call dbo.P_Save_BusGetNotice(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{gettype,javaType=String,jdbcType=VARCHAR},
+      #{testtype,javaType=String,jdbcType=VARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{trandatecn,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{getuser,javaType=String,jdbcType=VARCHAR},
+      #{getusername,javaType=String,jdbcType=NVARCHAR},
+      #{backdesc,javaType=String,jdbcType=NVARCHAR},
+      #{testedid,javaType=String,jdbcType=VARCHAR},
+      #{testedname,javaType=String,jdbcType=NVARCHAR},
+      #{finishdate,javaType=java.util.Date,jdbcType=DATE},
+      #{finishdatecn,javaType=String,jdbcType=VARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{tranremark,javaType=String,jdbcType=NVARCHAR},
+      #{modifydate,javaType=java.util.Date,jdbcType=DATE},
+      #{modifyserial,javaType=int,jdbcType=INTEGER},
+      #{procid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  
+  <select id="GetBusTestedUnit" statementType="CALLABLE" parameterType="com.alms.entity.bas.BusTestedUnit" resultType="com.alms.entity.bas.BusTestedUnit" >
+    {call dbo.P_Get_BusTestedUnit(
+      #{testedid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusGetNotice" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGetNotice" resultType="com.alms.entity.lab.BusGetNotice" >
+    {call dbo.P_Get_BusGetNotice(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusGet" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGet" resultType="com.alms.entity.lab.BusGet" >
+    {call dbo.P_Get_BusGet(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetBusGetBySampleCode" statementType="CALLABLE" parameterType="String" resultType="com.alms.entity.lab.BusGet" >
+    {call dbo.P_Get_BusGetBySampleCode(
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetBusSamplingGetByNoticeid" statementType="CALLABLE" parameterType="String" resultType="com.alms.entity.lab.BusGet" >
+    {call dbo.P_Get_BusSamplingGetByNoticeid(
+      #{noticeid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBusGet" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGet" resultType="com.alms.entity.lab.BusGet" >
+    {call dbo.P_Get_BusGet(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchBusGet" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGet" resultType="com.alms.entity.lab.BusGet" >
+    {call dbo.P_Search_BusGet(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchBusGetForView" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGet" resultType="com.alms.entity.lab.BusGet" >
+    {call dbo.P_Search_BusGetForView(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBusGet" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGet" flushCache="true">
+    {call dbo.P_Save_BusGet(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{testedid,javaType=String,jdbcType=VARCHAR},
+      #{testedname,javaType=String,jdbcType=NVARCHAR},
+      #{enterlegal,javaType=String,jdbcType=NVARCHAR},
+      #{enteraddr,javaType=String,jdbcType=NVARCHAR},
+      #{enterpost,javaType=String,jdbcType=VARCHAR},
+      #{enterfax,javaType=String,jdbcType=VARCHAR},
+      #{enterlink,javaType=String,jdbcType=NVARCHAR},
+      #{entertele,javaType=String,jdbcType=VARCHAR},
+      #{entertype,javaType=String,jdbcType=VARCHAR},
+      #{enterscale,javaType=String,jdbcType=VARCHAR},
+      #{entermanager,javaType=String,jdbcType=NVARCHAR},
+      #{testeduser,javaType=String,jdbcType=NVARCHAR},
+      #{testedtele,javaType=String,jdbcType=VARCHAR},
+      #{testedfax,javaType=String,jdbcType=VARCHAR},
+      #{testeddate,javaType=java.util.Date,jdbcType=DATE},
+      #{testdept,javaType=String,jdbcType=NVARCHAR},
+      #{testaddr,javaType=String,jdbcType=NVARCHAR},
+      #{testlink,javaType=String,jdbcType=NVARCHAR},
+      #{testpost,javaType=String,jdbcType=VARCHAR},
+      #{testtele,javaType=String,jdbcType=VARCHAR},
+      #{testfax,javaType=String,jdbcType=VARCHAR},
+      #{testemail,javaType=String,jdbcType=VARCHAR},
+      #{sampleuser,javaType=String,jdbcType=VARCHAR},
+      #{sampleusername,javaType=String,jdbcType=NVARCHAR},
+      #{userdate,javaType=java.util.Date,jdbcType=DATE},
+      #{trustdept,javaType=String,jdbcType=NVARCHAR},
+      #{samplerespon,javaType=String,jdbcType=VARCHAR},
+      #{sampleresponname,javaType=String,jdbcType=NVARCHAR},
+      #{respondate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{noticeid,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{gettype,javaType=String,jdbcType=VARCHAR},
+      #{testtype,javaType=String,jdbcType=VARCHAR},
+      #{getdate,javaType=java.util.Date,jdbcType=DATE},
+      #{sendtype,javaType=String,jdbcType=VARCHAR},
+      #{senddate,javaType=java.util.Date,jdbcType=DATE},
+      #{sendaddr,javaType=String,jdbcType=NVARCHAR},
+      #{sampledeep,javaType=String,jdbcType=VARCHAR},
+      #{basename,javaType=String,jdbcType=NVARCHAR},
+      #{basearea,javaType=String,jdbcType=VARCHAR},
+      #{planvar,javaType=String,jdbcType=NVARCHAR},
+      #{tasksource,javaType=String,jdbcType=NVARCHAR},
+      #{prdstand,javaType=String,jdbcType=NVARCHAR},
+      #{fileid,javaType=String,jdbcType=NVARCHAR},
+      #{teststand,javaType=String,jdbcType=NVARCHAR},
+      #{tranremark,javaType=String,jdbcType=NVARCHAR},
+      #{reportget,javaType=String,jdbcType=NVARCHAR},
+      #{restdeal,javaType=String,jdbcType=NVARCHAR},
+      #{timereq,javaType=String,jdbcType=VARCHAR},
+      #{clientsign,javaType=String,jdbcType=NVARCHAR},
+      #{mandatorysign,javaType=String,jdbcType=NVARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{productcate,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  <select id="SearchBusGetForAcc" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGet" resultType="com.alms.entity.lab.BusGet" >
+    {call dbo.P_Search_BusGetForAcc(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusSampleParam" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusSampleParam" resultType="com.alms.entity.lab.BusSampleParam" >
+    {call dbo.P_Get_BusSampleParam(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusSampleParamByParameter" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusSampleParam" resultType="com.alms.entity.lab.BusSampleParam" >
+    {call dbo.P_Get_BusSampleParamByParameter(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusSampleParamByStand" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusSampleParam" resultType="com.alms.entity.lab.BusSampleParam" >
+    {call dbo.P_Get_BusSampleParamByStand(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBusSampleParam" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusSampleParam" resultType="com.alms.entity.lab.BusSampleParam" >
+    {call dbo.P_Get_BusSampleParam(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusSampleParamForTask" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusSampleParam" resultType="com.alms.entity.lab.BusSampleParam" >
+    {call dbo.P_Get_ListBusSampleParamForTask(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusSampleParamByTask" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusSampleParam" resultType="com.alms.entity.lab.BusSampleParam" >
+    {call dbo.P_Get_BusSampleParamByTask(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{taskid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusSampleParamByAcc" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusSampleParam" resultType="com.alms.entity.lab.BusSampleParam" >
+    {call dbo.P_Get_BusSampleParamByAcc(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusSampleParamBySampleCode" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusSampleParam" resultType="com.alms.entity.lab.BusSampleParam" >
+    {call dbo.P_Get_BusSampleParamBySampleCode(
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetBusSampleParamByLab" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasMainParameter" resultType="com.alms.entity.bas.BasMainParameter" >
+    {call dbo.P_Get_BusSampleParamByLab(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+<!--       #{sampleid,javaType=String,jdbcType=VARCHAR}, -->
+      #{labid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBasSampleReplaceByLab" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasMainParameter" resultType="com.alms.entity.bas.BasMainParameter" >
+    {call dbo.P_Get_BasSampleReplaceByLab(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{labid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusSampleParamForJudge" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusSampleParam" resultType="com.alms.entity.lab.BusSampleParam" >
+    {call dbo.P_Get_BusSampleParamForJudge(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{fieldcode,javaType=String,jdbcType=VARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusSampleParamForBatchJudge" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusSampleParam" resultType="com.alms.entity.lab.BusSampleParam" >
+    {call dbo.P_Get_BusSampleParamForBatchJudge(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusSampleParam" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusSampleParam" resultType="com.alms.entity.lab.BusSampleParam" >
+    {call dbo.P_Search_BusSampleParam(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBusSampleParam" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusSampleParam" flushCache="true">
+    {call dbo.P_Save_BusSampleParam(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{teststandard,javaType=String,jdbcType=VARCHAR},
+      #{judgestandard,javaType=String,jdbcType=VARCHAR},
+      #{testjudge,javaType=String,jdbcType=NVARCHAR},
+      #{standvalue,javaType=String,jdbcType=NVARCHAR},
+      #{paramunit,javaType=String,jdbcType=VARCHAR},
+      #{deteclimit,javaType=String,jdbcType=VARCHAR},
+      #{parameterorder,javaType=int,jdbcType=INTEGER},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetBusCatalogParam" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusCatalogParam" resultType="com.alms.entity.lab.BusCatalogParam" >
+    {call dbo.P_Get_BusCatalogParam(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBusCatalogParam" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusCatalogParam" resultType="com.alms.entity.lab.BusCatalogParam" >
+    {call dbo.P_Get_BusCatalogParam(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchBusCatalogParam" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusCatalogParam" resultType="com.alms.entity.lab.BusCatalogParam" >
+    {call dbo.P_Search_BusCatalogParam(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBusCatalogParam" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusCatalogParam" flushCache="true">
+    {call dbo.P_Save_BusCatalogParam(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{samplecatalog,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{teststandard,javaType=String,jdbcType=VARCHAR},
+      #{judgestandard,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+<!--   <select id="GetListCatalogParamBySample" statementType="CALLABLE" parameterType="String" resultType="com.alms.entity.lab.BusCatalogParam" > -->
+<!--     {call dbo.P_Get_BusCatalogParamBySample( -->
+<!--       #{sampleid,javaType=String,jdbcType=VARCHAR} -->
+<!--     )} -->
+<!--   </select> -->
+
+  <select id="GetBusAccSample" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusAccSample" resultType="com.alms.entity.lab.BusAccSample" >
+    {call dbo.P_Get_BusAccSample(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusAccSampleByGetID" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusAccSample" resultType="com.alms.entity.lab.BusAccSample" >
+    {call dbo.P_Get_BusAccSampleByGetID(
+      #{getid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusAccSampleByTranID" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusAccSample" resultType="com.alms.entity.lab.BusAccSample" >
+    {call dbo.P_Get_BusAccSampleByTranID(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{sampletype,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusAccSample" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusAccSample" resultType="com.alms.entity.lab.BusAccSample" >
+    {call dbo.P_Get_BusAccSample(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetBusAccSampleBySampleCode" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusAccSample" resultType="com.alms.entity.lab.BusAccSample" >
+    {call dbo.P_Get_BusAccSampleBySampleCode(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{sampletype,javaType=String,jdbcType=VARCHAR},
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  
+  <select id="SearchBusAccSample" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusAccSample" resultType="com.alms.entity.lab.BusAccSample" >
+    {call dbo.P_Search_BusAccSample(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusAccSampleForBatch" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusAccSample" resultType="com.alms.entity.lab.BusAccSample" >
+    {call dbo.P_Search_BusAccSampleForBatch(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBusAccSample" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusAccSample" flushCache="true">
+    {call dbo.P_Save_BusAccSample(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{accdate,javaType=java.util.Date,jdbcType=DATE},
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{samplename,javaType=String,jdbcType=NVARCHAR},
+      #{testedid,javaType=String,jdbcType=VARCHAR},
+      #{testedname,javaType=String,jdbcType=NVARCHAR},
+      #{entertele,javaType=String,jdbcType=VARCHAR},
+      #{testeduser,javaType=String,jdbcType=NVARCHAR},
+      #{samplelab,javaType=String,jdbcType=NVARCHAR},
+      #{parameterids,javaType=String,jdbcType=VARCHAR},
+      #{reportdate,javaType=java.util.Date,jdbcType=DATE},
+      #{feestatus,javaType=String,jdbcType=NVARCHAR},
+      #{reportgeter,javaType=String,jdbcType=NVARCHAR},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{getid,javaType=String,jdbcType=VARCHAR},
+      #{accuser,javaType=String,jdbcType=VARCHAR},
+      #{accusername,javaType=String,jdbcType=NVARCHAR},
+      #{sampletype,javaType=String,jdbcType=VARCHAR},
+      #{gettype,javaType=String,jdbcType=VARCHAR},
+      #{issend,javaType=boolean,jdbcType=BOOLEAN},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{acctele,javaType=String,jdbcType=VARCHAR},
+      #{testfee,javaType=String,jdbcType=VARCHAR},
+      #{sampleplace,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  
+  
+  
+  
+  
+  <select id="GetBusGetDetail" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGetDetail" resultType="com.alms.entity.lab.BusGetDetail" >
+    {call dbo.P_Get_BusGetDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+<!--       #{sampleid,javaType=String,jdbcType=VARCHAR}, -->
+<!--       #{samplecode,javaType=String,jdbcType=VARCHAR}, -->
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusGetDetailForStand" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGetDetail" resultType="com.alms.entity.lab.BusGetDetail" >
+    {call dbo.P_Get_BusGetDetailForStand(
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusGetDetail" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGetDetail" resultType="com.alms.entity.lab.BusGetDetail" >
+    {call dbo.P_Get_ListBusGetDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+   <select id="GetGetSourceName" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGetDetail" resultType="com.alms.entity.lab.BusGetDetail" >
+    {call dbo.P_Get_GetSourceName(
+      #{getsource,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+   <select id="GetKeepWarmName" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGetDetail" resultType="com.alms.entity.lab.BusGetDetail" >
+    {call dbo.P_Get_GetKeepWarmName(
+      #{keepwarm,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  
+  <select id="GetListBusGetDetailByTask" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGetDetail" resultType="com.alms.entity.lab.BusGetDetail" >
+    {call dbo.P_Get_ListBusGetDetailByTask(
+      #{taskid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchBusGetDetail" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGetDetail" resultType="com.alms.entity.lab.BusGetDetail" >
+    {call dbo.P_Search_BusGetDetail(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBusGetDetail" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGetDetail" flushCache="true">
+    {call dbo.P_Save_BusGetDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{tranidcn,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{samplename,javaType=String,jdbcType=NVARCHAR},
+      #{samplestand,javaType=String,jdbcType=VARCHAR},
+      #{prdcode,javaType=String,jdbcType=VARCHAR},
+      #{getaddr,javaType=String,jdbcType=NVARCHAR},
+      #{samplesize,javaType=String,jdbcType=VARCHAR},
+      #{samplebase,javaType=String,jdbcType=NVARCHAR},
+      #{trademark,javaType=String,jdbcType=NVARCHAR},
+      #{samplecount,javaType=String,jdbcType=VARCHAR},
+      #{prddate,javaType=java.util.Date,jdbcType=DATE},
+      #{samplesource,javaType=String,jdbcType=NVARCHAR},
+      #{sealedstatus,javaType=String,jdbcType=NVARCHAR},
+      #{getbody,javaType=String,jdbcType=NVARCHAR},
+      #{storetype,javaType=String,jdbcType=VARCHAR},
+      #{getmethod,javaType=String,jdbcType=NVARCHAR},
+      #{standcode,javaType=String,jdbcType=VARCHAR},
+      #{regcode,javaType=String,jdbcType=VARCHAR},
+      #{allowcode,javaType=String,jdbcType=VARCHAR},
+      #{factname,javaType=String,jdbcType=NVARCHAR},
+      #{factaddr,javaType=String,jdbcType=NVARCHAR},
+      #{factpost,javaType=String,jdbcType=VARCHAR},
+      #{facttele,javaType=String,jdbcType=VARCHAR},
+      #{factfax,javaType=String,jdbcType=VARCHAR},
+      #{certcode,javaType=String,jdbcType=VARCHAR},
+      #{certdate,javaType=java.util.Date,jdbcType=DATE},
+      #{prdscale,javaType=String,jdbcType=NVARCHAR},
+      #{prdtotal,javaType=String,jdbcType=VARCHAR},
+      #{samplestatus,javaType=String,jdbcType=NVARCHAR},
+      #{packstatus,javaType=String,jdbcType=VARCHAR},
+      #{markstatus,javaType=String,jdbcType=VARCHAR},
+      #{samplelevel,javaType=String,jdbcType=NVARCHAR},
+      #{certstatus,javaType=String,jdbcType=VARCHAR},
+      #{getsource,javaType=String,jdbcType=VARCHAR},
+      #{factlink,javaType=String,jdbcType=NVARCHAR},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{standtype1,javaType=String,jdbcType=VARCHAR},
+      #{standtype2,javaType=String,jdbcType=VARCHAR},
+      #{standtype3,javaType=String,jdbcType=VARCHAR},
+      #{standtype4,javaType=String,jdbcType=VARCHAR},
+      #{standtype5,javaType=String,jdbcType=VARCHAR},
+      #{testitems,javaType=String,jdbcType=NVARCHAR},
+      #{mainstandname,javaType=String,jdbcType=NVARCHAR},
+      #{testtype,javaType=String,jdbcType=VARCHAR},
+      #{gpsnum,javaType=String,jdbcType=VARCHAR},
+      
+      #{samplerule,javaType=String,jdbcType=VARCHAR},
+      #{keepwarm,javaType=String,jdbcType=VARCHAR},
+      #{factlegal,javaType=String,jdbcType=VARCHAR},
+      #{samplesign,javaType=String,jdbcType=VARCHAR},
+      #{factemail,javaType=String,jdbcType=VARCHAR},
+      #{keeptime,javaType=String,jdbcType=VARCHAR},
+      #{packmethod,javaType=String,jdbcType=VARCHAR},
+      #{samplemethod,javaType=String,jdbcType=VARCHAR},
+      #{getPosition,javaType=String,jdbcType=VARCHAR},
+      #{similarvariety,javaType=String,jdbcType=VARCHAR},
+      #{unitcharacte,javaType=String,jdbcType=VARCHAR},
+       
+      #{parameterids,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  <select id="GetBusGetDetailBySampleCode" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGetDetail" resultType="com.alms.entity.lab.BusGetDetail" >
+    {call dbo.P_Get_BusGetDetailBySampleCode(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{taskid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+
+  <select id="SearchBusGetForConsign" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGet" resultType="com.alms.entity.lab.BusGet" >
+    {call dbo.P_Search_BusGetForConsign(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  
+  <select id="GetBusConsign" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusConsign" resultType="com.alms.entity.lab.BusConsign" >
+    {call dbo.P_Get_BusConsign(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBusConsign" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusConsign" resultType="com.alms.entity.lab.BusConsign" >
+    {call dbo.P_Get_BusConsign(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchBusConsign" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusConsign" resultType="com.alms.entity.lab.BusConsign" >
+    {call dbo.P_Search_BusConsign(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBusConsign" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusConsign" flushCache="true">
+    {call dbo.P_Save_BusConsign(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{consignname,javaType=String,jdbcType=NVARCHAR},
+      #{consigncontact,javaType=String,jdbcType=NVARCHAR},
+      #{consigntele,javaType=String,jdbcType=VARCHAR},
+      #{consignaddr,javaType=String,jdbcType=NVARCHAR},
+      #{consignpost,javaType=String,jdbcType=VARCHAR},
+      #{consigndate,javaType=java.util.Date,jdbcType=DATE},
+      #{timereq,javaType=String,jdbcType=VARCHAR},
+      #{reportget,javaType=String,jdbcType=NVARCHAR},
+      #{restdeal,javaType=String,jdbcType=NVARCHAR},
+      #{sampleuser,javaType=String,jdbcType=VARCHAR},
+      #{sampleusername,javaType=String,jdbcType=NVARCHAR},
+      #{sampledate,javaType=java.util.Date,jdbcType=DATE},
+      #{testfee,javaType=double,jdbcType=DECIMAL},
+      #{refertele,javaType=String,jdbcType=VARCHAR},
+      #{getid,javaType=String,jdbcType=VARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{tranremark,javaType=String,jdbcType=NVARCHAR},
+      #{gettype,javaType=String,jdbcType=VARCHAR},
+      #{istask,javaType=boolean,jdbcType=BOOLEAN},
+      #{isok,javaType=boolean,jdbcType=BOOLEAN},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{testtype,javaType=String,jdbcType=VARCHAR},
+      #{basename,javaType=String,jdbcType=NVARCHAR},
+      #{basearea,javaType=String,jdbcType=VARCHAR},
+      #{getdate,javaType=java.util.Date,jdbcType=DATE},
+      #{sampledeep,javaType=String,jdbcType=VARCHAR},
+      #{getusername,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  <select id="SearchBusConsignForTask" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusConsign" resultType="com.alms.entity.lab.BusConsign" >
+    {call dbo.P_Search_BusConsignForTask(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  
+  
+  
+  <select id="GetBusConsignSample" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusConsignSample" resultType="com.alms.entity.lab.BusConsignSample" >
+    {call dbo.P_Get_BusConsignSample(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBusConsignSample" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusConsignSample" resultType="com.alms.entity.lab.BusConsignSample" >
+    {call dbo.P_Get_ListBusConsignSample(
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchBusConsignSample" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusConsignSample" resultType="com.alms.entity.lab.BusConsignSample" >
+    {call dbo.P_Search_BusConsignSample(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBusConsignSample" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusConsignSample" flushCache="true">
+    {call dbo.P_Save_BusConsignSample(
+      #{samplecode,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{samplename,javaType=String,jdbcType=VARCHAR},
+      #{factid,javaType=String,jdbcType=VARCHAR},
+      #{factname,javaType=String,jdbcType=VARCHAR},
+      #{trademark,javaType=String,jdbcType=VARCHAR},
+      #{samplestand,javaType=String,jdbcType=VARCHAR},
+      #{samplelvl,javaType=String,jdbcType=VARCHAR},
+      #{samplecount,javaType=int,jdbcType=INTEGER},
+      #{samplestatus,javaType=String,jdbcType=VARCHAR},
+      #{prdcode,javaType=String,jdbcType=VARCHAR},
+      #{getaddr,javaType=String,jdbcType=NVARCHAR},
+      #{samplebase,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetBusConsignSampleByTask" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" resultType="com.alms.entity.lab.BusConsignSample" >
+    {call dbo.P_Get_BusConsignSampleByTask(
+      #{taskid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+
+
+
+  
+  
+  
+  
+  
+  <select id="GetBusConsignParam" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusConsignParam" resultType="com.alms.entity.lab.BusConsignParam" >
+    {call dbo.P_Get_BusConsignParam(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBusConsignParam" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusConsignParam" resultType="com.alms.entity.lab.BusConsignParam" >
+    {call dbo.P_Get_ListBusConsignParam(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchBusConsignParam" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusConsignParam" resultType="com.alms.entity.lab.BusConsignParam" >
+    {call dbo.P_Search_BusConsignParam(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBusConsignParam" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusConsignParam" flushCache="true">
+    {call dbo.P_Save_BusConsignParam(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{teststandard,javaType=String,jdbcType=VARCHAR},
+      #{judgestandard,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetBusConsignParamByLab" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusConsignParam" resultType="com.alms.entity.lab.BusConsignParam" >
+    {call dbo.P_Get_BusConsignParamByLab(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{labid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+
+  
+  
+  <select id="GetListBusTaskParam" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskTest" resultType="com.alms.entity.lab.BusTaskTest" >
+    {call dbo.P_Get_ListBusTaskParam(
+      #{sampleid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  
+  
+  <select id="GetBusTask" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" resultType="com.alms.entity.lab.BusTask" >
+    {call dbo.P_Get_BusTask(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusTaskForSampleCode" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" resultType="com.alms.entity.lab.BusTask" >
+    {call dbo.P_Get_BusTaskForSampleCode(
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBusTask" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" resultType="com.alms.entity.lab.BusTask" >
+    {call dbo.P_Get_BusTask(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusTaskForCount" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" resultType="com.alms.entity.lab.BusTask" >
+    {call dbo.P_Get_ListBusTaskForCount(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+      
+    )}
+  </select>
+  
+  <select id="SearchBusTask" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" resultType="com.alms.entity.lab.BusTask" >
+    {call dbo.P_Search_BusTask(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusTaskForSamplecode" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" resultType="com.alms.entity.lab.BusTask" >
+    {call dbo.P_Search_BusTaskForSamplecode(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusTaskForDeal" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" resultType="com.alms.entity.lab.BusTask" >
+    {call dbo.P_Search_BusTaskForDeal(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusTaskAllot" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" resultType="com.alms.entity.lab.BusTask" >
+    {call dbo.P_Search_BusTaskAllot(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBusTask" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" flushCache="true">
+    {call dbo.P_Save_BusTask(
+      #{taskid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{samplename,javaType=String,jdbcType=NVARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{samplestatus,javaType=String,jdbcType=NVARCHAR},
+      #{testprop,javaType=String,jdbcType=NVARCHAR},
+      #{samplestand,javaType=String,jdbcType=VARCHAR},
+      #{senduser,javaType=String,jdbcType=VARCHAR},
+      #{sendusername,javaType=String,jdbcType=NVARCHAR},
+      #{senddate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{reqdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{labid,javaType=String,jdbcType=VARCHAR},
+      #{labuser,javaType=String,jdbcType=VARCHAR},
+      #{labusername,javaType=String,jdbcType=NVARCHAR},
+      #{getuser,javaType=String,jdbcType=VARCHAR},
+      #{getusername,javaType=String,jdbcType=NVARCHAR},
+      #{getcount,javaType=String,jdbcType=VARCHAR},
+      #{getdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{taskremark,javaType=String,jdbcType=NVARCHAR},
+      #{backcount,javaType=double,jdbcType=DECIMAL},
+      #{backuser,javaType=String,jdbcType=VARCHAR},
+      #{backusername,javaType=String,jdbcType=NVARCHAR},
+      #{backdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{handdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{acceptuser,javaType=String,jdbcType=VARCHAR},
+      #{acceptusername,javaType=String,jdbcType=NVARCHAR},
+      #{acceptdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{begintestdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{endtestdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{testtemp,javaType=String,jdbcType=VARCHAR},
+      #{testhum,javaType=String,jdbcType=VARCHAR},
+      #{testenv,javaType=String,jdbcType=VARCHAR},
+      #{teststandardname,javaType=String,jdbcType=NVARCHAR},
+      #{devids,javaType=String,jdbcType=VARCHAR},
+      #{devnames,javaType=String,jdbcType=NVARCHAR},
+      #{checkuser,javaType=String,jdbcType=VARCHAR},
+      #{checkusername,javaType=String,jdbcType=NVARCHAR},
+      #{checkdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{aduituser,javaType=String,jdbcType=VARCHAR},
+      #{aduitusername,javaType=String,jdbcType=NVARCHAR},
+      #{aduitdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{processuser,javaType=String,jdbcType=VARCHAR},
+      #{processusername,javaType=String,jdbcType=NVARCHAR},
+      #{processdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{accsampleid,javaType=String,jdbcType=VARCHAR},
+      #{takeusername,javaType=String,jdbcType=VARCHAR},
+      #{takenumber,javaType=String,jdbcType=VARCHAR},
+      #{takedate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{sendsampleuser,javaType=String,jdbcType=VARCHAR},
+      #{takesign,javaType=String,jdbcType=NVARCHAR},
+      #{sendsign,javaType=String,jdbcType=NVARCHAR},
+      #{samplestate,javaType=String,jdbcType=NVARCHAR},
+      #{takepath,javaType=String,jdbcType=NVARCHAR},
+      #{sendpath,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  <update id="SaveBusTaskSingle" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" flushCache="true">
+    {call dbo.P_Save_BusTaskSingle(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{samplename,javaType=String,jdbcType=NVARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{samplestatus,javaType=String,jdbcType=NVARCHAR},
+      #{testprop,javaType=String,jdbcType=NVARCHAR},
+      #{samplestand,javaType=String,jdbcType=VARCHAR},
+      #{senduser,javaType=String,jdbcType=VARCHAR},
+      #{sendusername,javaType=String,jdbcType=NVARCHAR},
+      #{senddate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{reqdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{labid,javaType=String,jdbcType=VARCHAR},
+      #{labuser,javaType=String,jdbcType=VARCHAR},
+      #{labusername,javaType=String,jdbcType=NVARCHAR},
+      #{getuser,javaType=String,jdbcType=VARCHAR},
+      #{getusername,javaType=String,jdbcType=NVARCHAR},
+      #{getcount,javaType=String,jdbcType=VARCHAR},
+      #{getdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{taskremark,javaType=String,jdbcType=NVARCHAR},
+      #{backcount,javaType=double,jdbcType=DECIMAL},
+      #{backuser,javaType=String,jdbcType=VARCHAR},
+      #{backusername,javaType=String,jdbcType=NVARCHAR},
+      #{backdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{handdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{acceptuser,javaType=String,jdbcType=VARCHAR},
+      #{acceptusername,javaType=String,jdbcType=NVARCHAR},
+      #{acceptdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{begintestdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{endtestdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{testtemp,javaType=String,jdbcType=VARCHAR},
+      #{testhum,javaType=String,jdbcType=VARCHAR},
+      #{testenv,javaType=String,jdbcType=VARCHAR},
+      #{teststandardname,javaType=String,jdbcType=NVARCHAR},
+      #{devids,javaType=String,jdbcType=VARCHAR},
+      #{devnames,javaType=String,jdbcType=NVARCHAR},
+      #{checkuser,javaType=String,jdbcType=VARCHAR},
+      #{checkusername,javaType=String,jdbcType=NVARCHAR},
+      #{checkdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{aduituser,javaType=String,jdbcType=VARCHAR},
+      #{aduitusername,javaType=String,jdbcType=NVARCHAR},
+      #{aduitdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{processuser,javaType=String,jdbcType=VARCHAR},
+      #{processusername,javaType=String,jdbcType=NVARCHAR},
+      #{processdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{samplecount,javaType=int,jdbcType=INTEGER},
+      #{checkdesc,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <update id="SaveBusTaskSingleList" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" flushCache="true">
+    {call dbo.P_Save_BusTaskSingle(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{samplename,javaType=String,jdbcType=NVARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{samplestatus,javaType=String,jdbcType=NVARCHAR},
+      #{testprop,javaType=String,jdbcType=NVARCHAR},
+      #{samplestand,javaType=String,jdbcType=VARCHAR},
+      #{senduser,javaType=String,jdbcType=VARCHAR},
+      #{sendusername,javaType=String,jdbcType=NVARCHAR},
+      #{senddate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{reqdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{labid,javaType=String,jdbcType=VARCHAR},
+      #{labuser,javaType=String,jdbcType=VARCHAR},
+      #{labusername,javaType=String,jdbcType=NVARCHAR},
+      #{getuser,javaType=String,jdbcType=VARCHAR},
+      #{getusername,javaType=String,jdbcType=NVARCHAR},
+      #{getcount,javaType=String,jdbcType=VARCHAR},
+      #{getdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{taskremark,javaType=String,jdbcType=NVARCHAR},
+      #{backcount,javaType=double,jdbcType=DECIMAL},
+      #{backuser,javaType=String,jdbcType=VARCHAR},
+      #{backusername,javaType=String,jdbcType=NVARCHAR},
+      #{backdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{handdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{acceptuser,javaType=String,jdbcType=VARCHAR},
+      #{acceptusername,javaType=String,jdbcType=NVARCHAR},
+      #{acceptdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{begintestdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{endtestdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{testtemp,javaType=String,jdbcType=VARCHAR},
+      #{testhum,javaType=String,jdbcType=VARCHAR},
+      #{testenv,javaType=String,jdbcType=VARCHAR},
+      #{teststandardname,javaType=String,jdbcType=NVARCHAR},
+      #{devids,javaType=String,jdbcType=VARCHAR},
+      #{devnames,javaType=String,jdbcType=NVARCHAR},
+      #{checkuser,javaType=String,jdbcType=VARCHAR},
+      #{checkusername,javaType=String,jdbcType=NVARCHAR},
+      #{checkdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{aduituser,javaType=String,jdbcType=VARCHAR},
+      #{aduitusername,javaType=String,jdbcType=NVARCHAR},
+      #{aduitdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{processuser,javaType=String,jdbcType=VARCHAR},
+      #{processusername,javaType=String,jdbcType=NVARCHAR},
+      #{processdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{samplecount,javaType=int,jdbcType=INTEGER},
+      #{checkdesc,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  <update id="ComputeBusTask" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" flushCache="true">
+    {call dbo.P_Compute_BusTask(
+      #{sampletran,javaType=String,jdbcType=VARCHAR}
+    )}
+  </update>
+  
+  <select id="GetBusTaskTest" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskTest" resultType="com.alms.entity.lab.BusTaskTest" >
+    {call dbo.P_Get_BusTaskTest(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{phlevel,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBusTaskTest" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskTest" resultType="com.alms.entity.lab.BusTaskTest" >
+    {call dbo.P_Get_ListBusTaskTest(
+      #{taskid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBusTaskTestForMore" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskTest" resultType="com.alms.entity.lab.BusTaskTest" >
+    {call dbo.P_Get_ListBusTaskTestForMore(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchBusTaskTest" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskTest" resultType="com.alms.entity.lab.BusTaskTest" >
+    {call dbo.P_Search_BusTaskTest(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBusTaskTest" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskTest" flushCache="true">
+    {call dbo.P_Save_BusTaskTest(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{testjudge,javaType=String,jdbcType=NVARCHAR},
+      #{standvalue,javaType=String,jdbcType=NVARCHAR},
+      #{isok,javaType=boolean,jdbcType=BOOLEAN},
+      #{teststandard,javaType=String,jdbcType=VARCHAR},
+      #{judgestandard,javaType=String,jdbcType=VARCHAR},
+      #{paramunit,javaType=String,jdbcType=VARCHAR},
+      #{deteclimit,javaType=String,jdbcType=VARCHAR},
+      #{parameterorder,javaType=int,jdbcType=INTEGER},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+   <select id="GetJudgeTasks" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskTest" resultType="com.alms.entity.lab.BusTaskTest" >
+    {call dbo.P_Get_JudgeTasks(
+      #{taskid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  
+  
+
+  <select id="GetBusTaskDev" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskDev" resultType="com.alms.entity.lab.BusTaskDev" >
+    {call dbo.P_Get_BusTaskDev(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBusTaskDev" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskDev" resultType="com.alms.entity.lab.BusTaskDev" >
+    {call dbo.P_Get_ListBusTaskDev(
+       #{taskid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusTaskDevByDevID" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskDev" resultType="com.alms.entity.lab.BusTaskDev" >
+    {call dbo.P_Get_ListBusTaskDevByDevID(
+       #{devid,javaType=String,jdbcType=VARCHAR},
+       #{sampletran,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusTaskDevBySamplecode" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskDev" resultType="com.alms.entity.lab.BusTaskDev" >
+    {call dbo.P_Get_ListBusTaskDevBySamplecode(
+       #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchBusTaskDev" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskDev" resultType="com.alms.entity.lab.BusTaskDev" >
+    {call dbo.P_Search_BusTaskDev(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBusTaskDev" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskDev" flushCache="true">
+    {call dbo.P_Save_BusTaskDev(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{devid,javaType=String,jdbcType=VARCHAR},
+      #{devuse,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{devconfirm,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{devresult,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{fieldcode,javaType=String,jdbcType=VARCHAR},
+      #{intid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  
+  <select id="GetBusTaskData" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskData" resultType="com.alms.entity.lab.BusTaskData" >
+    {call dbo.P_Get_BusTaskData(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBusTaskData" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskData" resultType="com.alms.entity.lab.BusTaskData" >
+    {call dbo.P_Get_ListBusTaskData(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchBusTaskData" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskData" resultType="com.alms.entity.lab.BusTaskData" >
+    {call dbo.P_Search_BusTaskData(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBusTaskData" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskData" flushCache="true">
+    {call dbo.P_Save_BusTaskData(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{displayvalue,javaType=String,jdbcType=NVARCHAR},
+      #{submitvalue,javaType=String,jdbcType=NVARCHAR},
+      #{specserial,javaType=int,jdbcType=INTEGER},
+      #{fieldcode,javaType=String,jdbcType=VARCHAR},
+      #{fieldtype,javaType=String,jdbcType=VARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{intid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  
+  
+  <select id="GetBusTaskSample" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSample" resultType="com.alms.entity.lab.BusTaskSample" >
+    {call dbo.P_Get_BusTaskSample(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBusTaskSample" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSample" resultType="com.alms.entity.lab.BusTaskSample" >
+    {call dbo.P_Get_ListBusTaskSample(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+ 
+  <select id="GetListBusTaskForAcc" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSample" resultType="com.alms.entity.lab.BusTaskSample" >
+    {call dbo.P_Get_ListBusTaskForAcc(
+      #{taskid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusTaskSample" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSample" resultType="com.alms.entity.lab.BusTaskSample" >
+    {call dbo.P_Search_BusTaskSample(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBusTaskSample" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSample" flushCache="true">
+    {call dbo.P_Save_BusTaskSample(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{begintestdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{endtestdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{isjudge,javaType=boolean,jdbcType=BOOLEAN},
+      #{judgestatus,javaType=String,jdbcType=VARCHAR},
+      #{reportresult,javaType=String,jdbcType=NVARCHAR},
+      #{reportrequest,javaType=String,jdbcType=NVARCHAR},
+      #{testuser,javaType=String,jdbcType=VARCHAR},
+      #{checkdesc,javaType=String,jdbcType=NVARCHAR},
+      #{auditstatus,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  <update id="SaveBusRecordDataBySampletran" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusRecordData" flushCache="true">
+    {call dbo.P_Save_BusRecordDataBySampletran(
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  <select id="GetBusTaskSampleByTask" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSample" resultType="com.alms.entity.lab.BusTaskSample" >
+    {call dbo.P_Get_BusTaskSampleByTask(
+      #{taskid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusTaskSampleForJudge" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSample" resultType="com.alms.entity.lab.BusTaskSample" >
+    {call dbo.P_Get_BusTaskSampleForJudge(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </select>
+  
+  <select id="GetBusTaskSampleForFinsh" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSample" resultType="com.alms.entity.lab.BusTaskSample" >
+    {call dbo.P_Get_BusTaskSampleForFinsh(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  
+<!--   <select id="SearchBusTaskBegin" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" resultType="com.alms.entity.lab.BusTaskSingle" > -->
+<!--     {call dbo.P_Search_BusTaskBegin( -->
+<!--       #{search.search,javaType=String,jdbcType=VARCHAR}, -->
+<!--       #{search.start,javaType=int,jdbcType=INTEGER}, -->
+<!--       #{search.end,javaType=int,jdbcType=INTEGER}, -->
+<!--       #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT}, -->
+<!--       #{search.userid,javaType=String,jdbcType=VARCHAR}, -->
+<!--       #{search.getaction,javaType=String,jdbcType=VARCHAR} -->
+<!--     )} -->
+<!--   </select> -->
+  
+<!--   <select id="SearchBusTaskEnd" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" resultType="com.alms.entity.lab.BusTaskSingle" > -->
+<!--     {call dbo.P_Search_BusTaskEnd( -->
+<!--       #{search.search,javaType=String,jdbcType=VARCHAR}, -->
+<!--       #{search.start,javaType=int,jdbcType=INTEGER}, -->
+<!--       #{search.end,javaType=int,jdbcType=INTEGER}, -->
+<!--       #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT}, -->
+<!--       #{search.userid,javaType=String,jdbcType=VARCHAR}, -->
+<!--       #{search.getaction,javaType=String,jdbcType=VARCHAR} -->
+<!--     )} -->
+<!--   </select> -->
+  
+  <select id="SearchBusTaskSingle" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" resultType="com.alms.entity.lab.BusTaskSingle" >
+    {call dbo.P_Search_BusTaskSingle(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusTaskRecord" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" resultType="com.alms.entity.lab.BusTaskSingle" >
+    {call dbo.P_Search_BusTaskRecord(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusTaskJudge" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" resultType="com.alms.entity.lab.BusTaskSingle" >
+    {call dbo.P_Search_BusTaskJudge(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+    <update id="SaveBusTaskCount" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSample" flushCache="true">
+    {call dbo.P_Save_BusTaskCount(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{testcount,javaType=int,jdbcType=INTEGER},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  
+  
+  <select id="GetDataByTask" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSample" resultType="com.alms.entity.lab.BusTaskSample" >
+    {call dbo.P_Get_DataByTask(
+      #{taskid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  
+  <select id="GetLabLeader" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUser" resultType="com.gpersist.entity.user.SysUser" >
+    {call dbo.P_Get_LabLeader(
+      #{deptid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  
+  <update id="UpdateParamInfo" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskTester" flushCache="true">
+    {call dbo.P_Update_ParamInfoTest(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{testuser,javaType=String,jdbcType=VARCHAR},
+      #{recordid,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR}
+    )}
+  </update>
+  
+  <update id="UpdateParamForZjy" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskTester" flushCache="true">
+    {call dbo.P_Update_ParamForZjy(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{testuser,javaType=String,jdbcType=VARCHAR},
+      #{recordid,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR}
+    )}
+  </update>
+  
+  <select id="GetConsignCode" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusConsign" resultType="com.alms.entity.lab.BusTaskSample" >
+    {call dbo.P_Get_ConsignCode(
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusTaskTester" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskTester" resultType="com.alms.entity.lab.BusTaskTester" >
+    {call dbo.P_Get_BusTaskTester(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBusTaskTester" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskTester" resultType="com.alms.entity.lab.BusTaskTester" >
+    {call dbo.P_Get_ListBusTaskTester(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusTaskTesterByUser" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskTester" resultType="com.alms.entity.lab.BusTaskTester" >
+    {call dbo.P_Get_ListBusTaskTesterByUser(
+      #{testuser,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusTaskTesterBySingle" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskTester" resultType="com.alms.entity.lab.BusTaskTester" >
+    {call dbo.P_Get_ListBusTaskTesterBySingle(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{testuser,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusTaskTester" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskTester" resultType="com.alms.entity.lab.BusTaskTester" >
+    {call dbo.P_Search_BusTaskTester(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBusTaskTester" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskTester" flushCache="true">
+    {call dbo.P_Save_BusTaskTester(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{testuser,javaType=String,jdbcType=VARCHAR},
+      #{testusername,javaType=String,jdbcType=NVARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{ischoice,javaType=boolean,jdbcType=BOOLEAN},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetBusTaskSingle" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" resultType="com.alms.entity.lab.BusTaskSingle" >
+    {call dbo.P_Get_BusTaskSingle(
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusTaskSingleByTaskid" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" resultType="com.alms.entity.lab.BusTaskSingle" >
+    {call dbo.P_Get_BusTaskSingleByTaskid(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusTaskSingleBySampleTran" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" resultType="com.alms.entity.lab.BusTaskSingle" >
+    {call dbo.P_Get_BusTaskSingleBySampleTran(
+      #{sampletran,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusTaskSingleByTranID" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" resultType="com.alms.entity.lab.BusTaskSingle" >
+    {call dbo.P_Get_BusTaskSingleByTranID(
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBusTaskSingleLab" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" flushCache="true">
+    {call dbo.P_Save_BusTaskSingleLab(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{samplename,javaType=String,jdbcType=NVARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{samplestatus,javaType=String,jdbcType=NVARCHAR},
+      #{testprop,javaType=String,jdbcType=NVARCHAR},
+      #{samplestand,javaType=String,jdbcType=VARCHAR},
+      #{senduser,javaType=String,jdbcType=VARCHAR},
+      #{sendusername,javaType=String,jdbcType=NVARCHAR},
+      #{senddate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{reqdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{labid,javaType=String,jdbcType=VARCHAR},
+      #{labuser,javaType=String,jdbcType=VARCHAR},
+      #{labusername,javaType=String,jdbcType=NVARCHAR},
+      #{getuser,javaType=String,jdbcType=VARCHAR},
+      #{getusername,javaType=String,jdbcType=NVARCHAR},
+      #{getcount,javaType=String,jdbcType=VARCHAR},
+      #{getdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{taskremark,javaType=String,jdbcType=NVARCHAR},
+      #{backcount,javaType=double,jdbcType=DECIMAL},
+      #{backuser,javaType=String,jdbcType=VARCHAR},
+      #{backusername,javaType=String,jdbcType=NVARCHAR},
+      #{backdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{handdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{acceptuser,javaType=String,jdbcType=VARCHAR},
+      #{acceptusername,javaType=String,jdbcType=NVARCHAR},
+      #{acceptdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{begintestdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{endtestdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{testtemp,javaType=String,jdbcType=VARCHAR},
+      #{testhum,javaType=String,jdbcType=VARCHAR},
+      #{testenv,javaType=String,jdbcType=VARCHAR},
+      #{teststandardname,javaType=String,jdbcType=NVARCHAR},
+      #{devids,javaType=String,jdbcType=VARCHAR},
+      #{devnames,javaType=String,jdbcType=NVARCHAR},
+      #{checkuser,javaType=String,jdbcType=VARCHAR},
+      #{checkusername,javaType=String,jdbcType=NVARCHAR},
+      #{checkdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{aduituser,javaType=String,jdbcType=VARCHAR},
+      #{aduitusername,javaType=String,jdbcType=NVARCHAR},
+      #{aduitdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{processuser,javaType=String,jdbcType=VARCHAR},
+      #{processusername,javaType=String,jdbcType=NVARCHAR},
+      #{processdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+       #{checkdesc,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetBusSampleParamBySample" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasMainParameter" resultType="com.alms.entity.bas.BasMainParameter" >
+    {call dbo.P_Get_BusSampleParamBySample(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusSampleParamByConsign" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasMainParameter" resultType="com.alms.entity.bas.BasMainParameter" >
+    {call dbo.P_Get_BusSampleParamByConsign(
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBasSampleParamForCombo" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasMainParameter" resultType="com.alms.entity.bas.BasMainParameter" >
+    {call dbo.P_Get_BasSampleParamForCombo(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{standtype1,javaType=String,jdbcType=VARCHAR},
+      #{standtype2,javaType=String,jdbcType=VARCHAR},
+      #{standtype3,javaType=String,jdbcType=VARCHAR},
+      #{standtype4,javaType=String,jdbcType=VARCHAR},
+      #{standtype5,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusTaskAttach" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskAttach" resultType="com.alms.entity.lab.BusTaskAttach" >
+    {call dbo.P_Get_ListBusTaskAttach(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{taskid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBusTaskManyAllot" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" resultType="com.alms.entity.lab.BusTask" >
+    {call dbo.P_Get_ListBusTaskManyAllot(
+      #{labid,javaType=String,jdbcType=VARCHAR},
+      #{modifydesc,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListFlowAttach" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskAttach" resultType="com.alms.entity.lab.BusTaskAttach" >
+    {call dbo.P_Get_ListFlowAttach(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{attachtype,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBusTaskAttach" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" flushCache="true">
+    {call dbo.P_Save_BusTaskAttach(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{attachname,javaType=String,jdbcType=NVARCHAR},
+      #{attachurl,javaType=String,jdbcType=VARCHAR},
+      #{attachtype,javaType=String,jdbcType=VARCHAR},
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetListBusTaskFile" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskFile" resultType="com.alms.entity.lab.BusTaskFile" >
+    {call dbo.P_Get_ListBusTaskFile(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{taskid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+   <update id="SaveBusTaskFile" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskFile" flushCache="true">
+    {call dbo.P_Save_BusTaskFile(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{filename,javaType=String,jdbcType=NVARCHAR},
+      #{fileurl,javaType=String,jdbcType=VARCHAR},
+      #{labid,javaType=String,jdbcType=VARCHAR},
+      #{labname,javaType=String,jdbcType=NVARCHAR},
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  
+  <select id="GetListBusAccFile" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusAccFile" resultType="com.alms.entity.lab.BusAccFile" >
+    {call dbo.P_Get_ListBusAccFile(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBusAccFile" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusAccFile" flushCache="true">
+    {call dbo.P_Save_BusAccFile(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{filename,javaType=String,jdbcType=NVARCHAR},
+      #{fileurl,javaType=String,jdbcType=VARCHAR},
+      #{testuserfile,javaType=String,jdbcType=VARCHAR},
+      #{testuserfilename,javaType=String,jdbcType=NVARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetListBusRecordFile" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusRecordFile" resultType="com.alms.entity.lab.BusRecordFile" >
+    {call dbo.P_Get_ListBusRecordFile(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{taskid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBusRecordFile" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusRecordFile" flushCache="true">
+    {call dbo.P_Save_BusRecordFile(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{attachname,javaType=String,jdbcType=NVARCHAR},
+      #{attachurl,javaType=String,jdbcType=VARCHAR},
+      #{attachtype,javaType=String,jdbcType=VARCHAR},
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetListBusReportFile" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusReportFile" resultType="com.alms.entity.lab.BusReportFile" >
+    {call dbo.P_Get_ListBusReportFile(
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBusReportFile" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusReportFile" flushCache="true">
+    {call dbo.P_Save_BusReportFile(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{attachname,javaType=String,jdbcType=NVARCHAR},
+      #{attachurl,javaType=String,jdbcType=VARCHAR},
+      #{attachtype,javaType=String,jdbcType=VARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetBusSelectByCode" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusSelect" resultType="com.alms.entity.lab.BusSelect" >
+    {call dbo.P_Get_BusSelectByCode(
+      #{selectcode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusTaskJudge" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskJudge" resultType="com.alms.entity.lab.BusTaskJudge" >
+    {call dbo.P_Get_BusTaskJudge(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetBusTaskJudgeForInfo" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskJudge" resultType="com.alms.entity.lab.BusTaskJudge" >
+    {call dbo.P_Get_BusTaskJudgeForInfo(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBusTaskJudge" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskJudge" resultType="com.alms.entity.lab.BusTaskJudge" >
+    {call dbo.P_Get_BusTaskJudge(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusTaskJudgeForNo" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskJudge" resultType="com.alms.entity.lab.BusTaskJudge" >
+    {call dbo.P_Get_BusTaskJudgeForNo(
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusTaskJudgeForYes" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskJudge" resultType="com.alms.entity.lab.BusTaskJudge" >
+    {call dbo.P_Get_BusTaskJudgeForYes(
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusTaskJudgeBySampleCode" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskJudge" resultType="com.alms.entity.lab.BusTaskJudge" >
+    {call dbo.P_Get_BusTaskJudgeBySampleCode(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{sampletype,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBusTaskJudge" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskJudge" flushCache="true">
+    {call dbo.P_Save_BusTaskJudge(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{testedname,javaType=String,jdbcType=NVARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{samplename,javaType=String,jdbcType=NVARCHAR},
+      #{getaddr,javaType=String,jdbcType=NVARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{parametername,javaType=String,jdbcType=NVARCHAR},
+      #{submitvalue,javaType=double,jdbcType=DECIMAL},
+      #{actvalue,javaType=String,jdbcType=VARCHAR},
+      #{sampletype,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetSignerPassword" statementType="CALLABLE" parameterType="com.alms.entity.lab.SignerPassword" resultType="com.alms.entity.lab.SignerPassword" >
+    {call dbo.P_Get_SignerPassword(
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListSignerPassword" statementType="CALLABLE" parameterType="com.alms.entity.lab.SignerPassword" resultType="com.alms.entity.lab.SignerPassword" >
+    {call dbo.P_Get_SignerPassword(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchSignerPassword" statementType="CALLABLE" parameterType="com.alms.entity.lab.SignerPassword" resultType="com.alms.entity.lab.SignerPassword" >
+    {call dbo.P_Search_SignerPassword(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveSignerPassword" statementType="CALLABLE" parameterType="com.alms.entity.lab.SignerPassword" flushCache="true">
+    {call dbo.P_Save_SignerPassword(
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{signerpassword,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetListBusTaskResult" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskResult" resultType="com.alms.entity.lab.BusTaskResult" >
+    {call dbo.P_Get_BusTaskResult(
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{taskid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusTaskResultForReport" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskResult" resultType="com.alms.entity.lab.BusTaskResult" >
+    {call dbo.P_Get_BusTaskResultForReport(
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusTaskResultForIn" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskResult" resultType="com.alms.entity.lab.BusTaskResult" >
+    {call dbo.P_Get_BusTaskResultForIn(
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusTaskLab" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskLab" resultType="com.alms.entity.lab.BusTaskLab" >
+    {call dbo.P_Get_BusTaskLab(
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBusTaskLab" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskLab" flushCache="true">
+    {call dbo.P_Save_BusTaskLab(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{taskid,javaType=String,jdbcType=NVARCHAR},
+      #{labid,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{parametername,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+    
+  
+</mapper>

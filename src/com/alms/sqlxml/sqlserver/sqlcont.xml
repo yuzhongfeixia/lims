@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.alms.mapper.sqlserver.ContMapper">
+
+  <select id="GetListContractReviewParam" statementType="CALLABLE" parameterType="com.alms.entity.cont.ContractReviewParam" resultType="com.alms.entity.cont.ContractReviewParam" >
+    {call dbo.P_Get_ContractReviewParam(
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveContractReviewParam" statementType="CALLABLE" parameterType="com.alms.entity.cont.ContractReviewParam" flushCache="true">
+    {call dbo.P_Save_ContractReviewParam(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{parametername,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetListContractReviewSample" statementType="CALLABLE" parameterType="com.alms.entity.cont.ContractReviewSample" resultType="com.alms.entity.cont.ContractReviewSample" >
+    {call dbo.P_Get_ContractReviewSample(
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveContractReviewSample" statementType="CALLABLE" parameterType="com.alms.entity.cont.ContractReviewSample" flushCache="true">
+    {call dbo.P_Save_ContractReviewSample(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{samplename,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetListContractReviewDetail" statementType="CALLABLE" parameterType="com.alms.entity.cont.ContractReviewDetail" resultType="com.alms.entity.cont.ContractReviewDetail" >
+    {call dbo.P_Get_ContractReviewDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveContractReviewDetail" statementType="CALLABLE" parameterType="com.alms.entity.cont.ContractReviewDetail" flushCache="true">
+    {call dbo.P_Save_ContractReviewDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{reviewuser,javaType=String,jdbcType=VARCHAR},
+      #{reviewusername,javaType=String,jdbcType=NVARCHAR},
+      #{reviewadvice,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetContractReview" statementType="CALLABLE" parameterType="com.alms.entity.cont.ContractReview" resultType="com.alms.entity.cont.ContractReview" >
+    {call dbo.P_Get_ContractReview(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchContractReview" statementType="CALLABLE" parameterType="com.alms.entity.cont.ContractReview" resultType="com.alms.entity.cont.ContractReview" >
+    {call dbo.P_Search_ContractReview(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveContractReview" statementType="CALLABLE" parameterType="com.alms.entity.cont.ContractReview" flushCache="true">
+    {call dbo.P_Save_ContractReview(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{contractid,javaType=String,jdbcType=VARCHAR},
+      #{consignname,javaType=String,jdbcType=NVARCHAR},
+      #{consigncontact,javaType=String,jdbcType=NVARCHAR},
+      #{consigntele,javaType=String,jdbcType=VARCHAR},
+      #{testrequest,javaType=String,jdbcType=NVARCHAR},
+      #{reviewresult,javaType=String,jdbcType=NVARCHAR},
+      #{reviewhost,javaType=String,jdbcType=VARCHAR},
+      #{reviewhostname,javaType=String,jdbcType=NVARCHAR},
+      #{reviewhostdate,javaType=java.util.Date,jdbcType=DATE},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+</mapper>

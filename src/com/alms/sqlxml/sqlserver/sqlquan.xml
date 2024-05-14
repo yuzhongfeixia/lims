@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.alms.mapper.sqlserver.QuanMapper">
+  <select id="GetQuanMonitSamItem" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitSamItem" resultType="com.alms.entity.quan.QuanMonitSamItem" >
+    {call dbo.P_Get_QuanMonitSamItem(
+      #{samitemid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListQuanMonitSamItem" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitSamItem" resultType="com.alms.entity.quan.QuanMonitSamItem" >
+    {call dbo.P_Get_QuanMonitSamItem(
+          #{samitemid,javaType=String,jdbcType=VARCHAR},
+          #{bigitemid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchQuanMonitSamItem" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitSamItem" resultType="com.alms.entity.quan.QuanMonitSamItem" >
+    {call dbo.P_Search_QuanMonitSamItem(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveQuanMonitSamItem" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitSamItem" flushCache="true">
+    {call dbo.P_Save_QuanMonitSamItem(
+      #{samitemid,javaType=String,jdbcType=VARCHAR},
+      #{bigitemid,javaType=String,jdbcType=VARCHAR},
+      #{samitemname,javaType=String,jdbcType=NVARCHAR},
+      #{ischoose,javaType=boolean,jdbcType=BOOLEAN},
+      #{isactive,javaType=boolean,jdbcType=BOOLEAN},
+      #{orderid,javaType=int,jdbcType=INTEGER},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetQuanMonitBigItem" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitBigItem" resultType="com.alms.entity.quan.QuanMonitBigItem" >
+    {call dbo.P_Get_QuanMonitBigItem(
+      #{bigitemid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListQuanMonitBigItem" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitBigItem" resultType="com.alms.entity.quan.QuanMonitBigItem" >
+    {call dbo.P_Get_QuanMonitBigItem(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchQuanMonitBigItem" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitBigItem" resultType="com.alms.entity.quan.QuanMonitBigItem" >
+    {call dbo.P_Search_QuanMonitBigItem(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveQuanMonitBigItem" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitBigItem" flushCache="true">
+    {call dbo.P_Save_QuanMonitBigItem(
+      #{bigitemid,javaType=String,jdbcType=VARCHAR},
+      #{bigitemname,javaType=String,jdbcType=NVARCHAR},
+      #{orderid,javaType=int,jdbcType=INTEGER},
+      #{isactive,javaType=boolean,jdbcType=BOOLEAN},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetListQuanMonitWorkDetail" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitWorkDetail" resultType="com.alms.entity.quan.QuanMonitWorkDetail" >
+    {call dbo.P_Get_QuanMonitWorkDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchQuanMonitWorkDetail" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitWorkDetail" resultType="com.alms.entity.quan.QuanMonitWorkDetail" >
+    {call dbo.P_Search_QuanMonitWorkDetail(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveQuanMonitWorkDetail" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitWorkDetail" flushCache="true">
+    {call dbo.P_Save_QuanMonitWorkDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{bigitemid,javaType=String,jdbcType=VARCHAR},
+      #{samitemid,javaType=String,jdbcType=VARCHAR},
+      #{optionid,javaType=String,jdbcType=VARCHAR},
+      #{badbehave,javaType=String,jdbcType=NVARCHAR},
+      #{detailremark,javaType=String,jdbcType=NVARCHAR},
+      #{serial,javaType=int,jdbcType=INTEGER},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetQuanMonitWork" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitWork" resultType="com.alms.entity.quan.QuanMonitWork" >
+    {call dbo.P_Get_QuanMonitWork(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchQuanMonitWork" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitWork" resultType="com.alms.entity.quan.QuanMonitWork" >
+    {call dbo.P_Search_QuanMonitWork(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveQuanMonitWork" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitWork" flushCache="true">
+    {call dbo.P_Save_QuanMonitWork(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{monituser,javaType=String,jdbcType=VARCHAR},
+      #{monitusername,javaType=String,jdbcType=NVARCHAR},
+      #{monitstart,javaType=java.util.Date,jdbcType=DATE},
+      #{monitend,javaType=java.util.Date,jdbcType=DATE},
+      #{trialuser,javaType=String,jdbcType=VARCHAR},
+      #{trialusername,javaType=String,jdbcType=NVARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{samplename,javaType=String,jdbcType=NVARCHAR},
+      #{worktype,javaType=String,jdbcType=VARCHAR},
+      #{reportnum,javaType=int,jdbcType=INTEGER},
+      #{validstart,javaType=java.util.Date,jdbcType=DATE},
+      #{validend,javaType=java.util.Date,jdbcType=DATE},
+      #{reportcata,javaType=String,jdbcType=NVARCHAR},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetQuanMonitOption" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitOption" resultType="com.alms.entity.quan.QuanMonitOption" >
+    {call dbo.P_Get_QuanMonitOption(
+      #{optionid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListQuanMonitOption" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitOption" resultType="com.alms.entity.quan.QuanMonitOption" >
+    {call dbo.P_Get_QuanMonitOption(
+      #{optionid,javaType=String,jdbcType=VARCHAR},
+      #{samitemid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchQuanMonitOption" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitOption" resultType="com.alms.entity.quan.QuanMonitOption" >
+    {call dbo.P_Search_QuanMonitOption(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveQuanMonitOption" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitOption" flushCache="true">
+    {call dbo.P_Save_QuanMonitOption(
+      #{optionid,javaType=String,jdbcType=VARCHAR},
+      #{bigitemid,javaType=String,jdbcType=VARCHAR},
+      #{samitemid,javaType=String,jdbcType=VARCHAR},
+      #{optionname,javaType=String,jdbcType=VARCHAR},
+      #{isactive,javaType=boolean,jdbcType=BOOLEAN},
+      #{orderid,javaType=int,jdbcType=INTEGER},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetListQuanControlPlanDetail" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanControlPlanDetail" resultType="com.alms.entity.quan.QuanControlPlanDetail" >
+    {call dbo.P_Get_QuanControlPlanDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveQuanControlPlanDetail" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanControlPlanDetail" flushCache="true">
+    {call dbo.P_Save_QuanControlPlanDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{plantime,javaType=String,jdbcType=NVARCHAR},
+      #{plancontent,javaType=String,jdbcType=NVARCHAR},
+      #{orgdept,javaType=String,jdbcType=NVARCHAR},
+      #{planremark,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetQuanControlPlan" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanControlPlan" resultType="com.alms.entity.quan.QuanControlPlan" >
+    {call dbo.P_Get_QuanControlPlan(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchQuanControlPlan" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanControlPlan" resultType="com.alms.entity.quan.QuanControlPlan" >
+    {call dbo.P_Search_QuanControlPlan(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveQuanControlPlan" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanControlPlan" flushCache="true">
+    {call dbo.P_Save_QuanControlPlan(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{contyear,javaType=int,jdbcType=INTEGER},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{edituser,javaType=String,jdbcType=VARCHAR},
+      #{editusername,javaType=String,jdbcType=NVARCHAR},
+      #{editdate,javaType=java.util.Date,jdbcType=DATE},
+      #{audituser,javaType=String,jdbcType=VARCHAR},
+      #{auditusername,javaType=String,jdbcType=NVARCHAR},
+      #{auditdate,javaType=java.util.Date,jdbcType=DATE},
+      #{approuser,javaType=String,jdbcType=VARCHAR},
+      #{approusername,javaType=String,jdbcType=NVARCHAR},
+      #{approdate,javaType=java.util.Date,jdbcType=DATE},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetListCheckGroupMember" statementType="CALLABLE" parameterType="com.alms.entity.quan.CheckGroupMember" resultType="com.alms.entity.quan.CheckGroupMember" >
+    {call dbo.P_Get_CkeckGroupMember(
+      #{groupid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveCheckGroupMember" statementType="CALLABLE" parameterType="com.alms.entity.quan.CheckGroupMember" flushCache="true">
+    {call dbo.P_Save_CheckGroupMember(
+      #{groupid,javaType=String,jdbcType=VARCHAR},
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetCheckGroup" statementType="CALLABLE" parameterType="com.alms.entity.quan.CheckGroup" resultType="com.alms.entity.quan.CheckGroup" >
+    {call dbo.P_Get_CheckGroup(
+      #{groupid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchCheckGroup" statementType="CALLABLE" parameterType="com.alms.entity.quan.CheckGroup" resultType="com.alms.entity.quan.CheckGroup" >
+    {call dbo.P_Search_CheckGroup(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveCheckGroup" statementType="CALLABLE" parameterType="com.alms.entity.quan.CheckGroup" flushCache="true">
+    {call dbo.P_Save_CheckGroup(
+      #{groupid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{groupname,javaType=String,jdbcType=NVARCHAR},
+      #{groupleader,javaType=String,jdbcType=VARCHAR},
+      #{leadername,javaType=String,jdbcType=NVARCHAR},
+      #{isuse,javaType=boolean,jdbcType=BOOLEAN},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetQuanMonitPlan" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitPlan" resultType="com.alms.entity.quan.QuanMonitPlan" >
+    {call dbo.P_Get_QuanMonitPlan(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchQuanMonitPlan" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitPlan" resultType="com.alms.entity.quan.QuanMonitPlan" >
+    {call dbo.P_Search_QuanMonitPlan(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchQuanMonitPlanApproved" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitPlan" resultType="com.alms.entity.quan.QuanMonitPlan" >
+    {call dbo.P_Search_QuanMonitPlanApproved(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveQuanMonitPlan" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanMonitPlan" flushCache="true">
+    {call dbo.P_Save_QuanMonitPlan(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{monityear,javaType=int,jdbcType=INTEGER},
+      #{monitpurp,javaType=String,jdbcType=NVARCHAR},
+      #{monitscope,javaType=String,jdbcType=NVARCHAR},
+      #{monitfreq,javaType=String,jdbcType=NVARCHAR},
+      #{monitleader,javaType=String,jdbcType=VARCHAR},
+      #{monitleadername,javaType=String,jdbcType=NVARCHAR},
+      #{monitmember,javaType=String,jdbcType=NVARCHAR},
+      #{monitmembername,javaType=String,jdbcType=NVARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{edituser,javaType=String,jdbcType=VARCHAR},
+      #{editusername,javaType=String,jdbcType=NVARCHAR},
+      #{editdate,javaType=java.util.Date,jdbcType=DATE},
+      #{audituser,javaType=String,jdbcType=VARCHAR},
+      #{auditusername,javaType=String,jdbcType=NVARCHAR},
+      #{auditdate,javaType=java.util.Date,jdbcType=DATE},
+      #{approuser,javaType=String,jdbcType=VARCHAR},
+      #{approusername,javaType=String,jdbcType=NVARCHAR},
+      #{approdate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetListQuanControlSamp" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanControlSamp" resultType="com.alms.entity.quan.QuanControlSamp" >
+    {call dbo.P_Get_QuanControlSamp(
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveQuanControlSamp" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanControlSamp" flushCache="true">
+    {call dbo.P_Save_QuanControlSamp(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{samplename,javaType=String,jdbcType=NVARCHAR},
+      #{samplestatus,javaType=String,jdbcType=NVARCHAR},
+      #{samplesource,javaType=String,jdbcType=NVARCHAR},
+      #{usestdmethod,javaType=String,jdbcType=NVARCHAR},
+      #{testresult,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetListQuanControlUser" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanControlUser" resultType="com.alms.entity.quan.QuanControlUser" >
+    {call dbo.P_Get_QuanControlUser(
+       #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveQuanControlUser" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanControlUser" flushCache="true">
+    {call dbo.P_Save_QuanControlUser(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetQuanControlEval" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanControlEval" resultType="com.alms.entity.quan.QuanControlEval" >
+    {call dbo.P_Get_QuanControlEval(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchQuanControlEval" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanControlEval" resultType="com.alms.entity.quan.QuanControlEval" >
+    {call dbo.P_Search_QuanControlEval(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveQuanControlEval" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanControlEval" flushCache="true">
+    {call dbo.P_Save_QuanControlEval(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{projname,javaType=String,jdbcType=NVARCHAR},
+      #{projtype,javaType=String,jdbcType=NVARCHAR},
+      #{finishdate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{evalation,javaType=String,jdbcType=NVARCHAR},
+      #{evaluser,javaType=String,jdbcType=VARCHAR},
+      #{evalusername,javaType=String,jdbcType=NVARCHAR},
+      #{evaldate,javaType=java.util.Date,jdbcType=DATE},
+      #{directoradv,javaType=String,jdbcType=NVARCHAR},
+      #{directoruser,javaType=String,jdbcType=VARCHAR},
+      #{directorusername,javaType=String,jdbcType=NVARCHAR},
+      #{directordate,javaType=java.util.Date,jdbcType=DATE},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetQuanCheckRecord" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanCheckRecord" resultType="com.alms.entity.quan.QuanCheckRecord" >
+    {call dbo.P_Get_QuanCheckRecord(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchQuanCheckRecord" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanCheckRecord" resultType="com.alms.entity.quan.QuanCheckRecord" >
+    {call dbo.P_Search_QuanCheckRecord(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveQuanCheckRecord" statementType="CALLABLE" parameterType="com.alms.entity.quan.QuanCheckRecord" flushCache="true">
+    {call dbo.P_Save_QuanCheckRecord(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{projname,javaType=String,jdbcType=NVARCHAR},
+      #{checkobject,javaType=String,jdbcType=NVARCHAR},
+      #{checkmethod,javaType=String,jdbcType=NVARCHAR},
+      #{checkuser,javaType=String,jdbcType=VARCHAR},
+      #{checkusername,javaType=String,jdbcType=NVARCHAR},
+      #{checkdate,javaType=java.util.Date,jdbcType=DATE},
+      #{checkcontent,javaType=String,jdbcType=NVARCHAR},
+      #{checkdesc,javaType=String,jdbcType=NVARCHAR},
+      #{dealmeasure,javaType=String,jdbcType=NVARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{checkremark,javaType=String,jdbcType=NVARCHAR},
+      #{directoradvice,javaType=String,jdbcType=NVARCHAR},
+      #{directoruser,javaType=String,jdbcType=VARCHAR},
+      #{directorusername,javaType=String,jdbcType=NVARCHAR},
+      #{directordate,javaType=java.util.Date,jdbcType=DATE},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+ 
+</mapper>

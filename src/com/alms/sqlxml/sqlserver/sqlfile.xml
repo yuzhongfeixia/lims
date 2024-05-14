@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.alms.mapper.sqlserver.IncFileMapper">
+
+  <select id="GetIncFileDestroyRecord" statementType="CALLABLE" parameterType="com.alms.entity.file.IncFileDestroyRecord" resultType="com.alms.entity.file.IncFileDestroyRecord" >
+    {call dbo.P_Get_IncFileDestroyRecord(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchIncFileDestroyRecord" statementType="CALLABLE" parameterType="com.alms.entity.file.IncFileDestroyRecord" resultType="com.alms.entity.file.IncFileDestroyRecord" >
+    {call dbo.P_Search_IncFileDestroyRecord(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveIncFileDestroyRecord" statementType="CALLABLE" parameterType="com.alms.entity.file.IncFileDestroyRecord" flushCache="true">
+    {call dbo.P_Save_IncFileDestroyRecord(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{applyid,javaType=String,jdbcType=VARCHAR},
+      #{fileid,javaType=String,jdbcType=VARCHAR},
+      #{destroyreason,javaType=String,jdbcType=NVARCHAR},
+      #{destroydate,javaType=java.util.Date,jdbcType=DATE},
+      #{allowuser,javaType=String,jdbcType=VARCHAR},
+      #{allowusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowdate,javaType=java.util.Date,jdbcType=DATE},
+      #{monituser,javaType=String,jdbcType=VARCHAR},
+      #{monitusername,javaType=String,jdbcType=NVARCHAR},
+      #{monitdate,javaType=java.util.Date,jdbcType=DATE},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="HasAuthToRead" statementType="CALLABLE" parameterType="com.alms.entity.file.IncFileOnline" resultType="com.alms.entity.file.BasFile" >
+    {call dbo.P_Get_HasAuthToRead(
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{fileid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+
+  <select id="GetIncFilePassword" statementType="CALLABLE" parameterType="com.alms.entity.file.IncFilePassword" resultType="com.alms.entity.file.IncFilePassword" >
+    {call dbo.P_Get_IncFilePassword(
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListIncFilePassword" statementType="CALLABLE" parameterType="com.alms.entity.file.IncFilePassword" resultType="com.alms.entity.file.IncFilePassword" >
+    {call dbo.P_Get_IncFilePassword(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchIncFilePassword" statementType="CALLABLE" parameterType="com.alms.entity.file.IncFilePassword" resultType="com.alms.entity.file.IncFilePassword" >
+    {call dbo.P_Search_IncFilePassword(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveIncFilePassword" statementType="CALLABLE" parameterType="com.alms.entity.file.IncFilePassword" flushCache="true">
+    {call dbo.P_Save_IncFilePassword(
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{filepassword,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetIncFileOnline" statementType="CALLABLE" parameterType="com.alms.entity.file.IncFileOnline" resultType="com.alms.entity.file.IncFileOnline" >
+    {call dbo.P_Get_IncFileOnline(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchIncFileOnline" statementType="CALLABLE" parameterType="com.alms.entity.file.IncFileOnline" resultType="com.alms.entity.file.IncFileOnline" >
+    {call dbo.P_Search_IncFileOnline(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveIncFileOnline" statementType="CALLABLE" parameterType="com.alms.entity.file.IncFileOnline" flushCache="true">
+    {call dbo.P_Save_IncFileOnline(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{fileid,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{applyreason,javaType=String,jdbcType=NVARCHAR},
+      #{iscancel,javaType=boolean,jdbcType=BOOLEAN},
+      #{canceldate,javaType=java.util.Date,jdbcType=DATE},
+      #{closetime,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetIncFileRegister" statementType="CALLABLE" parameterType="com.alms.entity.file.IncFileRegister" resultType="com.alms.entity.file.IncFileRegister" >
+    {call dbo.P_Get_IncFileRegister(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchIncFileRegister" statementType="CALLABLE" parameterType="com.alms.entity.file.IncFileRegister" resultType="com.alms.entity.file.IncFileRegister" >
+    {call dbo.P_Search_IncFileRegister(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveIncFileRegister" statementType="CALLABLE" parameterType="com.alms.entity.file.IncFileRegister" flushCache="true">
+    {call dbo.P_Save_IncFileRegister(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{applyid,javaType=String,jdbcType=VARCHAR},
+      #{fileid,javaType=String,jdbcType=VARCHAR},
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{username,javaType=String,jdbcType=NVARCHAR},
+      #{borrowdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{borrowtype,javaType=String,jdbcType=VARCHAR},
+      #{isborrow,javaType=boolean,jdbcType=BOOLEAN},
+      #{isreturn,javaType=boolean,jdbcType=BOOLEAN},
+      #{returndate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetBasFile" statementType="CALLABLE" parameterType="com.alms.entity.file.BasFile" resultType="com.alms.entity.file.BasFile" >
+    {call dbo.P_Get_BasFile(
+      #{fileid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBasFile" statementType="CALLABLE" parameterType="com.alms.entity.file.BasFile" resultType="com.alms.entity.file.BasFile" >
+    {call dbo.P_Get_BasFile(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBasFileForNeed" statementType="CALLABLE" parameterType="com.alms.entity.file.BasFile" resultType="com.alms.entity.file.BasFile" >
+    {call dbo.P_Get_BasFileForNeed(
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </select>
+  
+  <select id="SearchBasFile" statementType="CALLABLE" parameterType="com.alms.entity.file.BasFile" resultType="com.alms.entity.file.BasFile" >
+    {call dbo.P_Search_BasFile(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBasFile" statementType="CALLABLE" parameterType="com.alms.entity.file.BasFile" flushCache="true">
+    {call dbo.P_Save_BasFile(
+      #{fileid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{filename,javaType=String,jdbcType=NVARCHAR},
+      #{filecate,javaType=String,jdbcType=VARCHAR},
+      #{filetype,javaType=String,jdbcType=VARCHAR},
+      #{filestatus,javaType=String,jdbcType=VARCHAR},
+      #{filedate,javaType=java.util.Date,jdbcType=DATE},
+      #{crtuser,javaType=String,jdbcType=VARCHAR},
+      #{crtusername,javaType=String,jdbcType=NVARCHAR},
+      #{fileurl,javaType=String,jdbcType=VARCHAR},
+      #{uploaddate,javaType=java.util.Date,jdbcType=DATE},
+      #{modifytimes,javaType=int,jdbcType=INTEGER},
+      #{modifydate,javaType=java.util.Date,jdbcType=DATE},
+      #{isdestroy,javaType=boolean,jdbcType=BOOLEAN},
+      #{destroydate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetChangeApply" statementType="CALLABLE" parameterType="com.alms.entity.file.ChangeApply" resultType="com.alms.entity.file.ChangeApply" >
+    {call dbo.P_Get_ChangeApply(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListChangeApply" statementType="CALLABLE" parameterType="com.alms.entity.file.ChangeApply" resultType="com.alms.entity.file.ChangeApply" >
+    {call dbo.P_Get_ChangeApply(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListChangeApplyForNotify" statementType="CALLABLE" parameterType="com.alms.entity.file.ChangeApply" resultType="com.alms.entity.file.ChangeApply" >
+    {call dbo.P_Get_ListChangeApplyForNotify(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchChangeApply" statementType="CALLABLE" parameterType="com.alms.entity.file.ChangeApply" resultType="com.alms.entity.file.ChangeApply" >
+    {call dbo.P_Search_ChangeApply(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveChangeApply" statementType="CALLABLE" parameterType="com.alms.entity.file.ChangeApply" flushCache="true">
+    {call dbo.P_Save_ChangeApply(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{changedept,javaType=String,jdbcType=VARCHAR},
+      #{changedeptname,javaType=String,jdbcType=NVARCHAR},
+      #{dealdept,javaType=String,jdbcType=VARCHAR},
+      #{changefilename,javaType=String,jdbcType=NVARCHAR},
+      #{changefileid,javaType=String,jdbcType=VARCHAR},
+      #{replacefilename,javaType=String,jdbcType=NVARCHAR},
+      #{changereason,javaType=String,jdbcType=NVARCHAR},
+      #{changedesc,javaType=String,jdbcType=NVARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{audituser,javaType=String,jdbcType=VARCHAR},
+      #{auditusername,javaType=String,jdbcType=NVARCHAR},
+      #{auditdate,javaType=java.util.Date,jdbcType=DATE},
+      #{auditdesc,javaType=String,jdbcType=NVARCHAR},
+      #{allowuser,javaType=String,jdbcType=VARCHAR},
+      #{allowusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowdate,javaType=java.util.Date,jdbcType=DATE},
+      #{allowdesc,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{fileurl,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+   <select id="SearchIncFileDestroyForRecord" statementType="CALLABLE" parameterType="com.alms.entity.file.DestoryApply" resultType="com.alms.entity.file.DestoryApply" >
+    {call dbo.P_Search_IncFileDestroyForRecord(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetDestoryApply" statementType="CALLABLE" parameterType="com.alms.entity.file.DestoryApply" resultType="com.alms.entity.file.DestoryApply" >
+    {call dbo.P_Get_DestoryApply(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListDestoryApply" statementType="CALLABLE" parameterType="com.alms.entity.file.DestoryApply" resultType="com.alms.entity.file.DestoryApply" >
+    {call dbo.P_Get_DestoryApply(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchDestoryApply" statementType="CALLABLE" parameterType="com.alms.entity.file.DestoryApply" resultType="com.alms.entity.file.DestoryApply" >
+    {call dbo.P_Search_DestoryApply(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveDestoryApply" statementType="CALLABLE" parameterType="com.alms.entity.file.DestoryApply" flushCache="true">
+    {call dbo.P_Save_DestoryApply(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{fileid,javaType=String,jdbcType=VARCHAR},
+      #{destroyreason,javaType=String,jdbcType=NVARCHAR},
+      #{destroydate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{allowuser,javaType=String,jdbcType=VARCHAR},
+      #{allowusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowdate,javaType=java.util.Date,jdbcType=DATE},
+      #{allowdesc,javaType=String,jdbcType=NVARCHAR},
+      #{moniuser,javaType=String,jdbcType=VARCHAR},
+      #{monitusername,javaType=String,jdbcType=NVARCHAR},
+      #{monitdate,javaType=java.util.Date,jdbcType=DATE},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+    <select id="GetLoanApply" statementType="CALLABLE" parameterType="com.alms.entity.file.LoanApply" resultType="com.alms.entity.file.LoanApply" >
+    {call dbo.P_Get_LoanApply(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListLoanApply" statementType="CALLABLE" parameterType="com.alms.entity.file.LoanApply" resultType="com.alms.entity.file.LoanApply" >
+    {call dbo.P_Get_LoanApply(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchLoanApply" statementType="CALLABLE" parameterType="com.alms.entity.file.LoanApply" resultType="com.alms.entity.file.LoanApply" >
+    {call dbo.P_Search_LoanApply(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchLoanApplyForRegister" statementType="CALLABLE" parameterType="com.alms.entity.file.LoanApply" resultType="com.alms.entity.file.LoanApply" >
+    {call dbo.P_Search_LoanApplyForRegister(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveLoanApply" statementType="CALLABLE" parameterType="com.alms.entity.file.LoanApply" flushCache="true">
+    {call dbo.P_Save_LoanApply(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{fileid,javaType=String,jdbcType=VARCHAR},
+      #{filename,javaType=String,jdbcType=NVARCHAR},
+      #{loanreason,javaType=String,jdbcType=NVARCHAR},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{loandate,javaType=java.util.Date,jdbcType=DATE},
+      #{returndate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{officeuser,javaType=String,jdbcType=VARCHAR},
+      #{officeusername,javaType=String,jdbcType=NVARCHAR},
+      #{officedate,javaType=java.util.Date,jdbcType=DATE},
+      #{officedesc,javaType=String,jdbcType=NVARCHAR},
+      #{allowuser,javaType=String,jdbcType=VARCHAR},
+      #{allowusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowdate,javaType=java.util.Date,jdbcType=DATE},
+      #{allowdesc,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+    <select id="GetSecretApply" statementType="CALLABLE" parameterType="com.alms.entity.file.SecretApply" resultType="com.alms.entity.file.SecretApply" >
+    {call dbo.P_Get_SecretApply(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListSecretApply" statementType="CALLABLE" parameterType="com.alms.entity.file.SecretApply" resultType="com.alms.entity.file.SecretApply" >
+    {call dbo.P_Get_SecretApply(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchSecretApply" statementType="CALLABLE" parameterType="com.alms.entity.file.SecretApply" resultType="com.alms.entity.file.SecretApply" >
+    {call dbo.P_Search_SecretApply(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveSecretApply" statementType="CALLABLE" parameterType="com.alms.entity.file.SecretApply" flushCache="true">
+    {call dbo.P_Save_SecretApply(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{readcontent,javaType=String,jdbcType=NVARCHAR},
+      #{readuser,javaType=String,jdbcType=VARCHAR},
+      #{readusername,javaType=String,jdbcType=NVARCHAR},
+      #{readdate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{allowuser,javaType=String,jdbcType=VARCHAR},
+      #{allowusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowdate,javaType=java.util.Date,jdbcType=DATE},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+    <select id="GetBasLeak" statementType="CALLABLE" parameterType="com.alms.entity.file.BasLeak" resultType="com.alms.entity.file.BasLeak" >
+    {call dbo.P_Get_BasLeak(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBasLeak" statementType="CALLABLE" parameterType="com.alms.entity.file.BasLeak" resultType="com.alms.entity.file.BasLeak" >
+    {call dbo.P_Get_BasLeak(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchBasLeak" statementType="CALLABLE" parameterType="com.alms.entity.file.BasLeak" resultType="com.alms.entity.file.BasLeak" >
+    {call dbo.P_Search_BasLeak(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBasLeak" statementType="CALLABLE" parameterType="com.alms.entity.file.BasLeak" flushCache="true">
+    {call dbo.P_Save_BasLeak(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{leakuser,javaType=String,jdbcType=VARCHAR},
+      #{leakusername,javaType=String,jdbcType=NVARCHAR},
+      #{leakdate,javaType=java.util.Date,jdbcType=DATE},
+      #{leakreason,javaType=String,jdbcType=NVARCHAR},
+      #{leakresult,javaType=String,jdbcType=NVARCHAR},
+      #{reportdate,javaType=java.util.Date,jdbcType=DATE},
+      #{leakdesc,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{remedydesc,javaType=String,jdbcType=NVARCHAR},
+      #{remedyuser,javaType=String,jdbcType=VARCHAR},
+      #{remedyusername,javaType=String,jdbcType=NVARCHAR},
+      #{remedydate,javaType=java.util.Date,jdbcType=DATE},
+      #{techuser,javaType=String,jdbcType=VARCHAR},
+      #{techusername,javaType=String,jdbcType=NVARCHAR},
+      #{techdate,javaType=java.util.Date,jdbcType=DATE},
+      #{techdesc,javaType=String,jdbcType=NVARCHAR},
+      #{qualuser,javaType=String,jdbcType=VARCHAR},
+      #{qualusername,javaType=String,jdbcType=NVARCHAR},
+      #{qualdate,javaType=java.util.Date,jdbcType=DATE},
+      #{qualdesc,javaType=String,jdbcType=NVARCHAR},
+      #{allowuser,javaType=String,jdbcType=VARCHAR},
+      #{allowusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowdate,javaType=java.util.Date,jdbcType=DATE},
+      #{allowdesc,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetDestoryApplyDetail" statementType="CALLABLE" parameterType="com.alms.entity.file.DestoryApplyDetail" resultType="com.alms.entity.file.DestoryApplyDetail" >
+    {call dbo.P_Get_DestoryApplyDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListDestoryApplyDetail" statementType="CALLABLE" parameterType="com.alms.entity.file.DestoryApplyDetail" resultType="com.alms.entity.file.DestoryApplyDetail" >
+    {call dbo.P_Get_DestoryApplyDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchDestoryApplyDetail" statementType="CALLABLE" parameterType="com.alms.entity.file.DestoryApplyDetail" resultType="com.alms.entity.file.DestoryApplyDetail" >
+    {call dbo.P_Search_DestoryApplyDetail(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveDestoryApplyDetail" statementType="CALLABLE" parameterType="com.alms.entity.file.DestoryApplyDetail" flushCache="true">
+    {call dbo.P_Save_DestoryApplyDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{fileid,javaType=String,jdbcType=VARCHAR},
+      #{filetran,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+    <select id="GetChangeNotify" statementType="CALLABLE" parameterType="com.alms.entity.file.ChangeNotify" resultType="com.alms.entity.file.ChangeNotify" >
+    {call dbo.P_Get_ChangeNotify(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListChangeNotify" statementType="CALLABLE" parameterType="com.alms.entity.file.ChangeNotify" resultType="com.alms.entity.file.ChangeNotify" >
+    {call dbo.P_Get_ChangeNotify(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchChangeNotify" statementType="CALLABLE" parameterType="com.alms.entity.file.ChangeNotify" resultType="com.alms.entity.file.ChangeNotify" >
+    {call dbo.P_Search_ChangeNotify(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveChangeNotify" statementType="CALLABLE" parameterType="com.alms.entity.file.ChangeNotify" flushCache="true">
+    {call dbo.P_Save_ChangeNotify(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{fileid,javaType=String,jdbcType=VARCHAR},
+      #{filename,javaType=String,jdbcType=NVARCHAR},
+      #{filechange,javaType=String,jdbcType=NVARCHAR},
+      #{effectdate,javaType=java.util.Date,jdbcType=DATE},
+      #{notifyid,javaType=String,jdbcType=VARCHAR},
+      #{replacefile,javaType=String,jdbcType=NVARCHAR},
+      #{writeuser,javaType=String,jdbcType=VARCHAR},
+      #{writeusername,javaType=String,jdbcType=NVARCHAR},
+      #{writedate,javaType=java.util.Date,jdbcType=DATE},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+    <select id="GetReleFile" statementType="CALLABLE" parameterType="com.alms.entity.file.ReleFile" resultType="com.alms.entity.file.ReleFile" >
+    {call dbo.P_Get_ReleFile(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListReleFile" statementType="CALLABLE" parameterType="com.alms.entity.file.ReleFile" resultType="com.alms.entity.file.ReleFile" >
+    {call dbo.P_Get_ReleFile(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchReleFile" statementType="CALLABLE" parameterType="com.alms.entity.file.ReleFile" resultType="com.alms.entity.file.ReleFile" >
+    {call dbo.P_Search_ReleFile(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveReleFile" statementType="CALLABLE" parameterType="com.alms.entity.file.ReleFile" flushCache="true">
+    {call dbo.P_Save_ReleFile(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{fileid,javaType=String,jdbcType=VARCHAR},
+      #{filename,javaType=String,jdbcType=NVARCHAR},
+      #{filequan,javaType=int,jdbcType=INTEGER},
+      #{reledate,javaType=java.util.Date,jdbcType=DATE},
+      #{fileowner,javaType=String,jdbcType=VARCHAR},
+      #{fileownername,javaType=String,jdbcType=NVARCHAR},
+      #{fileremark,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{reletype,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  
+  
+  
+  
+     
+</mapper>

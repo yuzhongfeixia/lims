@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+  <package name="Alms" namespace="/" extends="json-default">
+    <interceptors>  
+      <interceptor name="auth" class="com.gpersist.interceptor.AuthInterceptor" ></interceptor> 
+      <interceptor name="filter" class="com.gpersist.interceptor.IllegalCharacterInterceptor" ></interceptor> 
+      <interceptor-stack name="authdefault">  
+        <interceptor-ref name="defaultStack"></interceptor-ref>  
+        <interceptor-ref name="auth"></interceptor-ref> 
+        <interceptor-ref name="filter"></interceptor-ref> 
+      </interceptor-stack>  
+    </interceptors>  
+    <default-interceptor-ref name="authdefault"></default-interceptor-ref>
+    
+    <action name="Prd*" method="{1}" class="com.alms.action.PrdAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="Bas*" method="{1}" class="com.alms.action.BasAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="Dev*" method="{1}" class="com.alms.action.DevAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="Rew*" method="{1}" class="com.alms.action.RewAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="Sub*" method="{1}" class="com.alms.action.SubAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="IncFile*" method="{1}" class="com.alms.action.IncFileAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="Flow*" method="{1}" class="com.alms.action.FlowAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="Staff*" method="{1}" class="com.alms.action.StaffAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="Lab*" method="{1}" class="com.alms.action.LabAction">
+        <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="Inc*" method="{1}" class="com.alms.action.IncAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+     <action name="Crm*" method="{1}" class="com.alms.action.CrmAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="Inner*" method="{1}" class="com.alms.action.InnerAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="Samp*" method="{1}" class="com.alms.action.SampAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="Off*" method="{1}" class="com.alms.action.OffAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="Cont*" method="{1}" class="com.alms.action.ContAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="Quan*" method="{1}" class="com.alms.action.QuanAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="Dat*" method="{1}" class="com.alms.action.DatAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="Form*" method="{1}" class="com.alms.action.FormAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="Std*" method="{1}" class="com.alms.action.StdAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="Glp*" method="{1}" class="com.alms.action.GlpAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+  </package>
+</struts>

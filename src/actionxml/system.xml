@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+  <package name="GPersist" namespace="/" extends="json-default">
+    <interceptors>  
+      <interceptor name="auth" class="com.gpersist.interceptor.AuthInterceptor" ></interceptor> 
+      <interceptor name="filter" class="com.gpersist.interceptor.IllegalCharacterInterceptor" ></interceptor> 
+      <interceptor-stack name="authdefault">  
+        <interceptor-ref name="defaultStack"></interceptor-ref>  
+        <interceptor-ref name="auth"></interceptor-ref> 
+        <interceptor-ref name="filter"></interceptor-ref> 
+      </interceptor-stack>  
+    </interceptors>  
+    <default-interceptor-ref name="authdefault"></default-interceptor-ref>
+    
+    <action name="User*" method="{1}" class="com.gpersist.action.UserAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="Org*" method="{1}" class="com.gpersist.action.OrgAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="Sys*" method="{1}" class="com.gpersist.action.SysAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+      <result name="sql" type="stream">
+        <param name="contentType">text/plain</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="DownloadFile" class="com.gpersist.action.DownloadAction">
+      <result name="file" type="stream">
+        <param name="inputName">downloadfile</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="WsPub*" method="{1}" class="com.gpersist.action.WsPubAction">
+      <result name="excel" type="stream">
+        <param name="contentType">application/vnd.ms-excel</param>
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+    <action name="File*" method="{1}" class="com.gpersist.action.FileAction">
+      <result name="file" type="stream">
+        <param name="inputName">is</param>
+        <param name="contentDisposition">attachment;filename="${filename}"</param>
+        <param name="bufferSize">4096</param>
+      </result>
+    </action>
+    
+	  <action name="Upload*" method="{1}" class="com.gpersist.action.UploadAction">
+	    <result name="excel" type="stream">
+	      <param name="contentType">application/vnd.ms-excel</param>
+	      <param name="inputName">is</param>
+	      <param name="contentDisposition">attachment;filename="${filename}"</param>
+	      <param name="bufferSize">4096</param>
+	    </result>
+	  </action>
+	  
+  </package>
+  
+</struts>

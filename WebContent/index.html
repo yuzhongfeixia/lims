@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<!--  <title>农业农村部农产品质量安全监督检验测试中心（南京）实验室管理系统</title>-->
+  <title>农产品质量检测实验室LIMS系统</title>
+  <link href="images/shortcut.ico" rel="SHORTCUT ICON">
+  <link href="jslib/ext/resources/css/ext-all.css" rel="stylesheet" type="text/css" />
+  <link href="jslib/ext/resources/css/gpersist.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="jslib/portal/portal.css" />
+  <link href="jslib/public/alms.css" rel="stylesheet" type="text/css" />
+  <link href="jslib/public/almsprint.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.2&services=true"></script>
+  <script type="text/javascript" src="jslib/ext/bootstrap.js"></script>
+   <script type="text/javascript" src="jslib/swfupload/uploadPanel.js" ></script>
+  <script type="text/javascript" src="jslib/swfupload/swfupload.js"></script>
+  <script type="text/javascript" src="jslib/portal/Portlet.js"></script>
+  <script type="text/javascript" src="jslib/portal/PortalColumn.js"></script>
+  <script type="text/javascript" src="jslib/portal/PortalPanel.js"></script>
+  <script type="text/javascript" src="jslib/portal/PortalDropZone.js"></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.TabScrollerMenu.js" ></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.CheckColumn.js" ></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.TreeCombo.js" ></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.CheckCombo.js" ></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.grid.Printer.js" ></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.PinYin.js" ></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.GridPicker.js" ></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.DataView.Animated.js" ></script>
+  <script type="text/javascript" src="jslib/echarts/echarts.js" ></script>
+  <script type="text/javascript" src="jslib/echarts/china.js" ></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.LSChartsComponent.js"></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.SSChartsComponent.js"></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.SOChartsComponent.js"></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.COChartsComponent.js"></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.COChartsComponent.js"></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.TPChartsComponent.js"></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.TSChartsComponent.js"></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.PChartsComponent.js"></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.PCChartsComponent.js"></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.CCChartsComponent.js"></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.DUCChartsComponent.js"></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.POPChartsComponent.js"></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.SPChartsComponent.js"></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.DTChartsComponent.js"></script>
+  <script type="text/javascript" src="jslib/ext/ext-lang-zh_CN.js" ></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.Override.js" ></script>
+  <script type="text/javascript" src="jslib/public/gpersist.js" ></script>
+  <script type="text/javascript" src="jslib/public/tools.js" ></script>
+  <script type="text/javascript" src="jslib/public/alms.js" ></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.UserPicker.js" ></script>
+  <script type="text/javascript" src="jslib/uxs/Ext.ux.Print.js" ></script>
+  <script type="text/javascript" src="jslib/public/almsprint.js" ></script>
+  <script type="text/javascript" src="print/LodopFuncs.js" ></script>
+  <script language="javascript" type="text/javascript">
+    if (top.frames.length > 0) {
+      top.location = self.location.pathname;
+    }
+
+    window.status = '欢迎使用管理系统';
+
+    function locate() {
+      var noError = true;
+
+      try { this.moveTo(0, 0); }
+      catch (e) { noError = false; }
+      
+      if (noError) {
+        this.resizeTo(screen.availWidth, screen.availHeight);
+      }
+      
+//       if (!gpersist.OnLogined()) {
+//         var panel = Ext.getCmp('plLogin');
+//         if (panel) {          
+//           panel.setPosition(0, 0);
+//         }
+//       }
+        
+    }
+  </script>
+</head>
+
+<body onload="locate()">
+<!--   <div id="DivCenter" type="text/javascript"></div> -->
+  <script language="javascript">
+  Ext.Loader.setConfig({
+    enabled: true
+  });
+  
+
+  Ext.Loader.setPath({'gpersist': 'jslib'});
+
+  Ext.require([
+    'gpersist.base.basemain',
+    'gpersist.base.baseform',
+    'gpersist.base.listform',
+    'gpersist.base.listdateform',
+    'gpersist.base.basepmt',
+    'gpersist.base.editform',
+    'gpersist.base.listeditform',
+    'gpersist.base.ltreeform',
+    'gpersist.base.lteditform',
+    'gpersist.base.listdetailform',
+    'gpersist.base.listwinform',
+    'gpersist.base.listdealform',
+    'gpersist.base.treeeditform',
+    'gpersist.base.leftrightform',
+    'gpersist.base.tranform',
+    'gpersist.base.listtranform',
+    'gpersist.base.stkform',
+    'gpersist.base.rptdayform',
+    'gpersist.base.rptmonthform',
+    'gpersist.base.rptquarterform',
+    'gpersist.base.rptyearform',
+    'gpersist.base.busform',
+    'gpersist.base.basewin',
+    'gpersist.base.editwin',
+    'gpersist.base.flowform',
+    'gpersist.base.listflowform',
+    'gpersist.base.viewflowform',
+    'gpersist.base.flowtaskform',
+    'gpersist.base.viewform'
+  ]);  
+  
+  Ext.onReady(function() {
+    Ext.Ajax.disableCaching = true;
+    Ext.BLANK_IMAGE_URL = 'images/s.gif';
+  
+    Ext.QuickTips.init();
+
+    var viewport = Ext.create('Ext.Viewport', {
+      id:'mainView',
+      layout:{type:'border',padding:0},
+      defaults:{split:true}
+    });
+
+    if (!Ext.isDefined(gpersist.nowlabid)) {
+      gpersist.nowlabid = '';
+    }
+    
+    if (!Ext.isDefined(gpersist.nowlabtype)) {
+      gpersist.nowlabtype = '';
+    }
+    
+    if (!Ext.isDefined(gpersist.nowlabname)) {
+      gpersist.nowlabname = '';
+    }
+    
+    gpersist.OnInit();
+    gpersist.GetSessionUser();
+
+    if (!gpersist.OnLogined())
+      gpersist.OnLogin();
+    else
+      gpersist.OnHMain();
+  });
+  </script>    
+</body>
+</html>

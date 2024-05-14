@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.gpersist.mapper.sqlserver.OrgMapper">
+  <select id="GetDept" statementType="CALLABLE" parameterType="com.gpersist.entity.org.SysDept" resultType="com.gpersist.entity.org.SysDept" >
+    {call dbo.P_Get_Dept(
+      #{deptid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR})
+    }
+  </select>
+  <select id="GetListDept" statementType="CALLABLE" parameterType="com.gpersist.entity.org.SysDept" resultType="com.gpersist.entity.org.SysDept" >
+    {call dbo.P_Get_Dept()}
+  </select>  
+  <select id="GetListDeptByCo" statementType="CALLABLE" parameterType="com.gpersist.entity.org.SysDept" resultType="com.gpersist.entity.org.SysDept" >
+    {call dbo.P_Get_DeptByCo(#{coid,javaType=String,jdbcType=VARCHAR})}
+  </select> 
+  <select id="SearchDept" statementType="CALLABLE" parameterType="com.gpersist.entity.org.SysDept" resultType="com.gpersist.entity.org.SysDept" >
+    {call dbo.P_Search_Dept(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveDept" statementType="CALLABLE" parameterType="com.gpersist.entity.org.SysDept" flushCache="true">
+    {call dbo.P_Save_Dept(
+      #{deptid,javaType=String,jdbcType=VARCHAR},
+			#{deptname,javaType=String,jdbcType=NVARCHAR},
+			#{deptshort,javaType=String,jdbcType=NVARCHAR},
+			#{coid,javaType=String,jdbcType=NVARCHAR},
+			#{deptpid,javaType=String,jdbcType=NVARCHAR},
+			#{citycode,javaType=String,jdbcType=NVARCHAR},
+			#{deptlevel,javaType=String,jdbcType=NVARCHAR},
+			#{depttype,javaType=String,jdbcType=VARCHAR},
+			#{deptdepth,javaType=int,jdbcType=INTEGER},
+			#{sortorder,javaType=int,jdbcType=INTEGER},
+			#{deptstatus,javaType=String,jdbcType=VARCHAR},
+			#{remark,javaType=String,jdbcType=NVARCHAR},
+			#{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  <select id="GetDeptByUser" statementType="CALLABLE" parameterType="com.gpersist.entity.org.SysDept" resultType="com.gpersist.entity.publics.PmtBean" >
+    {call dbo.P_Get_DeptByUser(#{deptid,javaType=String,jdbcType=VARCHAR})}
+  </select>  
+  <select id="GetCompany" statementType="CALLABLE" parameterType="com.gpersist.entity.org.SysCompany" resultType="com.gpersist.entity.org.SysCompany" >
+    {call dbo.P_Get_Company(
+      #{coid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR})
+    }
+  </select>
+  <select id="GetListCompany" statementType="CALLABLE" parameterType="com.gpersist.entity.org.SysCompany" resultType="com.gpersist.entity.org.SysCompany" >
+    {call dbo.P_Get_Company()}
+  </select>
+  <update id="SaveCompany" statementType="CALLABLE" parameterType="com.gpersist.entity.org.SysCompany" flushCache="true">
+    {call dbo.P_Save_Company(
+      #{coid,javaType=String,jdbcType=VARCHAR},
+			#{coname,javaType=String,jdbcType=NVARCHAR},
+			#{coshort,javaType=String,jdbcType=NVARCHAR},
+			#{coheader,javaType=String,jdbcType=NVARCHAR},
+			#{sortorder,javaType=int,jdbcType=SMALLINT},
+			#{cotype,javaType=String,jdbcType=VARCHAR},
+			#{costatus,javaType=String,jdbcType=VARCHAR},
+			#{remark,javaType=String,jdbcType=NVARCHAR},
+			#{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+</mapper>

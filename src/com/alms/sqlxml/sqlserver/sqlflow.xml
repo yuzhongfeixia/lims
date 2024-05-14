@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.alms.mapper.sqlserver.FlowMapper">
+
+  <select id="SearchRoleAuth" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowNodeRole" resultType="com.alms.entity.flow.FlowNodeRole" >
+    {call dbo.P_Search_RoleAuth(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+
+  <select id="GetFlowAuth" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowAuth" resultType="com.alms.entity.flow.FlowAuth" >
+    {call dbo.P_Get_FlowAuth(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListFlowAuth" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowAuth" resultType="com.alms.entity.flow.FlowAuth" >
+    {call dbo.P_Get_FlowAuth(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchFlowAuth" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowAuth" resultType="com.alms.entity.flow.FlowAuth" >
+    {call dbo.P_Search_FlowAuth(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveFlowAuth" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowAuth" flushCache="true">
+    {call dbo.P_Save_FlowAuth(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{noderole,javaType=String,jdbcType=VARCHAR},
+      #{authuser,javaType=String,jdbcType=VARCHAR},
+      #{authusername,javaType=String,jdbcType=NVARCHAR},
+      #{benoderole,javaType=String,jdbcType=VARCHAR},
+      #{beauth,javaType=String,jdbcType=VARCHAR},
+      #{beauthname,javaType=String,jdbcType=NVARCHAR},
+      #{authdate,javaType=java.util.Date,jdbcType=DATE},
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{flownode,javaType=String,jdbcType=VARCHAR},
+      #{canceldate,javaType=java.util.Date,jdbcType=DATE},
+      #{iscancel,javaType=boolean,jdbcType=BOOLEAN},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <update id="SaveBusTodoLog" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodoLog" flushCache="true">
+    {call dbo.P_Save_BusTodoLog(
+      #{todoserial,javaType=int,jdbcType=INTEGER},
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{flownode,javaType=String,jdbcType=VARCHAR},
+      #{senddate,javaType=java.util.Date,jdbcType=DATE},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{trandept,javaType=String,jdbcType=VARCHAR},
+      #{trandeptshort,javaType=String,jdbcType=NVARCHAR},
+      #{labid,javaType=String,jdbcType=VARCHAR},
+      #{labname,javaType=String,jdbcType=NVARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{samplename,javaType=String,jdbcType=NVARCHAR},
+      #{tododesc,javaType=String,jdbcType=NVARCHAR},
+      #{todostatusdesc,javaType=String,jdbcType=NVARCHAR},
+      #{isnowflow,javaType=boolean,jdbcType=BOOLEAN},
+      #{todotype,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetFlowRole" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowRole" resultType="com.alms.entity.flow.FlowRole" >
+    {call dbo.P_Get_FlowRole(
+      #{noderole,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListFlowRole" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowRole" resultType="com.alms.entity.flow.FlowRole" >
+    {call dbo.P_Get_FlowRole(
+     
+    )}
+  </select>
+  <select id="SearchFlowRole" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowRole" resultType="com.alms.entity.flow.FlowRole" >
+    {call dbo.P_Search_FlowRole(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveFlowRole" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowRole" flushCache="true">
+    {call dbo.P_Save_FlowRole(
+      #{noderole,javaType=String,jdbcType=VARCHAR},
+      #{noderolename,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetListFlowNodeUser" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowNodeUser" resultType="com.alms.entity.flow.FlowNodeUser" >
+    {call dbo.P_Get_FlowNodeUser(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveFlowNodeUser" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowNodeUser" flushCache="true">
+    {call dbo.P_Save_FlowNodeUser(
+      #{flownode,javaType=String,jdbcType=VARCHAR},
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetListFlowNodeRole" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowNodeRole" resultType="com.alms.entity.flow.FlowNodeRole" >
+    {call dbo.P_Get_FlowNodeRole(
+       #{flownode,javaType=String,jdbcType=VARCHAR},
+       #{busflow,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveFlowNodeRole" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowNodeRole" flushCache="true">
+    {call dbo.P_Save_FlowNodeRole(
+      #{flownode,javaType=String,jdbcType=VARCHAR},
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{noderole,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetListFlowNode" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowNode" resultType="com.alms.entity.flow.FlowNode" >
+    {call dbo.P_Get_ListFlowNode(
+      #{busflow,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetFlowNode" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowNode" resultType="com.alms.entity.flow.FlowNode" >
+    {call dbo.P_Get_FlowNode(
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{flownode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveFlowNode" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowNode" flushCache="true">
+    {call dbo.P_Save_FlowNode(
+      #{flownode,javaType=String,jdbcType=VARCHAR},
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{flownodename,javaType=String,jdbcType=NVARCHAR},
+      #{nodetype,javaType=String,jdbcType=VARCHAR},
+      #{nodeserial,javaType=int,jdbcType=INTEGER},
+      #{firstdays,javaType=int,jdbcType=INTEGER},
+      #{seconddays,javaType=int,jdbcType=INTEGER},
+      #{dataauth,javaType=String,jdbcType=VARCHAR},
+      #{nodeoper,javaType=String,jdbcType=VARCHAR},
+      #{issms,javaType=boolean,jdbcType=BOOLEAN},
+      #{isemail,javaType=boolean,jdbcType=BOOLEAN},
+      #{isoversms,javaType=boolean,jdbcType=BOOLEAN},
+      #{isfile,javaType=boolean,jdbcType=BOOLEAN},
+      #{trancode,javaType=String,jdbcType=VARCHAR},
+      #{worktime,javaType=double,jdbcType=DECIMAL},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetFlowRoleUser" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowRoleUser" resultType="com.alms.entity.flow.FlowRoleUser" >
+    {call dbo.P_Get_FlowRoleUser(
+      #{noderole,javaType=String,jdbcType=VARCHAR},
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>  
+  <select id="GetFlowRoleUserByRole" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowRoleUser" resultType="com.alms.entity.flow.FlowRoleUser" >
+    {call dbo.P_Get_FlowRoleUserByRole(
+      #{noderole,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>  
+  <select id="SearchFlowRoleUser" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowRoleUser" resultType="com.alms.entity.flow.FlowRoleUser" >
+    {call dbo.P_Search_FlowRoleUser(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>  
+  <update id="SaveFlowRoleUser" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowRoleUser" flushCache="true">
+    {call dbo.P_Save_FlowRoleUser(
+      #{noderole,javaType=String,jdbcType=VARCHAR},
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetFlowButton" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowButton" resultType="com.alms.entity.flow.FlowButton" >
+    {call dbo.P_Get_FlowButton(
+      #{flowbtn,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchFlowButton" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowButton" resultType="com.alms.entity.flow.FlowButton" >
+    {call dbo.P_Search_FlowButton(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveFlowButton" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowButton" flushCache="true">
+    {call dbo.P_Save_FlowButton(
+      #{flowbtn,javaType=String,jdbcType=VARCHAR},
+      #{flowbtnname,javaType=String,jdbcType=NVARCHAR},
+      #{nodebutton,javaType=String,jdbcType=VARCHAR},
+      #{btnmsg,javaType=String,jdbcType=NVARCHAR},
+      #{isenter,javaType=boolean,jdbcType=BOOLEAN},
+      #{btnaction,javaType=String,jdbcType=VARCHAR},
+      #{todostatusdesc,javaType=String,jdbcType=NVARCHAR},
+      #{nodestep,javaType=int,jdbcType=INTEGER},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetBusFlow" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusFlow" resultType="com.alms.entity.flow.BusFlow" >
+    {call dbo.P_Get_BusFlow(
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusFlow" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusFlow" resultType="com.alms.entity.flow.BusFlow" >
+    {call dbo.P_Get_BusFlow(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusFlow" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusFlow" resultType="com.alms.entity.flow.BusFlow" >
+    {call dbo.P_Search_BusFlow(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBusFlow" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusFlow" flushCache="true">
+    {call dbo.P_Save_BusFlow(
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{busflowname,javaType=String,jdbcType=NVARCHAR},
+      #{datafunction,javaType=String,jdbcType=VARCHAR},
+      #{htmldatafunction,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetBusTodo" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodo" resultType="com.alms.entity.flow.BusTodo" >
+    {call dbo.P_Get_BusTodo(
+      #{todoserial,javaType=int,jdbcType=INTEGER},
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+    <select id="GetHBusTodo" statementType="CALLABLE" parameterType="com.alms.entity.flow.HBusTodo" resultType="com.alms.entity.flow.HBusTodo" >
+    {call dbo.P_Get_HBusTodo(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{flownode,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBusTodo" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodo" resultType="com.alms.entity.flow.BusTodo" >
+    {call dbo.P_Get_BusTodo(
+      #{todoserial,javaType=int,jdbcType=INTEGER},
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusTodoByTran" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodo" resultType="com.alms.entity.flow.BusTodo" >
+    {call dbo.P_Get_BusTodoByTran(
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusTodoByTest" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodo" resultType="com.alms.entity.flow.BusTodo" >
+    {call dbo.P_Get_BusTodoByTest(
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusTodo" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodo" resultType="com.alms.entity.flow.BusTodo" >
+    {call dbo.P_Search_BusTodo(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchMyApply" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodo" resultType="com.alms.entity.flow.BusTodo" >
+    {call dbo.P_Search_MyApply(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchYueZhi" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodo" resultType="com.alms.entity.flow.BusTodo" >
+    {call dbo.P_Search_YueZhi(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBusTodo" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodo" flushCache="true">
+    {call dbo.P_Save_BusTodo(
+      #{todoserial,javaType=int,jdbcType=INTEGER},
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{flownode,javaType=String,jdbcType=VARCHAR},
+      #{senddate,javaType=java.util.Date,jdbcType=DATE},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{trandept,javaType=String,jdbcType=VARCHAR},
+      #{labid,javaType=String,jdbcType=VARCHAR},
+      #{labname,javaType=String,jdbcType=NVARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{samplename,javaType=String,jdbcType=NVARCHAR},
+      #{tododesc,javaType=String,jdbcType=NVARCHAR},
+      #{todostatusdesc,javaType=String,jdbcType=NVARCHAR},
+      #{isnowflow,javaType=boolean,jdbcType=BOOLEAN},
+      #{todotype,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <update id="BeginBusTodo" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodo" flushCache="true">
+    {call dbo.P_Begin_BusTodo(
+      #{todoserial,javaType=int,jdbcType=INTEGER,mode=INOUT},
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{flownode,javaType=String,jdbcType=VARCHAR},
+      #{senddate,javaType=java.util.Date,jdbcType=DATE},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{trandept,javaType=String,jdbcType=VARCHAR},
+      #{labid,javaType=String,jdbcType=VARCHAR},
+      #{labname,javaType=String,jdbcType=NVARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{samplename,javaType=String,jdbcType=NVARCHAR},
+      #{tododesc,javaType=String,jdbcType=NVARCHAR},
+      #{todostatusdesc,javaType=String,jdbcType=NVARCHAR},
+      #{isnowflow,javaType=boolean,jdbcType=BOOLEAN},
+      #{todotype,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <update id="InsertBusTodo" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodo" flushCache="true">
+    {call dbo.P_Insert_BusTodo(
+      #{todoserial,javaType=int,jdbcType=INTEGER,mode=INOUT},
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{flownode,javaType=String,jdbcType=VARCHAR},
+      #{senddate,javaType=java.util.Date,jdbcType=DATE},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{trandept,javaType=String,jdbcType=VARCHAR},
+      #{labid,javaType=String,jdbcType=VARCHAR},
+      #{labname,javaType=String,jdbcType=NVARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{samplename,javaType=String,jdbcType=NVARCHAR},
+      #{tododesc,javaType=String,jdbcType=NVARCHAR},
+      #{todostatusdesc,javaType=String,jdbcType=NVARCHAR},
+      #{isnowflow,javaType=boolean,jdbcType=BOOLEAN},
+      #{todotype,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <update id="DealBusTodo" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodo" flushCache="true">
+    {call dbo.P_Deal_BusTodo(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{todoserial,javaType=int,jdbcType=INTEGER},
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{flownode,javaType=String,jdbcType=VARCHAR},
+      #{tododesc,javaType=String,jdbcType=NVARCHAR},
+      #{todostatusdesc,javaType=String,jdbcType=NVARCHAR},
+      #{todotype,javaType=String,jdbcType=VARCHAR}
+    )}
+  </update>
+  
+  <update id="DealBusTodoByUser" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodo" flushCache="true">
+    {call dbo.P_Deal_BusTodoByUser(
+      #{todoserial,javaType=int,jdbcType=INTEGER},
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{flownode,javaType=String,jdbcType=VARCHAR},
+      #{tododesc,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{todotype,javaType=String,jdbcType=VARCHAR},
+      #{todostatusdesc,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <update id="LastBusTodo" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodo" flushCache="true">
+    {call dbo.P_Last_BusTodo(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <update id="GetMyTodoCount" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodo" flushCache="true">
+    {call dbo.P_Get_MyTodoCount(
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{tranuser,javaType=String,jdbcType=VARCHAR}
+    )}
+  </update>
+  
+  <select id="GetMyTodoAlert" statementType="CALLABLE" parameterType="String" resultType="com.alms.entity.flow.BusTodo" >
+    {call dbo.P_Get_MyTodoAlert(
+      #{tranuser,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusFlowProcess" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusFlowProcess" resultType="com.alms.entity.flow.BusFlowProcess" >
+    {call dbo.P_Get_BusFlowProcess(
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusFlowProcess" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusFlowProcess" resultType="com.alms.entity.flow.BusFlowProcess" >
+    {call dbo.P_Get_BusFlowProcess(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusFlowProcess" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusFlowProcess" resultType="com.alms.entity.flow.BusFlowProcess" >
+    {call dbo.P_Search_BusFlowProcess(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBusFlowProcess" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusFlowProcess" flushCache="true">
+    {call dbo.P_Save_BusFlowProcess(
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{processserial,javaType=int,jdbcType=INTEGER},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  
+  <select id="GetFlowNodeByCreate" statementType="CALLABLE" parameterType="String" resultType="com.alms.entity.flow.FlowNode" >
+    {call dbo.P_Get_FlowNodeByCreate(
+      #{busflow,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetFlowNodeBySerial" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowNode" resultType="com.alms.entity.flow.FlowNode" >
+    {call dbo.P_Get_FlowNodeBySerial(
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{nodeserial,javaType=int,jdbcType=INTEGER}
+    )}
+  </select>
+  
+  <select id="GetFlowNodeByTodo" statementType="CALLABLE" parameterType="int" resultType="com.alms.entity.flow.FlowNode" >
+    {call dbo.P_Get_FlowNodeByTodo(
+      #{todoserial,javaType=int,jdbcType=INTEGER}
+    )}
+  </select>
+  
+  <update id="SaveFlowSubmit" statementType="CALLABLE" parameterType="com.gpersist.entity.publics.FlowSubmit" flushCache="true">
+    {call dbo.${deal.procedurename}(
+      #{submittranid,javaType=String,jdbcType=VARCHAR},
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{flownode,javaType=String,jdbcType=VARCHAR},
+      #{flowdesc,javaType=String,jdbcType=VARCHAR},
+      #{deal.userid,javaType=String,jdbcType=VARCHAR},
+      #{deal.username,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update> 
+  
+  <select id="GetFlowNodeButton" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowNodeButton" resultType="com.alms.entity.flow.FlowNodeButton" >
+    {call dbo.P_Get_FlowNodeButton(
+      #{flownode,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListFlowNodeButton" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowNodeButton" resultType="com.alms.entity.flow.FlowNodeButton" >
+    {call dbo.P_Get_FlowNodeButton(
+      #{flownode,javaType=String,jdbcType=VARCHAR},
+      #{busflow,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListFlowNodeButtonByFlow" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowNodeButton" resultType="com.alms.entity.flow.FlowNodeButton" >
+    {call dbo.P_Get_FlowNodeButtonByFlow(
+      #{busflow,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveFlowNodeButton" statementType="CALLABLE" parameterType="com.alms.entity.flow.FlowNodeButton" flushCache="true">
+    {call dbo.P_Save_FlowNodeButton(
+      #{flownode,javaType=String,jdbcType=VARCHAR},
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{nodebutton,javaType=String,jdbcType=VARCHAR},
+      #{btnorder,javaType=int,jdbcType=INTEGER},
+      #{btntitle,javaType=String,jdbcType=NVARCHAR},
+      #{btnmsg,javaType=String,jdbcType=NVARCHAR},
+      #{flowbtn,javaType=String,jdbcType=VARCHAR},
+      #{isenter,javaType=boolean,jdbcType=BOOLEAN},
+      #{btnaction,javaType=String,jdbcType=VARCHAR},
+      #{todostatusdesc,javaType=String,jdbcType=NVARCHAR},
+      #{nodestep,javaType=int,jdbcType=INTEGER},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+    <select id="GetBusTodoNow" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodoNow" resultType="com.alms.entity.flow.BusTodoNow" >
+    {call dbo.P_Get_BusTodoNow(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBusTodoNow" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodoNow" resultType="com.alms.entity.flow.BusTodoNow" >
+    {call dbo.P_Get_BusTodoNow(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusTodoNowByTran" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodoNow" resultType="com.alms.entity.flow.BusTodoNow" >
+    {call dbo.P_Get_BusTodoNowByTran(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusTodoNow" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodoNow" resultType="com.alms.entity.flow.BusTodoNow" >
+    {call dbo.P_Search_BusTodoNow(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBusTodoNow" statementType="CALLABLE" parameterType="com.alms.entity.flow.BusTodoNow" flushCache="true">
+    {call dbo.P_Save_BusTodoNow(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{busflow,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{trandept,javaType=String,jdbcType=VARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{senddate,javaType=java.util.Date,jdbcType=DATE},
+      #{actusername,javaType=String,jdbcType=NVARCHAR},
+      #{actdate,javaType=java.util.Date,jdbcType=DATE},
+      #{tododesc,javaType=String,jdbcType=NVARCHAR},
+      #{todostatusdesc,javaType=String,jdbcType=NVARCHAR},
+      #{todostatus,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  
+</mapper>

@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.alms.mapper.sqlserver.StaffMapper">
+
+  <select id="GetListUserExamFile" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamFile" resultType="com.alms.entity.staff.UserExamFile" >
+    {call dbo.P_Get_UserExamFile(
+      #{examid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveUserExamFile" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamFile" flushCache="true">
+    {call dbo.P_Save_UserExamFile(
+      #{examid,javaType=String,jdbcType=VARCHAR},
+      #{fileno,javaType=int,jdbcType=INTEGER},
+      #{filename,javaType=String,jdbcType=NVARCHAR},
+      #{filecate,javaType=String,jdbcType=VARCHAR},
+      #{filetype,javaType=String,jdbcType=VARCHAR},
+      #{fileurl,javaType=String,jdbcType=NVARCHAR},
+      #{fileremark,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetListBasUserFile" statementType="CALLABLE" parameterType="com.alms.entity.staff.BasUserFile" resultType="com.alms.entity.staff.BasUserFile" >
+    {call dbo.P_Get_BasUserFile(
+     #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBasUserFile" statementType="CALLABLE" parameterType="com.alms.entity.staff.BasUserFile" flushCache="true">
+    {call dbo.P_Save_BasUserFile(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{fileno,javaType=int,jdbcType=INTEGER},
+      #{filename,javaType=String,jdbcType=NVARCHAR},
+      #{major,javaType=String,jdbcType=NVARCHAR},
+      #{validtime,javaType=java.util.Date,jdbcType=DATE},
+      #{fileurl,javaType=String,jdbcType=NVARCHAR},
+      #{filetypename,javaType=String,jdbcType=NVARCHAR},
+      #{gettime,javaType=java.util.Date,jdbcType=DATE},
+      #{fileremark,javaType=String,jdbcType=NVARCHAR},
+      #{filenumber,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetUserExamResult" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamResult" resultType="com.alms.entity.staff.UserExamResult" >
+    {call dbo.P_Get_UserExamResult(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetUserExamResultByUser" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamResult" resultType="com.alms.entity.staff.UserExamResult" >
+    {call dbo.P_Get_UserExamResultByUser(
+      #{userid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListUserExamResult" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamResult" resultType="com.alms.entity.staff.UserExamResult" >
+    {call dbo.P_Get_UserExamResult(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchUserExamResult" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamResult" resultType="com.alms.entity.staff.UserExamResult" >
+    {call dbo.P_Search_UserExamResult(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveUserExamResult" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamResult" flushCache="true">
+    {call dbo.P_Save_UserExamResult(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{examid,javaType=String,jdbcType=VARCHAR},
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{userpost,javaType=String,jdbcType=VARCHAR},
+      #{userpro,javaType=String,jdbcType=NVARCHAR},
+      #{busscope,javaType=String,jdbcType=NVARCHAR},
+      #{userduty,javaType=String,jdbcType=VARCHAR},
+      #{deptid,javaType=String,jdbcType=VARCHAR},
+      #{allowdev,javaType=String,jdbcType=NVARCHAR},
+      #{allowdevname,javaType=String,jdbcType=NVARCHAR},
+      #{allowparam,javaType=String,jdbcType=NVARCHAR},
+      #{allowparamname,javaType=String,jdbcType=NVARCHAR},
+      #{examapprove,javaType=String,jdbcType=VARCHAR},
+      #{examapprovename,javaType=String,jdbcType=NVARCHAR},
+      #{examapprovedate,javaType=java.util.Date,jdbcType=DATE},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowsample,javaType=String,jdbcType=NVARCHAR},
+      #{allowsamplename,javaType=String,jdbcType=NVARCHAR},
+      #{crtdate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetListUserExamDev" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamDev" resultType="com.alms.entity.staff.UserExamDev" >
+    {call dbo.P_Get_UserExamDev(
+      #{examid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveUserExamDev" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamDev" flushCache="true">
+    {call dbo.P_Save_UserExamDev(
+      #{examid,javaType=String,jdbcType=VARCHAR},
+      #{recordid,javaType=String,jdbcType=VARCHAR},
+      #{devid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetListUserExamGroup" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamGroup" resultType="com.alms.entity.staff.UserExamGroup" >
+    {call dbo.P_Get_UserExamGroup(
+      #{examid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveUserExamGroup" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamGroup" flushCache="true">
+    {call dbo.P_Save_UserExamGroup(
+      #{examid,javaType=String,jdbcType=VARCHAR},
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{deptid,javaType=String,jdbcType=VARCHAR},
+      #{userduty,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetUserExamReport" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamReport" resultType="com.alms.entity.staff.UserExamReport" >
+    {call dbo.P_Get_UserExamReport(
+      #{examid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchUserExamReport" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamReport" resultType="com.alms.entity.staff.UserExamReport" >
+    {call dbo.P_Search_UserExamReport(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchUserExamReportForResult" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamReport" resultType="com.alms.entity.staff.UserExamReport" >
+    {call dbo.P_Search_UserExamReportForResult(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveUserExamReport" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamReport" flushCache="true">
+    {call dbo.P_Save_UserExamReport(
+      #{examid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{deptid,javaType=String,jdbcType=VARCHAR},
+      #{userpost,javaType=String,jdbcType=VARCHAR},
+      #{userduty,javaType=String,jdbcType=VARCHAR},
+      #{examtype,javaType=String,jdbcType=VARCHAR},
+      #{examdate,javaType=java.util.Date,jdbcType=DATE},
+      #{examcontent,javaType=String,jdbcType=NVARCHAR},
+      #{examdesc,javaType=String,jdbcType=NVARCHAR},
+      #{examleader,javaType=String,jdbcType=VARCHAR},
+      #{examleadername,javaType=String,jdbcType=NVARCHAR},
+      #{examresult,javaType=String,jdbcType=NVARCHAR},
+      #{examleaderdate,javaType=java.util.Date,jdbcType=DATE},
+      #{techuser,javaType=String,jdbcType=VARCHAR},
+      #{techusername,javaType=String,jdbcType=NVARCHAR},
+      #{techdesc,javaType=String,jdbcType=NVARCHAR},
+      #{techdate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{isselect,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetUserExamItem" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamItem" resultType="com.alms.entity.staff.UserExamItem" >
+    {call dbo.P_Get_UserExamItem(
+      #{examitem,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListUserExamItem" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamItem" resultType="com.alms.entity.staff.UserExamItem" >
+    {call dbo.P_Get_UserExamItem(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchUserExamItem" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamItem" resultType="com.alms.entity.staff.UserExamItem" >
+    {call dbo.P_Search_UserExamItem(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveUserExamItem" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamItem" flushCache="true">
+    {call dbo.P_Save_UserExamItem(
+      #{examitem,javaType=String,jdbcType=VARCHAR},
+      #{examitemname,javaType=String,jdbcType=NVARCHAR},
+      #{isword,javaType=boolean,jdbcType=BOOLEAN},
+      #{examitemorder,javaType=int,jdbcType=INTEGER},
+      #{isactive,javaType=boolean,jdbcType=BOOLEAN},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetUserExamDetail" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamDetail" resultType="com.alms.entity.staff.UserExamDetail" >
+    {call dbo.P_Get_UserExamDetail(
+      #{examid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListUserExamDetail" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamDetail" resultType="com.alms.entity.staff.UserExamDetail" >
+    {call dbo.P_Get_UserExamDetail(
+       #{examid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveUserExamDetail" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamDetail" flushCache="true">
+    {call dbo.P_Save_UserExamDetail(
+      #{examid,javaType=String,jdbcType=VARCHAR},
+      #{examitem,javaType=String,jdbcType=VARCHAR},
+      #{examscore,javaType=String,jdbcType=VARCHAR},
+      #{examitemdesc,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetUserExamRecord" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamRecord" resultType="com.alms.entity.staff.UserExamRecord" >
+    {call dbo.P_Get_UserExamRecord(
+      #{examid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListUserExamRecord" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamRecord" resultType="com.alms.entity.staff.UserExamRecord" >
+    {call dbo.P_Get_UserExamRecord(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchUserExamRecord" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamRecord" resultType="com.alms.entity.staff.UserExamRecord" >
+    {call dbo.P_Search_UserExamRecord(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveUserExamRecord" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserExamRecord" flushCache="true">
+    {call dbo.P_Save_UserExamRecord(
+      #{examid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{deptid,javaType=String,jdbcType=VARCHAR},
+      #{userpost,javaType=String,jdbcType=VARCHAR},
+      #{examdate,javaType=java.util.Date,jdbcType=DATE},
+      #{examcontent,javaType=String,jdbcType=NVARCHAR},
+      #{examadvice,javaType=String,jdbcType=VARCHAR},
+      #{examdesc,javaType=String,jdbcType=NVARCHAR},
+      #{approveuser,javaType=String,jdbcType=VARCHAR},
+      #{approveusername,javaType=String,jdbcType=NVARCHAR},
+      #{approvedate,javaType=java.util.Date,jdbcType=DATE},
+      #{teamuser,javaType=String,jdbcType=VARCHAR},
+      #{teamusername,javaType=String,jdbcType=NVARCHAR},
+      #{teamdate,javaType=java.util.Date,jdbcType=DATE},
+      #{monitoruser,javaType=String,jdbcType=VARCHAR},
+      #{monitorusername,javaType=String,jdbcType=NVARCHAR},
+      #{monitordate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetListUserTrainDetail" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserTrainDetail" resultType="com.alms.entity.staff.UserTrainDetail" >
+    {call dbo.P_Get_UserTrainDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveUserTrainDetail" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserTrainDetail" flushCache="true">
+    {call dbo.P_Save_UserTrainDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetUserTrain" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserTrain" resultType="com.alms.entity.staff.UserTrain" >
+    {call dbo.P_Get_UserTrain(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListUserTrain" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserTrain" resultType="com.alms.entity.staff.UserTrain" >
+    {call dbo.P_Get_UserTrain(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListUserTrainByUser" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserTrain" resultType="com.alms.entity.staff.UserTrain" >
+    {call dbo.P_Get_UserTrainByUser(
+      #{userid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchUserTrain" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserTrain" resultType="com.alms.entity.staff.UserTrain" >
+    {call dbo.P_Search_UserTrain(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveUserTrain" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserTrain" flushCache="true">
+    {call dbo.P_Save_UserTrain(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{relaid,javaType=String,jdbcType=VARCHAR},
+      #{begindate,javaType=java.util.Date,jdbcType=DATE},
+      #{traintarget,javaType=String,jdbcType=NVARCHAR},
+      #{trainobject,javaType=String,jdbcType=NVARCHAR},
+      #{traincontent,javaType=String,jdbcType=NVARCHAR},
+      #{traintype,javaType=String,jdbcType=VARCHAR},
+      #{trainresult,javaType=String,jdbcType=NVARCHAR},
+      #{trainteacher,javaType=String,jdbcType=NVARCHAR},
+      #{trainexam,javaType=String,jdbcType=NVARCHAR},
+      #{traintaker,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{aduituser,javaType=String,jdbcType=VARCHAR},
+      #{aduitusername,javaType=String,jdbcType=NVARCHAR},
+      #{aduitdate,javaType=java.util.Date,jdbcType=DATE},
+      #{aduitremark,javaType=String,jdbcType=NVARCHAR},
+      #{checkuser,javaType=String,jdbcType=VARCHAR},
+      #{checkusername,javaType=String,jdbcType=NVARCHAR},
+      #{checkdate,javaType=java.util.Date,jdbcType=DATE},
+      #{checkremark,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetRecordSummary" statementType="CALLABLE" parameterType="com.alms.entity.staff.RecordSummary" resultType="com.alms.entity.staff.RecordSummary" >
+    {call dbo.P_Get_RecordSummary(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListRecordSummary" statementType="CALLABLE" parameterType="com.alms.entity.staff.RecordSummary" resultType="com.alms.entity.staff.RecordSummary" >
+    {call dbo.P_Get_RecordSummary(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchRecordSummary" statementType="CALLABLE" parameterType="com.alms.entity.staff.RecordSummary" resultType="com.alms.entity.staff.RecordSummary" >
+    {call dbo.P_Search_RecordSummary(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveRecordSummary" statementType="CALLABLE" parameterType="com.alms.entity.staff.RecordSummary" flushCache="true">
+    {call dbo.P_Save_RecordSummary(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{traintarget,javaType=String,jdbcType=NVARCHAR},
+      #{trainobject,javaType=String,jdbcType=NVARCHAR},
+      #{traincontent,javaType=String,jdbcType=NVARCHAR},
+      #{trainresult,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{aduituser,javaType=String,jdbcType=VARCHAR},
+      #{aduitusername,javaType=String,jdbcType=NVARCHAR},
+      #{aduitdate,javaType=java.util.Date,jdbcType=DATE},
+      #{aduitremark,javaType=String,jdbcType=NVARCHAR},
+      #{checkuser,javaType=String,jdbcType=VARCHAR},
+      #{checkusername,javaType=String,jdbcType=NVARCHAR},
+      #{checkdate,javaType=java.util.Date,jdbcType=DATE},
+      #{checkremark,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetUserPlanYearDetail" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserPlanYearDetail" resultType="com.alms.entity.staff.UserPlanYearDetail" >
+    {call dbo.P_Get_UserPlanYearDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{relaid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListUserPlanYearDetail" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserPlanYearDetail" resultType="com.alms.entity.staff.UserPlanYearDetail" >
+    {call dbo.P_Get_UserPlanYearDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{relaid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchUserPlanYearDetail" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserPlanYearDetail" resultType="com.alms.entity.staff.UserPlanYearDetail" >
+    {call dbo.P_Search_UserPlanYearDetail(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveUserPlanYearDetail" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserPlanYearDetail" flushCache="true">
+    {call dbo.P_Save_UserPlanYearDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{relaid,javaType=String,jdbcType=VARCHAR},
+      #{tranyear,javaType=String,jdbcType=VARCHAR},
+      #{trainer,javaType=String,jdbcType=NVARCHAR},
+      #{deptid,javaType=String,jdbcType=VARCHAR},
+      #{traindate,javaType=java.util.Date,jdbcType=DATE},
+      #{traintarget,javaType=String,jdbcType=NVARCHAR},
+      #{trainobject,javaType=String,jdbcType=NVARCHAR},
+      #{traincontent,javaType=String,jdbcType=NVARCHAR},
+      #{traintype,javaType=String,jdbcType=VARCHAR},
+      #{trainfee,javaType=double,jdbcType=DECIMAL},
+      #{trainrequest,javaType=String,jdbcType=NVARCHAR},
+      #{trainremark,javaType=String,jdbcType=NVARCHAR},
+      #{trainstatus,javaType=String,jdbcType=VARCHAR},
+      #{modifyserial,javaType=int,jdbcType=INTEGER},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetUserPlanYear" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserPlanYear" resultType="com.alms.entity.staff.UserPlanYear" >
+    {call dbo.P_Get_UserPlanYear(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{tranyear,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchUserPlanYear" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserPlanYear" resultType="com.alms.entity.staff.UserPlanYear" >
+    {call dbo.P_Search_UserPlanYear(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchUserPlanYearApproved" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserPlanYear" resultType="com.alms.entity.staff.UserPlanYear" >
+    {call dbo.P_Search_UserPlanYearApproved(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveUserPlanYear" statementType="CALLABLE" parameterType="com.alms.entity.staff.UserPlanYear" flushCache="true">
+    {call dbo.P_Save_UserPlanYear(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{deptid,javaType=String,jdbcType=VARCHAR},
+      #{tranyear,javaType=String,jdbcType=VARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{tranremark,javaType=String,jdbcType=NVARCHAR},
+      #{aduituser,javaType=String,jdbcType=VARCHAR},
+      #{aduitusername,javaType=String,jdbcType=NVARCHAR},
+      #{aduitdate,javaType=java.util.Date,jdbcType=DATE},
+      #{aduitremark,javaType=String,jdbcType=NVARCHAR},
+      #{checkuser,javaType=String,jdbcType=VARCHAR},
+      #{checkusername,javaType=String,jdbcType=NVARCHAR},
+      #{checkdate,javaType=java.util.Date,jdbcType=DATE},
+      #{checkremark,javaType=String,jdbcType=NVARCHAR},
+      #{modifyserial,javaType=int,jdbcType=INTEGER},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetBasUser" statementType="CALLABLE" parameterType="com.alms.entity.staff.BasUser" resultType="com.alms.entity.staff.BasUser" >
+    {call dbo.P_Get_BasUser(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBasUser" statementType="CALLABLE" parameterType="com.alms.entity.staff.BasUser" resultType="com.alms.entity.staff.BasUser" >
+    {call dbo.P_Get_BasUser(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchBasUser" statementType="CALLABLE" parameterType="com.alms.entity.staff.BasUser" resultType="com.alms.entity.staff.BasUser" >
+    {call dbo.P_Search_BasUser(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBasUser" statementType="CALLABLE" parameterType="com.alms.entity.staff.BasUser" flushCache="true">
+    {call dbo.P_Save_BasUser(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{username,javaType=String,jdbcType=NVARCHAR},
+      #{deptid,javaType=String,jdbcType=VARCHAR},
+      #{usermajor,javaType=String,jdbcType=NVARCHAR},
+      #{usertele,javaType=String,jdbcType=NVARCHAR},
+      #{useremail,javaType=String,jdbcType=NVARCHAR},
+      #{opertype,javaType=String,jdbcType=VARCHAR},
+      #{usersex,javaType=String,jdbcType=VARCHAR},
+      #{usernative,javaType=String,jdbcType=VARCHAR},
+      #{altername,javaType=String,jdbcType=NVARCHAR},
+      #{borndate,javaType=java.util.Date,jdbcType=DATE},
+      #{bornaddress,javaType=String,jdbcType=NVARCHAR},
+      #{useridentity,javaType=String,jdbcType=NVARCHAR},
+      #{useredu,javaType=String,jdbcType=VARCHAR},
+      #{userdegree,javaType=String,jdbcType=VARCHAR},
+      #{userpolity,javaType=String,jdbcType=VARCHAR},
+      #{homeaddress,javaType=String,jdbcType=NVARCHAR},
+      #{hometele,javaType=String,jdbcType=NVARCHAR},
+      #{userremark,javaType=String,jdbcType=NVARCHAR},
+      #{userstatus,javaType=String,jdbcType=VARCHAR},
+      #{usertitle,javaType=String,jdbcType=VARCHAR},
+      #{userduty,javaType=String,jdbcType=VARCHAR},
+      #{begintest,javaType=java.util.Date,jdbcType=DATE},
+      #{crtdate,javaType=java.util.Date,jdbcType=DATE},
+      #{modifydate,javaType=java.util.Date,jdbcType=DATE},
+      #{crtuser,javaType=String,jdbcType=VARCHAR},
+      #{crtusername,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+</mapper>

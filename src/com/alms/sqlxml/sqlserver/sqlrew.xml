@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.alms.mapper.sqlserver.RewMapper">
+  <select id="GetReviewYear" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewYear" resultType="com.alms.entity.review.ReviewYear" >
+    {call dbo.P_Get_ReviewYear(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListReviewYear" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewYear" resultType="com.alms.entity.review.ReviewYear" >
+    {call dbo.P_Get_ReviewYear(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchReviewYear" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewYear" resultType="com.alms.entity.review.ReviewYear" >
+    {call dbo.P_Search_ReviewYear(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveReviewYear" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewYear" flushCache="true">
+    {call dbo.P_Save_ReviewYear(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{reviewgoal,javaType=String,jdbcType=NVARCHAR},
+      #{reviewcrew,javaType=String,jdbcType=NVARCHAR},
+      #{reviewplan,javaType=String,jdbcType=NVARCHAR},
+      #{reviewgist,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{audituser,javaType=String,jdbcType=VARCHAR},
+      #{auditusername,javaType=String,jdbcType=NVARCHAR},
+      #{auditdate,javaType=java.util.Date,jdbcType=DATE},
+      #{auditdesc,javaType=String,jdbcType=NVARCHAR},
+      #{allowuser,javaType=String,jdbcType=VARCHAR},
+      #{allowusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowdate,javaType=java.util.Date,jdbcType=DATE},
+      #{allowdesc,javaType=String,jdbcType=NVARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetReviewPlan" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewPlan" resultType="com.alms.entity.review.ReviewPlan" >
+    {call dbo.P_Get_ReviewPlan(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListReviewPlan" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewPlan" resultType="com.alms.entity.review.ReviewPlan" >
+    {call dbo.P_Get_ReviewPlan(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchReviewPlan" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewPlan" resultType="com.alms.entity.review.ReviewPlan" >
+    {call dbo.P_Search_ReviewPlan(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchReviewPlanForNotice" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewPlan" resultType="com.alms.entity.review.ReviewPlan" >
+    {call dbo.P_Search_ReviewPlanForNotice(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveReviewPlan" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewPlan" flushCache="true">
+    {call dbo.P_Save_ReviewPlan(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{reviewdate,javaType=java.util.Date,jdbcType=DATE},
+      #{reviewaddr,javaType=String,jdbcType=NVARCHAR},
+      #{reviewuser,javaType=String,jdbcType=VARCHAR},
+      #{reviewusername,javaType=String,jdbcType=NVARCHAR},
+      #{reviewgoal,javaType=String,jdbcType=NVARCHAR},
+      #{reviewtype,javaType=String,jdbcType=VARCHAR},
+      #{reviewtypename,javaType=String,jdbcType=NVARCHAR},
+      #{joinuser,javaType=String,jdbcType=NVARCHAR},
+      #{reviewcontent,javaType=String,jdbcType=VARCHAR},
+      #{reviewcontentname,javaType=String,jdbcType=NVARCHAR},
+      #{othercontent,javaType=String,jdbcType=NVARCHAR},
+      #{inforequire,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{allowuser,javaType=String,jdbcType=VARCHAR},
+      #{allowusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowdate,javaType=java.util.Date,jdbcType=DATE},
+      #{allowdesc,javaType=String,jdbcType=NVARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetReviewRecord" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewRecord" resultType="com.alms.entity.review.ReviewRecord" >
+    {call dbo.P_Get_ReviewRecord(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListReviewRecord" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewRecord" resultType="com.alms.entity.review.ReviewRecord" >
+    {call dbo.P_Get_ReviewRecord(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchReviewRecord" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewRecord" resultType="com.alms.entity.review.ReviewRecord" >
+    {call dbo.P_Search_ReviewRecord(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveReviewRecord" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewRecord" flushCache="true">
+    {call dbo.P_Save_ReviewRecord(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{meetid,javaType=String,jdbcType=VARCHAR},
+      #{reviewdate,javaType=java.util.Date,jdbcType=DATE},
+      #{reviewaddr,javaType=String,jdbcType=NVARCHAR},
+      #{reviewcontent,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{reviewlead,javaType=String,jdbcType=VARCHAR},
+      #{reviewleadname,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetReviewReport" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewReport" resultType="com.alms.entity.review.ReviewReport" >
+    {call dbo.P_Get_ReviewReport(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListReviewReport" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewReport" resultType="com.alms.entity.review.ReviewReport" >
+    {call dbo.P_Get_ReviewReport(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchReviewReport" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewReport" resultType="com.alms.entity.review.ReviewReport" >
+    {call dbo.P_Search_ReviewReport(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchReviewReportForImprove" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewReport" resultType="com.alms.entity.review.ReviewReport" >
+    {call dbo.P_Search_ReviewReportForImprove(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveReviewReport" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewReport" flushCache="true">
+    {call dbo.P_Save_ReviewReport(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{meetid,javaType=String,jdbcType=VARCHAR},
+      #{reportcontent,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{allowuser,javaType=String,jdbcType=VARCHAR},
+      #{allowusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowdate,javaType=java.util.Date,jdbcType=DATE},
+      #{allowdesc,javaType=String,jdbcType=NVARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetReviewImprove" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewImprove" resultType="com.alms.entity.review.ReviewImprove" >
+    {call dbo.P_Get_ReviewImprove(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListReviewImprove" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewImprove" resultType="com.alms.entity.review.ReviewImprove" >
+    {call dbo.P_Get_ReviewImprove(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchReviewImprove" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewImprove" resultType="com.alms.entity.review.ReviewImprove" >
+    {call dbo.P_Search_ReviewImprove(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveReviewImprove" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewImprove" flushCache="true">
+    {call dbo.P_Save_ReviewImprove(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{reportid,javaType=String,jdbcType=VARCHAR},
+      #{respdept,javaType=String,jdbcType=VARCHAR},
+      #{respdeptname,javaType=String,jdbcType=NVARCHAR},
+      #{improvecontent,javaType=String,jdbcType=NVARCHAR},
+      #{timerequire,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{improvedesc,javaType=String,jdbcType=NVARCHAR},
+      #{respuser,javaType=String,jdbcType=VARCHAR},
+      #{respusername,javaType=String,jdbcType=NVARCHAR},
+      #{improvevalid,javaType=String,jdbcType=NVARCHAR},
+      #{validuser,javaType=String,jdbcType=VARCHAR},
+      #{validusername,javaType=String,jdbcType=NVARCHAR},
+      #{validdate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+    <select id="GetReviewNotice" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewNotice" resultType="com.alms.entity.review.ReviewNotice" >
+    {call dbo.P_Get_ReviewNotice(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListReviewNotice" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewNotice" resultType="com.alms.entity.review.ReviewNotice" >
+    {call dbo.P_Get_ReviewNotice(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchReviewNotice" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewNotice" resultType="com.alms.entity.review.ReviewNotice" >
+    {call dbo.P_Search_ReviewNotice(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchReviewNoticeForMeet" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewNotice" resultType="com.alms.entity.review.ReviewNotice" >
+    {call dbo.P_Search_ReviewNoticeForMeet(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveReviewNotice" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewNotice" flushCache="true">
+    {call dbo.P_Save_ReviewNotice(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{planid,javaType=String,jdbcType=VARCHAR},
+      #{noticeobj,javaType=String,jdbcType=NVARCHAR},
+      #{reivewdate,javaType=java.util.Date,jdbcType=DATE},
+      #{reviewplace,javaType=String,jdbcType=NVARCHAR},
+      #{reviewyear,javaType=int,jdbcType=INTEGER},
+      #{noticetext,javaType=String,jdbcType=VARCHAR},
+      #{noticedate,javaType=java.util.Date,jdbcType=DATE},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+    <select id="GetMeetSign" statementType="CALLABLE" parameterType="com.alms.entity.review.MeetSign" resultType="com.alms.entity.review.MeetSign" >
+    {call dbo.P_Get_MeetSign(
+      #{meetid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListMeetSign" statementType="CALLABLE" parameterType="com.alms.entity.review.MeetSign" resultType="com.alms.entity.review.MeetSign" >
+    {call dbo.P_Get_MeetSign(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchMeetSign" statementType="CALLABLE" parameterType="com.alms.entity.review.MeetSign" resultType="com.alms.entity.review.MeetSign" >
+    {call dbo.P_Search_MeetSign(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchMeetSignForRecord" statementType="CALLABLE" parameterType="com.alms.entity.review.MeetSign" resultType="com.alms.entity.review.MeetSign" >
+    {call dbo.P_Search_MeetSignForRecord(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchMeetSignForReport" statementType="CALLABLE" parameterType="com.alms.entity.review.MeetSign" resultType="com.alms.entity.review.MeetSign" >
+    {call dbo.P_Search_MeetSignForReport(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveMeetSign" statementType="CALLABLE" parameterType="com.alms.entity.review.MeetSign" flushCache="true">
+    {call dbo.P_Save_MeetSign(
+      #{meetid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{noticeid,javaType=String,jdbcType=VARCHAR},
+      #{meettopic,javaType=String,jdbcType=NVARCHAR},
+      #{meetdate,javaType=java.util.Date,jdbcType=DATE},
+      #{meetplace,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{checkuser,javaType=String,jdbcType=VARCHAR},
+      #{checkusername,javaType=String,jdbcType=NVARCHAR},
+      #{checkdate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+    <select id="GetReviewMeetUser" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewMeetUser" resultType="com.alms.entity.review.ReviewMeetUser" >
+    {call dbo.P_Get_ReviewMeetUser(
+      #{meetid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListReviewMeetUser" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewMeetUser" resultType="com.alms.entity.review.ReviewMeetUser" >
+    {call dbo.P_Get_ReviewMeetUser(
+      #{meetid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchReviewMeetUser" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewMeetUser" resultType="com.alms.entity.review.ReviewMeetUser" >
+    {call dbo.P_Search_ReviewMeetUser(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveReviewMeetUser" statementType="CALLABLE" parameterType="com.alms.entity.review.ReviewMeetUser" flushCache="true">
+    {call dbo.P_Save_ReviewMeetUser(
+      #{meetid,javaType=String,jdbcType=VARCHAR},
+      #{partuser,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+
+</mapper>

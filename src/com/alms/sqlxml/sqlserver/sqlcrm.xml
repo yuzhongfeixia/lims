@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.alms.mapper.sqlserver.CrmMapper">
+  <select id="GetCrmAccidentDeal" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmAccidentDeal" resultType="com.alms.entity.crm.CrmAccidentDeal" >
+    {call dbo.P_Get_CrmAccidentDeal(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchCrmAccidentDeal" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmAccidentDeal" resultType="com.alms.entity.crm.CrmAccidentDeal" >
+    {call dbo.P_Search_CrmAccidentDeal(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchCrmAccidentDealApproved" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmAccidentDeal" resultType="com.alms.entity.crm.CrmAccidentDeal" >
+    {call dbo.P_Search_CrmAccidentDealApproved(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveCrmAccidentDeal" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmAccidentDeal" flushCache="true">
+    {call dbo.P_Save_CrmAccidentDeal(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{testedunit,javaType=String,jdbcType=NVARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{samplename,javaType=String,jdbcType=NVARCHAR},
+      #{oldreport,javaType=String,jdbcType=NVARCHAR},
+      #{eventdate,javaType=java.util.Date,jdbcType=DATE},
+      #{eventuser,javaType=String,jdbcType=VARCHAR},
+      #{eventusername,javaType=String,jdbcType=NVARCHAR},
+      #{eventreason,javaType=String,jdbcType=NVARCHAR},
+      #{dealdesc,javaType=String,jdbcType=NVARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{officeuser,javaType=String,jdbcType=VARCHAR},
+      #{officeusername,javaType=String,jdbcType=NVARCHAR},
+      #{officedate,javaType=java.util.Date,jdbcType=DATE},
+      #{officedesc,javaType=String,jdbcType=NVARCHAR},
+      #{allowuser,javaType=String,jdbcType=VARCHAR},
+      #{allowusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowdate,javaType=java.util.Date,jdbcType=DATE},
+      #{allowdesc,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetCrmSurveyItem" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmSurveyItem" resultType="com.alms.entity.crm.CrmSurveyItem" >
+    {call dbo.P_Get_CrmSurveyItem(
+      #{surveyitem,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchCrmSurveyItem" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmSurveyItem" resultType="com.alms.entity.crm.CrmSurveyItem" >
+    {call dbo.P_Search_CrmSurveyItem(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveCrmSurveyItem" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmSurveyItem" flushCache="true">
+    {call dbo.P_Save_CrmSurveyItem(
+      #{surveyitem,javaType=String,jdbcType=VARCHAR},
+      #{surveyitemname,javaType=String,jdbcType=NVARCHAR},
+      #{isword,javaType=boolean,jdbcType=BOOLEAN},
+      #{surveyitemorder,javaType=int,jdbcType=INTEGER},
+      #{isactive,javaType=boolean,jdbcType=BOOLEAN},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetListCrmSurveyDetail" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmSurveyDetail" resultType="com.alms.entity.crm.CrmSurveyDetail" >
+    {call dbo.P_Get_CrmSurveyDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveCrmSurveyDetail" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmSurveyDetail" flushCache="true">
+    {call dbo.P_Save_CrmSurveyDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{surveyitem,javaType=String,jdbcType=VARCHAR},
+      #{surveyitemname,javaType=String,jdbcType=NVARCHAR},
+      #{surveyscore,javaType=String,jdbcType=VARCHAR},
+      #{surveydesc,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetCrmSurvey" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmSurvey" resultType="com.alms.entity.crm.CrmSurvey" >
+    {call dbo.P_Get_CrmSurvey(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchCrmSurvey" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmSurvey" resultType="com.alms.entity.crm.CrmSurvey" >
+    {call dbo.P_Search_CrmSurvey(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveCrmSurvey" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmSurvey" flushCache="true">
+    {call dbo.P_Save_CrmSurvey(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{custname,javaType=String,jdbcType=NVARCHAR},
+      #{testitem,javaType=String,jdbcType=NVARCHAR},
+      #{custaddr,javaType=String,jdbcType=NVARCHAR},
+      #{linktele,javaType=String,jdbcType=VARCHAR},
+      #{custdate,javaType=java.util.Date,jdbcType=DATE},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetCrmReceptDeal" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmReceptDeal" resultType="com.alms.entity.crm.CrmReceptDeal" >
+    {call dbo.P_Get_CrmReceptDeal(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchCrmReceptDeal" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmReceptDeal" resultType="com.alms.entity.crm.CrmReceptDeal" >
+    {call dbo.P_Search_CrmReceptDeal(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchCrmReceptDealForComplaint" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmReceptDeal" resultType="com.alms.entity.crm.CrmReceptDeal" >
+    {call dbo.P_Search_CrmReceptDealForComplaint(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveCrmReceptDeal" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmReceptDeal" flushCache="true">
+    {call dbo.P_Save_CrmReceptDeal(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{receptid,javaType=String,jdbcType=VARCHAR},
+      #{complainobject,javaType=String,jdbcType=NVARCHAR},
+      #{complaindate,javaType=java.util.Date,jdbcType=DATE},
+      #{prescription,javaType=String,jdbcType=NVARCHAR},
+      #{acceptdate,javaType=java.util.Date,jdbcType=DATE},
+      #{linkman,javaType=String,jdbcType=NVARCHAR},
+      #{linktele,javaType=String,jdbcType=VARCHAR},
+      #{linkpost,javaType=String,jdbcType=VARCHAR},
+      #{linkaddr,javaType=String,jdbcType=NVARCHAR},
+      #{complaindesc,javaType=String,jdbcType=NVARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{acceptuser,javaType=String,jdbcType=VARCHAR},
+      #{acceptusername,javaType=String,jdbcType=NVARCHAR},
+      #{acceptdesc,javaType=String,jdbcType=NVARCHAR},
+      #{audituser,javaType=String,jdbcType=VARCHAR},
+      #{auditusername,javaType=String,jdbcType=NVARCHAR},
+      #{auditdate,javaType=java.util.Date,jdbcType=DATE},
+      #{dealresult,javaType=String,jdbcType=NVARCHAR},
+      #{allowuser,javaType=String,jdbcType=VARCHAR},
+      #{allowusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowdate,javaType=java.util.Date,jdbcType=DATE},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetCrmRecept" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmRecept" resultType="com.alms.entity.crm.CrmRecept" >
+    {call dbo.P_Get_CrmRecept(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchCrmRecept" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmRecept" resultType="com.alms.entity.crm.CrmRecept" >
+    {call dbo.P_Search_CrmRecept(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchCrmReceptForDeal" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmRecept" resultType="com.alms.entity.crm.CrmRecept" >
+    {call dbo.P_Search_CrmReceptForDeal(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveCrmRecept" statementType="CALLABLE" parameterType="com.alms.entity.crm.CrmRecept" flushCache="true">
+    {call dbo.P_Save_CrmRecept(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{receptaddr,javaType=String,jdbcType=NVARCHAR},
+      #{receptobject,javaType=String,jdbcType=NVARCHAR},
+      #{receptreason,javaType=String,jdbcType=NVARCHAR},
+      #{receptdesc,javaType=String,jdbcType=NVARCHAR},
+      #{recepttype,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+</mapper>

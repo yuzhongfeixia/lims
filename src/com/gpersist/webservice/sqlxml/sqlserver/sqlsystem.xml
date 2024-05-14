@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.gpersist.mapper.sqlserver.SystemMapper">
+  <select id="GetListSet" statementType="CALLABLE" resultType="com.gpersist.entity.system.SysSet" >
+    {call dbo.P_Get_Set()}
+  </select>
+  <select id="GetPmtSelect" statementType="CALLABLE" parameterType="com.gpersist.entity.publics.PmtBean" resultType="com.gpersist.entity.publics.PmtBean" >
+    {call dbo.P_Get_Select(
+      #{name,javaType=String,jdbcType=VARCHAR})
+    }
+  </select>  
+  <select id="GetPmt" statementType="CALLABLE" parameterType="com.gpersist.entity.system.SysPmt" resultType="com.gpersist.entity.system.SysPmt" >
+    {call dbo.P_Get_Pmt(
+      #{pmtid,javaType=short,jdbcType=SMALLINT},
+      #{pmttype,javaType=String,jdbcType=VARCHAR},
+      #{deal.remark,javaType=String,jdbcType=VARCHAR})
+    }
+  </select>
+  <select id="GetListPmt" statementType="CALLABLE" parameterType="com.gpersist.entity.system.SysPmt" resultType="com.gpersist.entity.system.SysPmt" >
+    {call dbo.P_Get_Pmt(
+      #{pmtid,javaType=short,jdbcType=SMALLINT},
+      #{pmttype,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR})
+    }
+  </select>
+  <select id="ShortPmtByTable" statementType="CALLABLE" parameterType="Short" resultType="com.gpersist.entity.publics.ShortPmt" >
+    {call dbo.P_Get_PmtByTable(
+      #{pmtid,javaType=Short,jdbcType=SMALLINT})
+    }
+  </select>
+  <select id="IntPmtByTable" statementType="CALLABLE" parameterType="Short" resultType="com.gpersist.entity.publics.IntPmt" >
+    {call dbo.P_Get_PmtByTable(
+      #{pmtid,javaType=Short,jdbcType=SMALLINT})
+    }
+  </select>
+  <select id="StringPmtByTable" statementType="CALLABLE" parameterType="Short" resultType="com.gpersist.entity.publics.StringPmt" >
+    {call dbo.P_Get_PmtByTable(
+      #{pmtid,javaType=Short,jdbcType=SMALLINT})
+    }
+  </select>
+  <update id="ExecSQL" statementType="CALLABLE" parameterType="String" flushCache="true">
+    {call dbo.P_Exe_SQL(
+      #{execsql,javaType=String,jdbcType=VARCHAR})
+    }
+  </update>
+  <update id="SaveTranLog" statementType="CALLABLE" parameterType="com.gpersist.entity.log.TranLog" flushCache="true">
+    {call dbo.P_Save_LogTran(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{trandept,javaType=String,jdbcType=VARCHAR},
+      #{trancode,javaType=String,jdbcType=VARCHAR},
+      #{tranaction,javaType=String,jdbcType=VARCHAR},
+      #{trandesc,javaType=String,jdbcType=VARCHAR}
+    )}
+  </update> 
+  <select id="SearchTranLog" statementType="CALLABLE" parameterType="com.gpersist.entity.log.TranLog" resultType="com.gpersist.entity.log.TranLog" >
+    {call dbo.P_Search_LogTran(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchLoginLog" statementType="CALLABLE" parameterType="com.gpersist.entity.log.LoginLog" resultType="com.gpersist.entity.log.LoginLog" >
+    {call dbo.P_Search_LogLogin(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>  
+  <select id="SqlColumn" statementType="CALLABLE" parameterType="com.gpersist.entity.publics.JsonSqlColumn" resultType="com.gpersist.entity.publics.JsonSqlColumn" >
+    {call dbo.P_Get_ColumnByID(
+      #{sqlid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetStringValue" statementType="CALLABLE" parameterType="String" resultType="String" >
+    {call dbo.P_Exe_SQL(
+      #{execsql,javaType=String,jdbcType=VARCHAR})
+    }
+  </select>
+  <select id="GetIntValue" statementType="CALLABLE" parameterType="String" resultType="int" >
+    {call dbo.P_Exe_SQL(
+      #{execsql,javaType=String,jdbcType=VARCHAR})
+    }
+  </select>
+  <select id="GetShortValue" statementType="CALLABLE" parameterType="String" resultType="short" >
+    {call dbo.P_Exe_SQL(
+      #{execsql,javaType=String,jdbcType=VARCHAR})
+    }
+  </select>
+</mapper>

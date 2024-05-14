@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.alms.mapper.sqlserver.GlpMapper">
+
+  <select id="GetGlpFileDestroyRecord" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileDestroyRecord" resultType="com.alms.entity.glp.GlpFileDestroyRecord" >
+    {call dbo.P_Get_GlpFileDestroyRecord(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchGlpFileDestroyRecord" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileDestroyRecord" resultType="com.alms.entity.glp.GlpFileDestroyRecord" >
+    {call dbo.P_Search_GlpFileDestroyRecord(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveGlpFileDestroyRecord" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileDestroyRecord" flushCache="true">
+    {call dbo.P_Save_GlpFileDestroyRecord(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{applyid,javaType=String,jdbcType=VARCHAR},
+      #{fileid,javaType=String,jdbcType=VARCHAR},
+      #{destroyreason,javaType=String,jdbcType=NVARCHAR},
+      #{destroydate,javaType=java.util.Date,jdbcType=DATE},
+      #{allowuser,javaType=String,jdbcType=VARCHAR},
+      #{allowusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowdate,javaType=java.util.Date,jdbcType=DATE},
+      #{monituser,javaType=String,jdbcType=VARCHAR},
+      #{monitusername,javaType=String,jdbcType=NVARCHAR},
+      #{monitdate,javaType=java.util.Date,jdbcType=DATE},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetGlpFileRegister" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileRegister" resultType="com.alms.entity.glp.GlpFileRegister" >
+    {call dbo.P_Get_GlpFileRegister(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchGlpFileRegister" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileRegister" resultType="com.alms.entity.glp.GlpFileRegister" >
+    {call dbo.P_Search_GlpFileRegister(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveGlpFileRegister" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileRegister" flushCache="true">
+    {call dbo.P_Save_GlpFileRegister(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{applyid,javaType=String,jdbcType=VARCHAR},
+      #{fileid,javaType=String,jdbcType=VARCHAR},
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{username,javaType=String,jdbcType=NVARCHAR},
+      #{borrowdate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{borrowtype,javaType=String,jdbcType=VARCHAR},
+      #{isborrow,javaType=boolean,jdbcType=BOOLEAN},
+      #{isreturn,javaType=boolean,jdbcType=BOOLEAN},
+      #{returndate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="SearchGlpLoanForRegister" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileLoan" resultType="com.alms.entity.glp.GlpFileLoan" >
+    {call dbo.P_Search_GlpLoanForRegister(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+
+  <select id="HasAuthToReadGlp" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileOnline" resultType="com.alms.entity.glp.GlpFile" >
+    {call dbo.P_Get_HasAuthToReadGlp(
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{fileid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+
+  <select id="GetGlpFilePassword" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFilePassword" resultType="com.alms.entity.glp.GlpFilePassword" >
+    {call dbo.P_Get_GlpFilePassword(
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListGlpFilePassword" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFilePassword" resultType="com.alms.entity.glp.GlpFilePassword" >
+    {call dbo.P_Get_GlpFilePassword(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchGlpFilePassword" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFilePassword" resultType="com.alms.entity.glp.GlpFilePassword" >
+    {call dbo.P_Search_GlpFilePassword(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveGlpFilePassword" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFilePassword" flushCache="true">
+    {call dbo.P_Save_GlpFilePassword(
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{filepassword,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetGlpFileOnline" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileOnline" resultType="com.alms.entity.glp.GlpFileOnline" >
+    {call dbo.P_Get_GlpFileOnline(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchGlpFileOnline" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileOnline" resultType="com.alms.entity.glp.GlpFileOnline" >
+    {call dbo.P_Search_GlpFileOnline(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveGlpFileOnline" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileOnline" flushCache="true">
+    {call dbo.P_Save_GlpFileOnline(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{fileid,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{applyreason,javaType=String,jdbcType=NVARCHAR},
+      #{iscancel,javaType=boolean,jdbcType=BOOLEAN},
+      #{canceldate,javaType=java.util.Date,jdbcType=DATE},
+      #{closetime,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+   
+  <select id="GetGlpFile" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFile" resultType="com.alms.entity.glp.GlpFile" >
+    {call dbo.P_Get_GlpFile(
+      #{fileid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListGlpFile" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFile" resultType="com.alms.entity.glp.GlpFile" >
+    {call dbo.P_Get_GlpFile(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetGlpFileForNeed" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFile" resultType="com.alms.entity.glp.GlpFile" >
+    {call dbo.P_Get_GlpFileForNeed(
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </select>
+  
+  <select id="SearchGlpFile" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFile" resultType="com.alms.entity.glp.GlpFile" >
+    {call dbo.P_Search_GlpFile(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveGlpFile" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFile" flushCache="true">
+    {call dbo.P_Save_GlpFile(
+      #{fileid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{filename,javaType=String,jdbcType=NVARCHAR},
+      #{filecate,javaType=String,jdbcType=VARCHAR},
+      #{filetype,javaType=String,jdbcType=VARCHAR},
+      #{filestatus,javaType=String,jdbcType=VARCHAR},
+      #{filedate,javaType=java.util.Date,jdbcType=DATE},
+      #{crtuser,javaType=String,jdbcType=VARCHAR},
+      #{crtusername,javaType=String,jdbcType=NVARCHAR},
+      #{fileurl,javaType=String,jdbcType=VARCHAR},
+      #{uploaddate,javaType=java.util.Date,jdbcType=DATE},
+      #{modifytimes,javaType=int,jdbcType=INTEGER},
+      #{modifydate,javaType=java.util.Date,jdbcType=DATE},
+      #{isdestroy,javaType=boolean,jdbcType=BOOLEAN},
+      #{destroydate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetGlpFileChange" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileChange" resultType="com.alms.entity.glp.GlpFileChange" >
+    {call dbo.P_Get_GlpFileChange(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListGlpFileChange" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileChange" resultType="com.alms.entity.glp.GlpFileChange" >
+    {call dbo.P_Get_GlpFileChange(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListGlpFileChangeForNotify" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileChange" resultType="com.alms.entity.glp.GlpFileChange" >
+    {call dbo.P_Get_ListGlpFileChangeForNotify(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchGlpFileChange" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileChange" resultType="com.alms.entity.glp.GlpFileChange" >
+    {call dbo.P_Search_GlpFileChange(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveGlpFileChange" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileChange" flushCache="true">
+    {call dbo.P_Save_GlpFileChange(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{changedept,javaType=String,jdbcType=VARCHAR},
+      #{changedeptname,javaType=String,jdbcType=NVARCHAR},
+      #{dealdept,javaType=String,jdbcType=VARCHAR},
+      #{changefilename,javaType=String,jdbcType=NVARCHAR},
+      #{changefileid,javaType=String,jdbcType=VARCHAR},
+      #{replacefilename,javaType=String,jdbcType=NVARCHAR},
+      #{changereason,javaType=String,jdbcType=NVARCHAR},
+      #{changedesc,javaType=String,jdbcType=NVARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{audituser,javaType=String,jdbcType=VARCHAR},
+      #{auditusername,javaType=String,jdbcType=NVARCHAR},
+      #{auditdate,javaType=java.util.Date,jdbcType=DATE},
+      #{auditdesc,javaType=String,jdbcType=NVARCHAR},
+      #{allowuser,javaType=String,jdbcType=VARCHAR},
+      #{allowusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowdate,javaType=java.util.Date,jdbcType=DATE},
+      #{allowdesc,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{fileurl,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="SearchGlpFileDestroyForRecord" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileDestroy" resultType="com.alms.entity.glp.GlpFileDestroy" >
+    {call dbo.P_Search_GlpFileDestroyForRecord(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+   <select id="GetGlpFileDestroy" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileDestroy" resultType="com.alms.entity.glp.GlpFileDestroy" >
+    {call dbo.P_Get_GlpFileDestroy(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListGlpFileDestroy" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileDestroy" resultType="com.alms.entity.glp.GlpFileDestroy" >
+    {call dbo.P_Get_GlpFileDestroy(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchGlpFileDestroy" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileDestroy" resultType="com.alms.entity.glp.GlpFileDestroy" >
+    {call dbo.P_Search_GlpFileDestroy(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveGlpFileDestroy" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileDestroy" flushCache="true">
+    {call dbo.P_Save_GlpFileDestroy(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{fileid,javaType=String,jdbcType=VARCHAR},
+      #{destroyreason,javaType=String,jdbcType=NVARCHAR},
+      #{destroydate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{allowuser,javaType=String,jdbcType=VARCHAR},
+      #{allowusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowdate,javaType=java.util.Date,jdbcType=DATE},
+      #{allowdesc,javaType=String,jdbcType=NVARCHAR},
+      #{moniuser,javaType=String,jdbcType=VARCHAR},
+      #{monitusername,javaType=String,jdbcType=NVARCHAR},
+      #{monitdate,javaType=java.util.Date,jdbcType=DATE},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+    <select id="GetGlpFileLoan" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileLoan" resultType="com.alms.entity.glp.GlpFileLoan" >
+    {call dbo.P_Get_GlpFileLoan(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListGlpFileLoan" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileLoan" resultType="com.alms.entity.glp.GlpFileLoan" >
+    {call dbo.P_Get_GlpFileLoan(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchGlpFileLoan" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileLoan" resultType="com.alms.entity.glp.GlpFileLoan" >
+    {call dbo.P_Search_GlpFileLoan(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveGlpFileLoan" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileLoan" flushCache="true">
+    {call dbo.P_Save_GlpFileLoan(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{fileid,javaType=String,jdbcType=VARCHAR},
+      #{filename,javaType=String,jdbcType=NVARCHAR},
+      #{loanreason,javaType=String,jdbcType=NVARCHAR},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{loandate,javaType=java.util.Date,jdbcType=DATE},
+      #{returndate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{officeuser,javaType=String,jdbcType=VARCHAR},
+      #{officeusername,javaType=String,jdbcType=NVARCHAR},
+      #{officedate,javaType=java.util.Date,jdbcType=DATE},
+      #{officedesc,javaType=String,jdbcType=NVARCHAR},
+      #{allowuser,javaType=String,jdbcType=VARCHAR},
+      #{allowusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowdate,javaType=java.util.Date,jdbcType=DATE},
+      #{allowdesc,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+   <select id="GetGlpFileLeak" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileLeak" resultType="com.alms.entity.glp.GlpFileLeak" >
+    {call dbo.P_Get_GlpFileLeak(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListGlpFileLeak" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileLeak" resultType="com.alms.entity.glp.GlpFileLeak" >
+    {call dbo.P_Get_GlpFileLeak(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchGlpFileLeak" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileLeak" resultType="com.alms.entity.glp.GlpFileLeak" >
+    {call dbo.P_Search_GlpFileLeak(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveGlpFileLeak" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileLeak" flushCache="true">
+    {call dbo.P_Save_GlpFileLeak(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{leakuser,javaType=String,jdbcType=VARCHAR},
+      #{leakusername,javaType=String,jdbcType=NVARCHAR},
+      #{leakdate,javaType=java.util.Date,jdbcType=DATE},
+      #{leakreason,javaType=String,jdbcType=NVARCHAR},
+      #{leakresult,javaType=String,jdbcType=NVARCHAR},
+      #{reportdate,javaType=java.util.Date,jdbcType=DATE},
+      #{leakdesc,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{remedydesc,javaType=String,jdbcType=NVARCHAR},
+      #{remedyuser,javaType=String,jdbcType=VARCHAR},
+      #{remedyusername,javaType=String,jdbcType=NVARCHAR},
+      #{remedydate,javaType=java.util.Date,jdbcType=DATE},
+      #{techuser,javaType=String,jdbcType=VARCHAR},
+      #{techusername,javaType=String,jdbcType=NVARCHAR},
+      #{techdate,javaType=java.util.Date,jdbcType=DATE},
+      #{techdesc,javaType=String,jdbcType=NVARCHAR},
+      #{qualuser,javaType=String,jdbcType=VARCHAR},
+      #{qualusername,javaType=String,jdbcType=NVARCHAR},
+      #{qualdate,javaType=java.util.Date,jdbcType=DATE},
+      #{qualdesc,javaType=String,jdbcType=NVARCHAR},
+      #{allowuser,javaType=String,jdbcType=VARCHAR},
+      #{allowusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowdate,javaType=java.util.Date,jdbcType=DATE},
+      #{allowdesc,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetGlpFileDestroyDetail" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileDestroyDetail" resultType="com.alms.entity.glp.GlpFileDestroyDetail" >
+    {call dbo.P_Get_GlpFileDestroyDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListGlpFileDestroyDetail" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileDestroyDetail" resultType="com.alms.entity.glp.GlpFileDestroyDetail" >
+    {call dbo.P_Get_GlpFileDestroyDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchGlpFileDestroyDetail" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileDestroyDetail" resultType="com.alms.entity.glp.GlpFileDestroyDetail" >
+    {call dbo.P_Search_GlpFileDestroyDetail(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveGlpFileDestroyDetail" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileDestroyDetail" flushCache="true">
+    {call dbo.P_Save_GlpFileDestroyDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{fileid,javaType=String,jdbcType=VARCHAR},
+      #{filetran,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+    <select id="GetGlpFileNotify" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileNotify" resultType="com.alms.entity.glp.GlpFileNotify" >
+    {call dbo.P_Get_GlpFileNotify(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListGlpFileNotify" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileNotify" resultType="com.alms.entity.glp.GlpFileNotify" >
+    {call dbo.P_Get_GlpFileNotify(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchGlpFileNotify" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileNotify" resultType="com.alms.entity.glp.GlpFileNotify" >
+    {call dbo.P_Search_GlpFileNotify(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveGlpFileNotify" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileNotify" flushCache="true">
+    {call dbo.P_Save_GlpFileNotify(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{fileid,javaType=String,jdbcType=VARCHAR},
+      #{filename,javaType=String,jdbcType=NVARCHAR},
+      #{filechange,javaType=String,jdbcType=NVARCHAR},
+      #{effectdate,javaType=java.util.Date,jdbcType=DATE},
+      #{notifyid,javaType=String,jdbcType=VARCHAR},
+      #{replacefile,javaType=String,jdbcType=NVARCHAR},
+      #{writeuser,javaType=String,jdbcType=VARCHAR},
+      #{writeusername,javaType=String,jdbcType=NVARCHAR},
+      #{writedate,javaType=java.util.Date,jdbcType=DATE},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+    <select id="GetGlpFileRele" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileRele" resultType="com.alms.entity.glp.GlpFileRele" >
+    {call dbo.P_Get_GlpFileRele(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListGlpFileRele" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileRele" resultType="com.alms.entity.glp.GlpFileRele" >
+    {call dbo.P_Get_GlpFileRele(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchGlpFileRele" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileRele" resultType="com.alms.entity.glp.GlpFileRele" >
+    {call dbo.P_Search_GlpFileRele(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveGlpFileRele" statementType="CALLABLE" parameterType="com.alms.entity.glp.GlpFileRele" flushCache="true">
+    {call dbo.P_Save_GlpFileRele(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{fileid,javaType=String,jdbcType=VARCHAR},
+      #{filename,javaType=String,jdbcType=NVARCHAR},
+      #{filequan,javaType=int,jdbcType=INTEGER},
+      #{reledate,javaType=java.util.Date,jdbcType=DATE},
+      #{fileowner,javaType=String,jdbcType=VARCHAR},
+      #{fileownername,javaType=String,jdbcType=NVARCHAR},
+      #{fileremark,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{reletype,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+</mapper>

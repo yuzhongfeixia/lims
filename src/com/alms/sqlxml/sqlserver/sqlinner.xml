@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.alms.mapper.sqlserver.InnerMapper">
+  <select id="GetInnerFoodReview" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerFoodReview" resultType="com.alms.entity.inner.InnerFoodReview" >
+    {call dbo.P_Get_InnerFoodReview(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchInnerFoodReview" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerFoodReview" resultType="com.alms.entity.inner.InnerFoodReview" >
+    {call dbo.P_Search_InnerFoodReview(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveInnerFoodReview" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerFoodReview" flushCache="true">
+    {call dbo.P_Save_InnerFoodReview(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{serial,javaType=String,jdbcType=VARCHAR},
+      #{recontent,javaType=String,jdbcType=NVARCHAR},
+      #{checkmethod,javaType=String,jdbcType=NVARCHAR},
+      #{checkresult,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetListInnerMeetPart" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerMeetPart" resultType="com.alms.entity.inner.InnerMeetPart" >
+    {call dbo.P_Get_InnerMeetPart(
+       #{meetid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveInnerMeetPart" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerMeetPart" flushCache="true">
+    {call dbo.P_Save_InnerMeetPart(
+      #{meetid,javaType=String,jdbcType=VARCHAR},
+      #{partuser,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetInnerMeetSign" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerMeetSign" resultType="com.alms.entity.inner.InnerMeetSign" >
+    {call dbo.P_Get_InnerMeetSign(
+      #{meetid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchInnerMeetSign" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerMeetSign" resultType="com.alms.entity.inner.InnerMeetSign" >
+    {call dbo.P_Search_InnerMeetSign(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveInnerMeetSign" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerMeetSign" flushCache="true">
+    {call dbo.P_Save_InnerMeetSign(
+      #{meetid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{meettopic,javaType=String,jdbcType=NVARCHAR},
+      #{meetdate,javaType=java.util.Date,jdbcType=DATE},
+      #{meetplace,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{checkuser,javaType=String,jdbcType=VARCHAR},
+      #{checkusername,javaType=String,jdbcType=NVARCHAR},
+      #{checkdate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetInnerReport" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerReport" resultType="com.alms.entity.inner.InnerReport" >
+    {call dbo.P_Get_InnerReport(
+      #{reportid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchInnerReport" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerReport" resultType="com.alms.entity.inner.InnerReport" >
+    {call dbo.P_Search_InnerReport(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveInnerReport" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerReport" flushCache="true">
+    {call dbo.P_Save_InnerReport(
+      #{reportid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{groupid,javaType=String,jdbcType=VARCHAR},
+      #{auditelem,javaType=String,jdbcType=NVARCHAR},
+      #{auditeddept,javaType=String,jdbcType=VARCHAR},
+      #{auditeddeptname,javaType=String,jdbcType=NVARCHAR},
+      #{auditby,javaType=String,jdbcType=VARCHAR},
+      #{auditdate,javaType=java.util.Date,jdbcType=DATE},
+      #{auditgoal,javaType=String,jdbcType=NVARCHAR},
+      #{auditlead,javaType=String,jdbcType=VARCHAR},
+      #{auditleadname,javaType=String,jdbcType=NVARCHAR},
+      #{leaddate,javaType=java.util.Date,jdbcType=DATE},
+      #{auditdesc,javaType=String,jdbcType=NVARCHAR},
+      #{belowstandard,javaType=String,jdbcType=NVARCHAR},
+      #{beforedesc,javaType=String,jdbcType=NVARCHAR},
+      #{inneradv,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetInnerInvalid" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerInvalid" resultType="com.alms.entity.inner.InnerInvalid" >
+    {call dbo.P_Get_InnerInvalid(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListInnerInvalid" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerInvalid" resultType="com.alms.entity.inner.InnerInvalid" >
+    {call dbo.P_Get_InnerInvalid(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchInnerInvalid" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerInvalid" resultType="com.alms.entity.inner.InnerInvalid" >
+    {call dbo.P_Search_InnerInvalid(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveInnerInvalid" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerInvalid" flushCache="true">
+    {call dbo.P_Save_InnerInvalid(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{occurdept,javaType=String,jdbcType=VARCHAR},
+      #{occurdeptname,javaType=String,jdbcType=NVARCHAR},
+      #{correctsource,javaType=String,jdbcType=VARCHAR},
+      #{invaliduser,javaType=String,jdbcType=VARCHAR},
+      #{invalidusername,javaType=String,jdbcType=NVARCHAR},
+      #{invaliduserdate,javaType=java.util.Date,jdbcType=DATE},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{invaliddesc,javaType=String,jdbcType=NVARCHAR},
+      #{invalidadv,javaType=String,jdbcType=VARCHAR},
+      #{invalidreason,javaType=String,jdbcType=NVARCHAR},
+      #{invalidmeasure,javaType=String,jdbcType=NVARCHAR},
+      #{deptuser,javaType=String,jdbcType=VARCHAR},
+      #{deptusername,javaType=String,jdbcType=NVARCHAR},
+      #{deptdate,javaType=java.util.Date,jdbcType=DATE},
+      #{deptdesc,javaType=String,jdbcType=NVARCHAR},
+      #{audituser,javaType=String,jdbcType=VARCHAR},
+      #{auditusername,javaType=String,jdbcType=NVARCHAR},
+      #{auditdate,javaType=java.util.Date,jdbcType=DATE},
+      #{isfinish,javaType=boolean,jdbcType=BOOLEAN},
+      #{validuser,javaType=String,jdbcType=VARCHAR},
+      #{validusername,javaType=String,jdbcType=NVARCHAR},
+      #{validdate,javaType=java.util.Date,jdbcType=DATE},
+      #{isvalid,javaType=boolean,jdbcType=BOOLEAN},
+      #{validresult,javaType=String,jdbcType=NVARCHAR},
+      #{allowuser,javaType=String,jdbcType=VARCHAR},
+      #{allowusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowdate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetInnerSceneWork" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerSceneWork" resultType="com.alms.entity.inner.InnerSceneWork" >
+    {call dbo.P_Get_InnerSceneWork(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListInnerSceneWork" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerSceneWork" resultType="com.alms.entity.inner.InnerSceneWork" >
+    {call dbo.P_Get_InnerSceneWork(
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchInnerSceneWork" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerSceneWork" resultType="com.alms.entity.inner.InnerSceneWork" >
+    {call dbo.P_Search_InnerSceneWork(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveInnerSceneWork" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerSceneWork" flushCache="true">
+    {call dbo.P_Save_InnerSceneWork(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{workid,javaType=String,jdbcType=VARCHAR},
+      #{workcontent,javaType=String,jdbcType=NVARCHAR},
+      #{joinuser,javaType=String,jdbcType=NVARCHAR},
+      #{operuser,javaType=String,jdbcType=VARCHAR},
+      #{operuserame,javaType=String,jdbcType=NVARCHAR},
+      #{workdate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetInnerScene" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerScene" resultType="com.alms.entity.inner.InnerScene" >
+    {call dbo.P_Get_InnerScene(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchInnerScene" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerScene" resultType="com.alms.entity.inner.InnerScene" >
+    {call dbo.P_Search_InnerScene(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveInnerScene" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerScene" flushCache="true">
+    {call dbo.P_Save_InnerScene(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{groupid,javaType=String,jdbcType=VARCHAR},
+      #{auditgoal,javaType=String,jdbcType=NVARCHAR},
+      #{auditby,javaType=String,jdbcType=VARCHAR},
+      #{auditscope,javaType=String,jdbcType=NVARCHAR},
+      #{auditmethod,javaType=String,jdbcType=VARCHAR},
+      #{auditlead,javaType=String,jdbcType=VARCHAR},
+      #{auditleadname,javaType=String,jdbcType=NVARCHAR},
+      #{auditdate,javaType=java.util.Date,jdbcType=DATE},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{allowuser,javaType=String,jdbcType=VARCHAR},
+      #{allowusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowdate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetListInnerGroupMember" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerGroupMember" resultType="com.alms.entity.inner.InnerGroupMember" >
+    {call dbo.P_Get_InnerGroupMember(
+      #{groupid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveInnerGroupMember" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerGroupMember" flushCache="true">
+    {call dbo.P_Save_InnerGroupMember(
+      #{groupid,javaType=String,jdbcType=VARCHAR},
+      #{memberuser,javaType=String,jdbcType=VARCHAR},
+      #{memberusername,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetInnerGroup" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerGroup" resultType="com.alms.entity.inner.InnerGroup" >
+    {call dbo.P_Get_InnerGroup(
+      #{groupid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListInnerGroup" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerGroup" resultType="com.alms.entity.inner.InnerGroup" >
+    {call dbo.P_Get_InnerGroup(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchInnerGroup" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerGroup" resultType="com.alms.entity.inner.InnerGroup" >
+    {call dbo.P_Search_InnerGroup(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveInnerGroup" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerGroup" flushCache="true">
+    {call dbo.P_Save_InnerGroup(
+      #{groupid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{groupname,javaType=String,jdbcType=NVARCHAR},
+      #{groupremark,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetListInnerYearDetail" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerYearDetail" resultType="com.alms.entity.inner.InnerYearDetail" >
+    {call dbo.P_Get_InnerYearDetail(
+     #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveInnerYearDetail" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerYearDetail" flushCache="true">
+    {call dbo.P_Save_InnerYearDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{groupinner,javaType=String,jdbcType=NVARCHAR},
+      #{auditdate,javaType=java.util.Date,jdbcType=DATE},
+      #{auditcontent,javaType=String,jdbcType=NVARCHAR},
+      #{auditremark,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetInnerYear" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerYear" resultType="com.alms.entity.inner.InnerYear" >
+    {call dbo.P_Get_InnerYear(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchInnerYear" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerYear" resultType="com.alms.entity.inner.InnerYear" >
+    {call dbo.P_Search_InnerYear(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveInnerYear" statementType="CALLABLE" parameterType="com.alms.entity.inner.InnerYear" flushCache="true">
+    {call dbo.P_Save_InnerYear(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{auditgoal,javaType=String,jdbcType=NVARCHAR},
+      #{auditscope,javaType=String,jdbcType=NVARCHAR},
+      #{auditby,javaType=String,jdbcType=VARCHAR},
+      #{auditlead,javaType=String,jdbcType=VARCHAR},
+      #{auditleadname,javaType=String,jdbcType=NVARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{allowuser,javaType=String,jdbcType=VARCHAR},
+      #{allowusername,javaType=String,jdbcType=NVARCHAR},
+      #{allowdate,javaType=java.util.Date,jdbcType=DATE},
+      #{allowdesc,javaType=String,jdbcType=NVARCHAR},
+      #{groupid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+</mapper>

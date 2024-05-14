@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.alms.mapper.sqlserver.DatMapper">
+
+  <select id="GetDatSampleTest" statementType="CALLABLE" parameterType="com.alms.entity.dat.DatSampleTest" resultType="com.alms.entity.dat.DatSampleTest" >
+    {call dbo.P_Get_DatSampleTest(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListDatSampleTest" statementType="CALLABLE" parameterType="com.alms.entity.dat.DatSampleTest" resultType="com.alms.entity.dat.DatSampleTest" >
+    {call dbo.P_Get_DatSampleTest(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchDatSampleTest" statementType="CALLABLE" parameterType="com.alms.entity.dat.DatSampleTest" resultType="com.alms.entity.dat.DatSampleTest" >
+    {call dbo.P_Search_DatSampleTest(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveDatSampleTest" statementType="CALLABLE" parameterType="com.alms.entity.dat.DatSampleTest" flushCache="true">
+    {call dbo.P_Save_DatSampleTest(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{testserial,javaType=int,jdbcType=INTEGER},
+      #{classsource,javaType=String,jdbcType=VARCHAR},
+      #{classfield,javaType=String,jdbcType=VARCHAR},
+      #{teststandard,javaType=String,jdbcType=VARCHAR},
+      #{displayformula,javaType=String,jdbcType=NVARCHAR},
+      #{actformula,javaType=String,jdbcType=NVARCHAR},
+      #{funcformula,javaType=String,jdbcType=VARCHAR},
+      #{funcvalue,javaType=String,jdbcType=VARCHAR},
+      #{digitnumber,javaType=int,jdbcType=INTEGER},
+      #{defvalue,javaType=String,jdbcType=VARCHAR},
+      #{avefactor,javaType=double,jdbcType=DECIMAL},
+      #{comparefactor,javaType=double,jdbcType=DECIMAL},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+
+  
+  <select id="GetBusRecord" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusRecord" resultType="com.alms.entity.dat.BusRecord" >
+    {call dbo.P_Get_BusRecord(
+      #{recordid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusRecordForApprove" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusRecord" resultType="com.alms.entity.dat.BusRecord" >
+    {call dbo.P_Get_BusRecordForApprove(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBusRecord" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusRecord" resultType="com.alms.entity.dat.BusRecord" >
+    {call dbo.P_Get_ListBusRecord(
+      #{taskid,javaType=String,jdbcType=VARCHAR}
+<!--       #{tranid,javaType=String,jdbcType=VARCHAR} -->
+    )}
+  </select>
+  
+  <select id="GetNewBusRecord" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusRecord" resultType="com.alms.entity.dat.BusRecord" >
+    {call dbo.P_Get_NewBusRecord(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBusRecord" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusRecord" flushCache="true">
+    {call dbo.P_Save_BusRecord(
+      #{recordid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{formid,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{pagegroup,javaType=int,jdbcType=INTEGER},
+      #{pagespec,javaType=int,jdbcType=INTEGER},
+      #{formcount,javaType=int,jdbcType=INTEGER},
+      #{groupcount,javaType=int,jdbcType=INTEGER},
+      #{groupfinish,javaType=int,jdbcType=INTEGER},
+      #{speccount,javaType=int,jdbcType=INTEGER},
+      #{crtuser,javaType=String,jdbcType=VARCHAR},
+      #{crtdate,javaType=Date,jdbcType=DATE},
+      #{recordstatus,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  <select id="SearchBusRecord" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusRecord" resultType="com.alms.entity.dat.BusRecord" >
+    {call dbo.P_Search_BusRecord(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchBusRecordSamples" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusRecordSamples" resultType="com.alms.entity.lab.BusRecordSamples" >
+    {call dbo.P_Search_BusRecordSamples(
+      #{search.taskid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusRecordForSummary" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusRecord" resultType="com.alms.entity.dat.BusRecord" >
+    {call dbo.P_Search_BusRecordForSummary(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusRecordForJudge" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusRecord" resultType="com.alms.entity.dat.BusRecord" >
+    {call dbo.P_Search_BusRecordForJudge(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+   <select id="SearchBusRecordForSampleTran" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusRecord" resultType="com.alms.entity.dat.BusRecord" >
+    {call dbo.P_Search_BusRecordForSampleTran(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusRecordDetailByFormSerial" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusRecordDetail" resultType="com.alms.entity.dat.BusRecordDetail" >
+    {call dbo.P_Get_BusRecordDetailByFormSerial(
+      #{recordid,javaType=String,jdbcType=VARCHAR},
+      #{formserial,javaType=int,jdbcType=INTEGER}
+    )}
+  </select>
+  
+  <select id="GetBusRecordDetailForSumByFormSerial" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusRecordDetail" resultType="com.alms.entity.dat.BusRecordDetail" >
+    {call dbo.P_Get_BusRecordDetailForSumByFormSerial(
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{startdate,javaType=String,jdbcType=VARCHAR},
+      #{enddate,javaType=String,jdbcType=VARCHAR},
+      #{formserial,javaType=int,jdbcType=INTEGER},
+      #{tranuser,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetBusRecordByTask" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" resultType="com.alms.entity.dat.BusRecord" >
+    {call dbo.P_Get_BusRecordByTask(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBusRecordByParaTime" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusRecord" resultType="com.alms.entity.dat.BusRecord" >
+    {call dbo.P_Get_BusRecordByParaTime(
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{startdate,javaType=String,jdbcType=VARCHAR},
+      #{enddate,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetBusRecordBySampleTran" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" resultType="com.alms.entity.dat.BusRecord" >
+    {call dbo.P_Get_BusRecordBySampleTran(
+      #{sampletran,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetSampleTranBySampleCode" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" resultType="com.alms.entity.dat.BusRecord" >
+    {call dbo.P_Get_SampleTranBySampleCode(
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SyncBusRecordDetail" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" flushCache="true">
+    {call dbo.P_Sync_BusRecordDetail(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR}
+    )}
+  </update>
+  
+  <update id="SubmitBusRecord" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusRecord" flushCache="true">
+    {call dbo.P_Submit_BusRecord(
+      #{recordid,javaType=String,jdbcType=VARCHAR},
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{recordstatus,javaType=String,jdbcType=VARCHAR},
+      #{modifydesc,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{approveuser,javaType=String,jdbcType=VARCHAR},
+      #{approveusername,javaType=String,jdbcType=NVARCHAR},
+      #{approvedate,javaType=java.util.Date,jdbcType=DATE},
+      #{aduituser,javaType=String,jdbcType=VARCHAR},
+      #{aduitusername,javaType=String,jdbcType=NVARCHAR},
+      #{aduitdate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <update id="SubmitBusRecordSamples" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusRecordSamples" flushCache="true">
+    {call dbo.P_Submit_BusRecordSamples(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{recordstatus,javaType=String,jdbcType=VARCHAR},
+      #{modifydesc,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{approveuser,javaType=String,jdbcType=VARCHAR},
+      #{approveusername,javaType=String,jdbcType=NVARCHAR},
+      #{approvedate,javaType=java.util.Date,jdbcType=DATE},
+      #{aduituser,javaType=String,jdbcType=VARCHAR},
+      #{aduitusername,javaType=String,jdbcType=NVARCHAR},
+      #{aduitdate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetMaxSpecSerial" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" resultType="com.alms.entity.dat.BusRecordDetail" >
+    {call dbo.P_Get_MaxSpecSerial(
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  
+  
+  <select id="GetDatClassSource" statementType="CALLABLE" parameterType="com.alms.entity.dat.DatClassSource" resultType="com.alms.entity.dat.DatClassSource" >
+    {call dbo.P_Get_DatClassSource(
+      #{classsource,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListDatClassSource" statementType="CALLABLE" parameterType="com.alms.entity.dat.DatClassSource" resultType="com.alms.entity.dat.DatClassSource" >
+    {call dbo.P_Get_DatClassSource(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchDatClassSource" statementType="CALLABLE" parameterType="com.alms.entity.dat.DatClassSource" resultType="com.alms.entity.dat.DatClassSource" >
+    {call dbo.P_Search_DatClassSource(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveDatClassSource" statementType="CALLABLE" parameterType="com.alms.entity.dat.DatClassSource" flushCache="true">
+    {call dbo.P_Save_DatClassSource(
+      #{classsource,javaType=String,jdbcType=VARCHAR},
+      #{classsourcename,javaType=String,jdbcType=NVARCHAR},
+      #{istask,javaType=boolean,jdbcType=BOOLEAN},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  
+  <select id="GetDatSampleField" statementType="CALLABLE" parameterType="com.alms.entity.dat.DatSampleField" resultType="com.alms.entity.dat.DatSampleField" >
+    {call dbo.P_Get_DatSampleField(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{classsource,javaType=String,jdbcType=VARCHAR},
+      #{classfield,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListDatSampleField" statementType="CALLABLE" parameterType="com.alms.entity.dat.DatSampleField" resultType="com.alms.entity.dat.DatSampleField" >
+    {call dbo.P_Get_DatSampleField(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchDatSampleField" statementType="CALLABLE" parameterType="com.alms.entity.dat.DatSampleField" resultType="com.alms.entity.dat.DatSampleField" >
+    {call dbo.P_Search_DatSampleField(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveDatSampleField" statementType="CALLABLE" parameterType="com.alms.entity.dat.DatSampleField" flushCache="true">
+    {call dbo.P_Save_DatSampleField(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{classsource,javaType=String,jdbcType=VARCHAR},
+      #{classfield,javaType=String,jdbcType=VARCHAR},
+      #{classfieldname,javaType=String,jdbcType=NVARCHAR},
+      #{fieldtype,javaType=String,jdbcType=VARCHAR},
+      #{isgroup,javaType=boolean,jdbcType=BOOLEAN},
+      #{isserial,javaType=boolean,jdbcType=BOOLEAN},
+      #{datasource,javaType=String,jdbcType=VARCHAR},
+      #{parameterids,javaType=String,jdbcType=VARCHAR},
+      #{parameternames,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  
+  <update id="SaveDatSampleParameter" statementType="CALLABLE" parameterType="com.alms.entity.dat.DatSampleField" flushCache="true">
+    {call dbo.P_Save_DatSampleParameter(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{classsource,javaType=String,jdbcType=VARCHAR},
+      #{classfield,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetComputeDataBySet" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" resultType="com.alms.entity.dat.DatComputeData" >
+    {call dbo.P_Get_ComputeData(
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetComputeDataForBatch" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" resultType="com.alms.entity.dat.DatComputeData" >
+    {call dbo.P_Get_ComputeDataForBatch(
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  
+  <select id="GetBusReportByTask" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" resultType="com.alms.entity.dat.BusReport" >
+    {call dbo.P_Get_BusReportByTask(
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetNewBusReport" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" resultType="com.alms.entity.dat.BusReport" >
+    {call dbo.P_Get_NewBusReport(
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBusReport" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusReport" flushCache="true">
+    {call dbo.P_Save_BusReport(
+      #{reportid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{formid,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{gettype,javaType=String,jdbcType=VARCHAR},
+      #{pagegroup,javaType=int,jdbcType=INTEGER},
+      #{pagespec,javaType=int,jdbcType=INTEGER},
+      #{formcount,javaType=int,jdbcType=INTEGER},
+      #{groupcount,javaType=int,jdbcType=INTEGER},
+      #{speccount,javaType=int,jdbcType=INTEGER},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=TIMESTAMP},
+      #{reportresult,javaType=String,jdbcType=NVARCHAR},
+      #{reportrequest,javaType=String,jdbcType=NVARCHAR},
+      #{reportdeal,javaType=String,jdbcType=NVARCHAR},
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{reportstatus,javaType=String,jdbcType=VARCHAR},
+      #{modifydesc,javaType=String,jdbcType=NVARCHAR},
+      #{ispass,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  <update id="SaveBusRecordData" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusReport" flushCache="true">
+    {call dbo.P_Save_BusRecordData(
+      #{samplename,javaType=String,jdbcType=NVARCHAR},
+      #{samplecount,javaType=String,jdbcType=VARCHAR},
+      #{factname,javaType=String,jdbcType=NVARCHAR},
+      #{teststandardname,javaType=String,jdbcType=NVARCHAR},
+      #{samplestand,javaType=String,jdbcType=VARCHAR},
+      #{samplestatus,javaType=String,jdbcType=NVARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{testtypename,javaType=String,jdbcType=NVARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{getaddr,javaType=String,jdbcType=NVARCHAR},
+      #{trademark,javaType=String,jdbcType=NVARCHAR},
+      #{devids,javaType=String,jdbcType=VARCHAR},
+      #{testedname,javaType=String,jdbcType=NVARCHAR},
+      #{prdcode,javaType=String,jdbcType=VARCHAR},
+      #{samplebase,javaType=String,jdbcType=NVARCHAR},
+      #{reportid,javaType=String,jdbcType=VARCHAR},
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{reportstatus,javaType=String,jdbcType=VARCHAR},
+      #{devnames,javaType=String,jdbcType=NVARCHAR},
+      #{testenv,javaType=String,jdbcType=VARCHAR},
+      #{reportresult,javaType=String,jdbcType=NVARCHAR},
+      #{reportrequest,javaType=String,jdbcType=NVARCHAR},
+      #{testitems,javaType=String,jdbcType=NVARCHAR}
+    )}
+  </update>
+  <select id="SearchBusReport" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusReport" resultType="com.alms.entity.dat.BusReport" >
+    {call dbo.P_Search_BusReport(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+   <select id="GetBusReportDetailBySerial" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusReportDetail" resultType="com.alms.entity.dat.BusReportDetail" >
+    {call dbo.P_Get_BusReportDetailBySerial(
+      #{reportid,javaType=String,jdbcType=VARCHAR},
+      #{formserial,javaType=int,jdbcType=INTEGER}
+    )}
+  </select>
+  <select id="GetBusReport" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusReport" resultType="com.alms.entity.dat.BusReport" >
+    {call dbo.P_Get_BusReport(
+      #{reportid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SyncBusReport" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTask" flushCache="true">
+    {call dbo.P_Sync_BusReport(
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </update>
+  <update id="BackBusRecord" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusReport" flushCache="true">
+    {call dbo.P_Back_BusRecord(
+      #{reportid,javaType=String,jdbcType=VARCHAR},
+      #{modifydesc,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR}
+    )}
+  </update>
+  <update id="SubmitBusReport" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusReport" flushCache="true">
+    {call dbo.P_Submit_BusReport(
+      #{reportid,javaType=String,jdbcType=VARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{reportstatus,javaType=String,jdbcType=VARCHAR},
+      #{modifydesc,javaType=String,jdbcType=NVARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{approveuser,javaType=String,jdbcType=VARCHAR},
+      #{approveusername,javaType=String,jdbcType=NVARCHAR},
+      #{approvedate,javaType=java.util.Date,jdbcType=DATE},
+      #{aduituser,javaType=String,jdbcType=VARCHAR},
+      #{aduitusername,javaType=String,jdbcType=NVARCHAR},
+      #{aduitdate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <update id="BackBusReport" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusReport" flushCache="true">
+    {call dbo.P_Back_BusReport(
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{modifydesc,javaType=String,jdbcType=NVARCHAR}
+    )}
+  </update>
+  
+  <update id="UpdateBusReportInfo" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusReport" flushCache="true">
+    {call dbo.P_Update_BusReportInfo(
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </update>
+  
+  <update id="UpdateEnvReportInfo" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusReport" flushCache="true">
+    {call dbo.P_Update_EnvReportInfo(
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </update>
+  <update id="UpdateNgEnvReportInfo" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusReport" flushCache="true">
+    {call dbo.P_Update_NgEnvReportInfo(
+      #{samplecode,javaType=String,jdbcType=VARCHAR}
+    )}
+  </update>
+  
+
+</mapper>

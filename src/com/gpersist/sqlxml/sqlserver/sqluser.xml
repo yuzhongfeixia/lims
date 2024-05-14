@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.gpersist.mapper.sqlserver.UserMapper">
+  <select id="GetUser" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUser" resultType="com.gpersist.entity.user.SysUser" >
+    {call dbo.P_Get_User(
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR})
+    }
+  </select>
+  <update id="UserPublic" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUser" flushCache="true">
+    {call dbo.${deal.procedurename}(
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{deal.ip,javaType=String,jdbcType=VARCHAR})
+    }
+  </update>
+  <update id="UserLoginLog" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUser" flushCache="true">
+    {call dbo.P_User_LoginLog(
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{deal.ip,javaType=String,jdbcType=VARCHAR},
+      #{remark,javaType=String,jdbcType=VARCHAR})
+    }
+  </update>
+  <update id="ChangePwd" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUser" flushCache="true">
+    {call dbo.P_Set_ChangePwd(
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{userpassword,javaType=String,jdbcType=VARCHAR}
+    )}
+  </update>
+  <select id="GetUserName" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUser" resultType="String" >
+    {call dbo.P_Get_UserName(
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{search.userid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetEduCounts" resultType="java.lang.Integer" parameterType="String" >  
+    {call dbo.P_Get_EduCounts(
+      #{useredu,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>  
+  
+  <select id="GetDutyCounts" resultType="java.lang.Integer" parameterType="String" >  
+    {call dbo.P_Get_DutyCounts(
+      #{userduty,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+   <select id="GetAgeCounts" resultType="java.lang.Integer" parameterType="String" >  
+    {call dbo.P_Get_AgeCounts(
+      #{begin,javaType=String,jdbcType=VARCHAR},
+      #{end,javaType=String,jdbcType=VARCHAR}
+     
+    )}
+  </select>  
+  <update id="SetUnLock" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUser" flushCache="true">
+    {call dbo.P_Set_UnLock(
+      #{userid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </update>
+  <update id="SetPasswd" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUser" flushCache="true">
+    {call dbo.P_Set_Passwd(
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{userpassword,javaType=String,jdbcType=VARCHAR}
+    )}
+  </update>
+  <select id="SearchUser" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUser" resultType="com.gpersist.entity.user.SysUser" >
+    {call dbo.P_Search_User(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveUser" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUser" flushCache="true">
+    {call dbo.P_Save_User(
+      #{userid,javaType=String,jdbcType=VARCHAR},
+  	  #{username,javaType=String,jdbcType=NVARCHAR},
+  	  #{deptid,javaType=String,jdbcType=VARCHAR},
+  	  #{coid,javaType=String,jdbcType=VARCHAR},
+  	  #{userpost,javaType=String,jdbcType=VARCHAR},
+  	  #{userlevel,javaType=String,jdbcType=VARCHAR},
+  	  #{usertitle,javaType=String,jdbcType=VARCHAR},
+  	  #{userstatus,javaType=String,jdbcType=VARCHAR},
+  	  #{userpassword,javaType=String,jdbcType=VARCHAR},  	  
+  	  #{isadmin,javaType=boolean,jdbcType=BOOLEAN},
+  	  #{usertele,javaType=String,jdbcType=NVARCHAR},
+  	  #{useremail,javaType=String,jdbcType=NVARCHAR},
+  	  #{remark,javaType=String,jdbcType=NVARCHAR},
+  	  #{usersex,javaType=String,jdbcType=VARCHAR},
+  	  #{worktitle,javaType=String,jdbcType=VARCHAR},
+  	  #{useredu,javaType=String,jdbcType=VARCHAR},
+  	  #{birthdate,javaType=java.util.Date,jdbcType=DATE},
+  	  #{workyear,javaType=String,jdbcType=VARCHAR},
+  	  #{postyear,javaType=String,jdbcType=VARCHAR},
+  	  #{usermajor,javaType=String,jdbcType=NVARCHAR},
+  	  #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update> 
+  <select id="SelectAllUser" statementType="CALLABLE" resultType="com.gpersist.entity.user.SelectUser" >
+    {call dbo.P_Select_AllUser()}
+  </select> 
+  <select id="GetMenuByUser" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUser" resultType="com.gpersist.entity.system.SysMenu" >
+    {call dbo.P_Get_MenuByUser(
+      #{userid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetMenuGroupByUser" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUser" resultType="com.gpersist.entity.system.SysMenuGroup" >
+    {call dbo.P_Get_MenuGroupByUser(
+      #{userid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListUserByDept" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUser" resultType="com.gpersist.entity.user.SysUser" >
+    {call dbo.P_Get_ListUserByDept(
+      #{deptid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>  
+  <select id="GetListRole" statementType="CALLABLE" resultType="com.gpersist.entity.user.SysRole" >
+    {call dbo.P_Get_Role()}
+  </select>
+  <select id="GetSetRole" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUser" resultType="com.gpersist.entity.user.SysRole" >
+    {call dbo.P_Get_SetRole(
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR})
+    }
+  </select>
+  <select id="GetRoleDetail" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysRole" resultType="com.gpersist.entity.user.SysRoleDetail" >
+    {call dbo.P_Get_RoleDetail(
+      #{roleid,javaType=int,jdbcType=SMALLINT},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveRole" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysRole" flushCache="true">
+    {call dbo.P_Save_Role(
+      #{roleid,javaType=int,jdbcType=SMALLINT},
+      #{rolename,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  <update id="SaveRoleDetail" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysRoleAuth" flushCache="true">
+    {call dbo.P_Save_RoleDetail(
+      #{roleid,javaType=int,jdbcType=SMALLINT},
+      #{mid,javaType=int,jdbcType=SMALLINT},
+      #{roleauth,javaType=int,jdbcType=INTEGER},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  <update id="SaveSetRole" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUserRole" flushCache="true">
+    {call dbo.P_Save_UserRole(
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{roleid,javaType=int,jdbcType=SMALLINT},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+   <update id="EndSetRole" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUserRole" flushCache="true">
+    {call dbo.P_End_UserRole(
+      #{userid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </update>
+  <select id="GetListSysRoleByRole" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUserRole" resultType="com.gpersist.entity.user.SysUserRole" >
+    {call dbo.P_Get_ListSysRoleByRole(
+      #{roleid,javaType=int,jdbcType=INTEGER}
+    )}
+  </select>
+  <select id="GetUserDept" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUser" resultType="com.gpersist.entity.org.SysDept" >
+    {call dbo.P_Get_UserDept(
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>  
+  <update id="SaveUserDept" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUser" flushCache="true">
+    {call dbo.P_Save_UserDept(
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{deptid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  <select id="GetListMenu" statementType="CALLABLE" resultType="com.gpersist.entity.system.SysMenu" >
+    {call dbo.P_Get_SysMenu()}
+  </select> 
+  <update id="SaveMenuDetial" statementType="CALLABLE" parameterType="com.gpersist.entity.system.SysMenuDetail" flushCache="true">
+    {call dbo.P_Save_MenuDetail(
+      #{mid,javaType=int,jdbcType=SMALLINT},
+      #{authid,javaType=int,jdbcType=SMALLINT},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  <update id="LastCreateMenuDetail" statementType="CALLABLE" flushCache="true">
+    {call dbo.P_Last_MenuDetail()}
+  </update>
+  <select id="SearchWorkGroup" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysWorkGroup" resultType="com.gpersist.entity.user.SysWorkGroup" >
+    {call dbo.P_Search_WorkGroup(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveWorkGroup" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysWorkGroup" flushCache="true">
+    {call dbo.P_Save_WorkGroup(
+      #{workgroup,javaType=String,jdbcType=VARCHAR},
+      #{workgroupname,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  <select id="GetSetWorkGroup" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUser" resultType="com.gpersist.entity.user.SysWorkGroup" >
+    {call dbo.P_Get_SetWorkGroup(
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR})
+    }
+  </select>
+  <update id="SaveSetWorkGroup" statementType="CALLABLE" parameterType="com.gpersist.entity.user.SysUserWorkGroup" flushCache="true">
+    {call dbo.P_Save_UserWorkGroup(
+      #{userid,javaType=String,jdbcType=VARCHAR},
+      #{workgroup,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  
+  
+</mapper>

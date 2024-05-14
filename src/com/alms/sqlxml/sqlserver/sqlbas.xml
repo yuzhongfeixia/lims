@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.alms.mapper.sqlserver.BasMapper">
+
+  <select id="GetBasArea" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasArea" resultType="com.alms.entity.bas.BasArea" >
+    {call dbo.P_Get_BasArea(
+      #{areaid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchBasArea" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasArea" resultType="com.alms.entity.bas.BasArea" >
+    {call dbo.P_Search_BasArea(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBasAreaByCity" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasArea" resultType="com.alms.entity.bas.BasArea" >
+    {call dbo.P_Get_BasAreaByCity(
+      #{cityid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBasArea" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasArea" flushCache="true">
+    {call dbo.P_Save_BasArea(
+      #{areaid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{areaname,javaType=String,jdbcType=NVARCHAR},
+      #{cityid,javaType=String,jdbcType=NVARCHAR},     
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  
+  <select id="GetBasCity" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasCity" resultType="com.alms.entity.bas.BasCity" >
+    {call dbo.P_Get_BasCity(
+      #{cityid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchBasCity" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasCity" resultType="com.alms.entity.bas.BasCity" >
+    {call dbo.P_Search_BasCity(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetBasCityByProv" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasCity" resultType="com.alms.entity.bas.BasCity" >
+    {call dbo.P_Get_BasCityByProv(
+      #{provinceid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBasCity" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasCity" flushCache="true">
+    {call dbo.P_Save_BasCity(
+      #{cityid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{cityname,javaType=String,jdbcType=NVARCHAR},
+      #{provinceid,javaType=String,jdbcType=NVARCHAR},     
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+    <select id="GetBasProvince" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasProvince" resultType="com.alms.entity.bas.BasProvince" >
+    {call dbo.P_Get_BasProvince(
+      #{provinceid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchBasProvince" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasProvince" resultType="com.alms.entity.bas.BasProvince" >
+    {call dbo.P_Search_BasProvince(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBasProvince" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasProvince" flushCache="true">
+    {call dbo.P_Save_BasProvince(
+      #{provinceid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{provincename,javaType=String,jdbcType=NVARCHAR},
+      #{countryid,javaType=String,jdbcType=NVARCHAR},     
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetBasCountry" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasCountry" resultType="com.alms.entity.bas.BasCountry" >
+    {call dbo.P_Get_BasCountry(
+      #{countryid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchBasCountry" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasCountry" resultType="com.alms.entity.bas.BasCountry" >
+    {call dbo.P_Search_BasCountry(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBasCountry" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasCountry" flushCache="true">
+    {call dbo.P_Save_BasCountry(
+      #{countryid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{countryname,javaType=String,jdbcType=NVARCHAR},  
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+   <select id="GetBasLocation" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasLocation" resultType="com.alms.entity.bas.BasLocation" >
+    {call dbo.P_Get_BasLocation(
+      #{locationid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+
+  <select id="GetUserByDept" statementType="CALLABLE"  resultType="com.gpersist.entity.user.SysUser" >
+    {call dbo.P_Get_UserByDept(
+      #{deptid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+
+  <select id="GetListBasSampleTest" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleTest" resultType="com.alms.entity.bas.BasSampleTest" >
+    {call dbo.P_Get_BasSampleTest(
+      #{sampleid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBasSampleTestBySample" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleTest" resultType="com.alms.entity.bas.BasSampleTest" >
+    {call dbo.P_Get_ListBasSampleTestBySample(
+      #{sampleid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  
+  
+  <select id="GetListBasSampleTestByParam" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleTest" resultType="com.alms.entity.bas.BasSampleTest" >
+    {call dbo.P_Get_BasSampleTestByParam(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBasSampleTest" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleTest" flushCache="true">
+    {call dbo.P_Save_BasSampleTest(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{teststandard,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetBasSampleReplace" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleReplace" resultType="com.alms.entity.bas.BasSampleReplace" >
+    {call dbo.P_Get_BasSampleReplace(
+      #{samplemain,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBasSampleReplace" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleReplace" resultType="com.alms.entity.bas.BasSampleReplace" >
+    {call dbo.P_Get_BasSampleReplace(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBasSampleReplaceBySampleID" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleReplace" resultType="com.alms.entity.bas.BasSampleReplace" >
+    {call dbo.P_Get_BasSampleReplaceBySampleID(
+      #{sampleid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBasSampleReplace" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleReplace" resultType="com.alms.entity.bas.BasSampleReplace" >
+    {call dbo.P_Search_BasSampleReplace(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBasSampleReplace" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleReplace" flushCache="true">
+    {call dbo.P_Save_BasSampleReplace(
+      #{parameterorder,javaType=int,jdbcType=INTEGER},
+      #{samplemain,javaType=String,jdbcType=VARCHAR},
+      #{samplemainname,javaType=String,jdbcType=NVARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{samplename,javaType=String,jdbcType=NVARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{parametername,javaType=String,jdbcType=NVARCHAR},
+      #{testjudge,javaType=String,jdbcType=NVARCHAR},
+      #{standvalue,javaType=String,jdbcType=NVARCHAR},
+      #{paramunit,javaType=String,jdbcType=NVARCHAR},
+      #{judgestandard,javaType=String,jdbcType=VARCHAR},
+      #{judgestandardcode,javaType=String,jdbcType=NVARCHAR},
+      #{judgestandardname,javaType=String,jdbcType=NVARCHAR},
+      #{teststandard,javaType=String,jdbcType=VARCHAR},
+      #{teststandardcode,javaType=String,jdbcType=NVARCHAR},
+      #{teststandardname,javaType=String,jdbcType=NVARCHAR},
+      #{standtype1,javaType=String,jdbcType=VARCHAR},
+      #{standtype2,javaType=String,jdbcType=VARCHAR},
+      #{standtype3,javaType=String,jdbcType=VARCHAR},
+      #{standtype4,javaType=String,jdbcType=VARCHAR},
+      #{standtype5,javaType=String,jdbcType=VARCHAR},
+      #{deteclimit,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetListBasSampleJudge" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleJudge" resultType="com.alms.entity.bas.BasSampleJudge" >
+    {call dbo.P_Get_BasSampleJudge(
+       #{sampleid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBasSampleJudgeByParam" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleJudge" resultType="com.alms.entity.bas.BasSampleJudge" >
+    {call dbo.P_Get_BasSampleJudgeByParam(
+       #{sampleid,javaType=String,jdbcType=VARCHAR},
+       #{parameterid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBasSampleJudge" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleJudge" flushCache="true">
+    {call dbo.P_Save_BasSampleJudge(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{judgestandard,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetListBasSampleParameter" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleParameter" resultType="com.alms.entity.bas.BasSampleParameter" >
+    {call dbo.P_Get_BasSampleParameter(
+       #{sampleid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBasSampleParameterSure" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleParameter" resultType="com.alms.entity.bas.BasSampleParameter" >
+    {call dbo.P_Get_BasSampleParameterSure(
+       #{sampleid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBasMainParameter" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasMainParameter" resultType="com.alms.entity.bas.BasMainParameter" >
+    {call dbo.P_Get_ListBasMainParameter( 
+       #{samplemain,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBasMainParameter" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasMainParameter" flushCache="true">
+    {call dbo.P_Save_BasMainParameter(
+      #{samplemain,javaType=String,jdbcType=VARCHAR},
+      #{samplemainname,javaType=String,jdbcType=NVARCHAR},
+      #{parameterid,javaType=String,jdbcType=NVARCHAR},
+      #{parametername,javaType=String,jdbcType=NVARCHAR},
+      #{paramunit,javaType=String,jdbcType=NVARCHAR},
+      #{testjudge,javaType=String,jdbcType=VARCHAR},
+      #{standvalue,javaType=String,jdbcType=NVARCHAR},
+      #{judgestandard,javaType=String,jdbcType=VARCHAR},
+      #{judgestandardcode,javaType=String,jdbcType=NVARCHAR},
+      #{judgestandardname,javaType=String,jdbcType=NVARCHAR},
+      #{teststandard,javaType=String,jdbcType=VARCHAR},
+      #{teststandardcode,javaType=String,jdbcType=NVARCHAR},
+      #{teststandardname,javaType=String,jdbcType=NVARCHAR},
+      #{belongtype,javaType=String,jdbcType=VARCHAR},
+      #{standtype1,javaType=String,jdbcType=VARCHAR},
+      #{standtype2,javaType=String,jdbcType=VARCHAR},
+      #{standtype3,javaType=String,jdbcType=VARCHAR},
+      #{standtype4,javaType=String,jdbcType=VARCHAR},
+      #{standtype5,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetListBasSampleDetail" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleParameter" resultType="com.alms.entity.bas.BasSampleParameter" >
+    {call dbo.P_Get_BasSampleDetail(
+       #{sampleid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBasSampleParameterDetail" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleParameter" resultType="com.alms.entity.bas.BasSampleParameter" >
+    {call dbo.P_Get_BasSampleParameterDetail(
+       #{sampleid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBasSampleParameter" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleParameter" flushCache="true">
+    {call dbo.P_Save_BasSampleParameter(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{paramunit,javaType=String,jdbcType=NVARCHAR},
+      #{testjudge,javaType=String,jdbcType=VARCHAR},
+      #{standvalue,javaType=String,jdbcType=NVARCHAR},
+      #{belongtype,javaType=String,jdbcType=VARCHAR},
+      #{standtype1,javaType=String,jdbcType=VARCHAR},
+      #{standtype2,javaType=String,jdbcType=VARCHAR},
+      #{standtype3,javaType=String,jdbcType=VARCHAR},
+      #{standtype4,javaType=String,jdbcType=VARCHAR},
+      #{standtype5,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetListBasCatalogParameter" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasCatalogParameter" resultType="com.alms.entity.bas.BasCatalogParameter" >
+    {call dbo.P_Get_BasCatalogParameter(
+      #{samplecatalog,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBasCatalogParameter" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasCatalogParameter" flushCache="true">
+    {call dbo.P_Save_BasCatalogParameter(
+      #{samplecatalog,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetBasTest" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasTest" resultType="com.alms.entity.bas.BasTest" >
+    {call dbo.P_Get_BasTest(
+      #{teststandard,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBasTest" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasTest" resultType="com.alms.entity.bas.BasTest" >
+    {call dbo.P_Get_BasTest(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBasTest" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasTest" resultType="com.alms.entity.bas.BasTest" >
+    {call dbo.P_Search_BasTest(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBasTest" statementType="CALLABLE" parameterType="com.alms.entity.bas.AbilityForm" flushCache="true">
+    {call dbo.P_Save_BasTest(
+      #{teststandard,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{teststandardcode,javaType=String,jdbcType=NVARCHAR},
+      #{teststandardname,javaType=String,jdbcType=NVARCHAR},
+      #{teststandardurl,javaType=String,jdbcType=VARCHAR},
+      #{teststandarddesc,javaType=String,jdbcType=VARCHAR},
+      #{testlimit,javaType=String,jdbcType=VARCHAR},
+      #{standardnum,javaType=String,jdbcType=VARCHAR},
+      #{testloq,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetAbilityForm" statementType="CALLABLE" parameterType="com.alms.entity.bas.AbilityForm" resultType="com.alms.entity.bas.AbilityForm" >
+    {call dbo.P_Get_AbilityForm(
+      #{abilityformid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListAbilityForm" statementType="CALLABLE" parameterType="com.alms.entity.bas.AbilityForm" resultType="com.alms.entity.bas.AbilityForm" >
+    {call dbo.P_Get_AbilityForm(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchAbilityForm" statementType="CALLABLE" parameterType="com.alms.entity.bas.AbilityForm" resultType="com.alms.entity.bas.AbilityForm" >
+    {call dbo.P_Search_AbilityForm(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveAbilityForm" statementType="CALLABLE" parameterType="com.alms.entity.bas.AbilityForm" flushCache="true">
+    {call dbo.P_Save_AbilityForm(
+      #{abilityformid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{abilityformname,javaType=String,jdbcType=NVARCHAR},
+      #{abilityformurl,javaType=String,jdbcType=VARCHAR},
+      #{abilityformdesc,javaType=String,jdbcType=VARCHAR},
+      #{abilityformnum,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetBasJudge" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasJudge" resultType="com.alms.entity.bas.BasJudge" >
+    {call dbo.P_Get_BasJudge(
+      #{judgestandard,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBasJudge" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasJudge" resultType="com.alms.entity.bas.BasJudge" >
+    {call dbo.P_Get_BasJudge(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBasJudge" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasJudge" resultType="com.alms.entity.bas.BasJudge" >
+    {call dbo.P_Search_BasJudge(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBasJudge" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasJudge" flushCache="true">
+    {call dbo.P_Save_BasJudge(
+      #{judgestandard,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{judgestandardcode,javaType=String,jdbcType=NVARCHAR},
+      #{judgestandardname,javaType=String,jdbcType=NVARCHAR},
+      #{judgestandardrange,javaType=String,jdbcType=NVARCHAR},
+      #{judgestandardexplain,javaType=String,jdbcType=NVARCHAR},
+      #{judgestandardurl,javaType=String,jdbcType=NVARCHAR},
+      #{standardnum,javaType=String,jdbcType=VARCHAR},
+      #{registerdate,javaType=java.util.Date,jdbcType=DATE},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetBasParameter" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasParameter" resultType="com.alms.entity.bas.BasParameter" >
+    {call dbo.P_Get_BasParameter(
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBasParameter" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasParameter" resultType="com.alms.entity.bas.BasParameter" >
+    {call dbo.P_Get_BasParameter(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBasParameterByLab" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasParameter" resultType="com.alms.entity.bas.BasParameter" >
+    {call dbo.P_Get_BasParameterByLab(
+      #{labid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBasParameter" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasParameter" resultType="com.alms.entity.bas.BasParameter" >
+    {call dbo.P_Search_BasParameter(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBasParameter" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasParameter" flushCache="true">
+    {call dbo.P_Save_BasParameter(
+      #{parameterid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{parametername,javaType=String,jdbcType=NVARCHAR},
+      #{formid,javaType=String,jdbcType=VARCHAR},
+      #{formname,javaType=String,jdbcType=VARCHAR},
+      #{labid,javaType=String,jdbcType=VARCHAR},
+      #{parameterstatus,javaType=String,jdbcType=VARCHAR},
+      #{connectparameter,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetBasSample" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSample" resultType="com.alms.entity.bas.BasSample" >
+    {call dbo.P_Get_BasSample(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBasSample" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSample" resultType="com.alms.entity.bas.BasSample" >
+    {call dbo.P_Get_BasSample(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetSampleBySampleMain" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSample" resultType="com.alms.entity.bas.BasSample" >
+    {call dbo.P_Get_SampleBySampleMain(
+      #{samplemain,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBasMainParameter" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasMainParameter" resultType="com.alms.entity.bas.BasMainParameter" >
+    {call dbo.P_Get_BasMainParameter(
+      #{samplemain,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBasSample" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSample" resultType="com.alms.entity.bas.BasSample" >
+    {call dbo.P_Search_BasSample(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBasSample" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSample" flushCache="true">
+    {call dbo.P_Save_BasSample(
+      #{sampleid,javaType=String,jdbcType=VARCHAR, mode=INOUT},
+<!--       #{samplecatalog,javaType=String,jdbcType=VARCHAR}, -->
+      #{samplemain,javaType=String,jdbcType=VARCHAR},
+      #{samplename,javaType=String,jdbcType=NVARCHAR},
+      #{code,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetBasSampleMain" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleMain" resultType="com.alms.entity.bas.BasSampleMain" >
+    {call dbo.P_Get_BasSampleMain(
+      #{samplemain,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBasSampleMain" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleMain" resultType="com.alms.entity.bas.BasSampleMain" >
+    {call dbo.P_Get_BasSampleMain(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBasSampleMain" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleMain" resultType="com.alms.entity.bas.BasSampleMain" >
+    {call dbo.P_Search_BasSampleMain(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBasSampleMain" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleMain" flushCache="true">
+    {call dbo.P_Save_BasSampleMain(
+      #{samplemain,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{samplecatalog,javaType=String,jdbcType=VARCHAR},
+      #{samplemainname,javaType=String,jdbcType=NVARCHAR},
+      #{mainstand,javaType=String,jdbcType=NVARCHAR},
+      #{mainstandname,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+    <select id="GetSampleMainBySampleCate" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleMain" resultType="com.alms.entity.bas.BasSampleMain" >
+    {call dbo.P_Get_SampleMainBySampleCate(
+      #{samplecate,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBasSampleCatalog" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleCatalog" resultType="com.alms.entity.bas.BasSampleCatalog" >
+    {call dbo.P_Get_BasSampleCatalog(
+      #{samplecatalog,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBasSampleCatalogBySampleID" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleCatalog" resultType="com.alms.entity.bas.BasSampleCatalog" >
+    {call dbo.P_Get_BasSampleCatalogBySampleID(
+      #{sampleid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBasSampleCatalog" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleCatalog" resultType="com.alms.entity.bas.BasSampleCatalog" >
+    {call dbo.P_Get_BasSampleCatalog(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBasSampleCate" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleCatalog" resultType="com.alms.entity.bas.BasSampleCatalog" >
+    {call dbo.P_Get_BasSampleCate(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBasSampleCatalog" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleCatalog" resultType="com.alms.entity.bas.BasSampleCatalog" >
+    {call dbo.P_Search_BasSampleCatalog(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBasSampleCatalog" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleCatalog" flushCache="true">
+    {call dbo.P_Save_BasSampleCatalog(
+      #{samplecatalog,javaType=String,jdbcType=VARCHAR},
+      #{samplecatalogname,javaType=String,jdbcType=NVARCHAR},
+      #{samplecate,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  
+  
+  <select id="GetBusTestedUnit" statementType="CALLABLE" parameterType="com.alms.entity.bas.BusTestedUnit" resultType="com.alms.entity.bas.BusTestedUnit" >
+    {call dbo.P_Get_BusTestedUnit(
+      #{testedid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBusTestedUnit" statementType="CALLABLE" parameterType="com.alms.entity.bas.BusTestedUnit" resultType="com.alms.entity.bas.BusTestedUnit" >
+    {call dbo.P_Get_BusTestedUnit(
+      #{testedid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchBusTestedUnit" statementType="CALLABLE" parameterType="com.alms.entity.bas.BusTestedUnit" resultType="com.alms.entity.bas.BusTestedUnit" >
+    {call dbo.P_Search_BusTestedUnit(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBusTestedUnit" statementType="CALLABLE" parameterType="com.alms.entity.bas.BusTestedUnit" flushCache="true">
+    {call dbo.P_Save_BusTestedUnit(
+      #{testedid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{testedname,javaType=String,jdbcType=NVARCHAR},
+      #{enterlegal,javaType=String,jdbcType=NVARCHAR},
+      #{enteraddr,javaType=String,jdbcType=NVARCHAR},
+      #{enterpost,javaType=String,jdbcType=VARCHAR},
+      #{entertele,javaType=String,jdbcType=VARCHAR},
+      #{enterfax,javaType=String,jdbcType=VARCHAR},
+      #{entertype,javaType=String,jdbcType=VARCHAR},
+      #{enterscale,javaType=String,jdbcType=VARCHAR},
+      #{comtype,javaType=String,jdbcType=VARCHAR},
+      #{plantcorps,javaType=String,jdbcType=NVARCHAR},
+      #{plantarea,javaType=String,jdbcType=NVARCHAR},
+      #{provinceid,javaType=String,jdbcType=VARCHAR},
+      #{cityid,javaType=String,jdbcType=VARCHAR},
+      #{areaid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+
+  <select id="GetListBasTestCollect" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasTestCollect" resultType="com.alms.entity.bas.BasTestCollect" >
+    {call dbo.P_Get_ListBasTestCollect(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBasLabParameter" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasLabParameter" resultType="com.alms.entity.bas.BasLabParameter" >
+    {call dbo.P_Get_BasLabParameter(
+      #{labid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBasLabParameterForInfo" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasLabParameter" resultType="com.alms.entity.bas.BasLabParameter" >
+    {call dbo.P_Get_BasLabParameterForInfo(
+      #{labid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBasLabParameter" statementType="CALLABLE" parameterType="String" resultType="com.alms.entity.bas.BasLabParameter" >
+    {call dbo.P_Get_ListBasLabParameter(
+<!--       #{sampleid,javaType=String,jdbcType=VARCHAR}, -->
+      #{parameterids,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListBasLabParameterForDept" statementType="CALLABLE" parameterType="String" resultType="com.alms.entity.bas.BasLabParameter" >
+    {call dbo.P_Get_ListBasLabParameterForDept(
+<!--       #{sampleid,javaType=String,jdbcType=VARCHAR}, -->
+      #{parameterids,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetBasLabParameterByLab" statementType="CALLABLE" parameterType="String" resultType="com.alms.entity.bas.BasLabParameter" >
+    {call dbo.P_Get_BasLabParameterByLab(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchBasLabParameter" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasLabParameter" resultType="com.alms.entity.bas.BasLabParameter" >
+    {call dbo.P_Search_BasLabParameter(
+      #{labid,javaType=String,jdbcType=VARCHAR},
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveBasLabParameter" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasLabParameter" flushCache="true">
+    {call dbo.P_Save_BasLabParameter(
+      #{labid,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{labuser,javaType=String,jdbcType=VARCHAR},
+      #{labcate,javaType=String,jdbcType=VARCHAR},
+      #{labcatename,javaType=String,jdbcType=VARCHAR},
+      #{labremark,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetListBasLabBySample" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasLabParameter" resultType="com.alms.entity.bas.BasLabParameter" >
+    {call dbo.P_Get_ListBasLabBySample(
+      #{sampleid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetParameterByGetDetail" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusGetDetail" resultType="com.alms.entity.lab.BusSampleParam" >
+    {call dbo.P_Get_ParameterBySample(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{standtype1,javaType=String,jdbcType=VARCHAR},
+      #{standtype2,javaType=String,jdbcType=VARCHAR},
+      #{standtype3,javaType=String,jdbcType=VARCHAR},
+      #{standtype4,javaType=String,jdbcType=VARCHAR},
+      #{standtype5,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+   <select id="GetSampleStandCount" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleStand" resultType="com.alms.entity.bas.BasSampleStand" >
+    {call dbo.P_Get_SampleStandCount(
+      #{sampleid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetSampleStandByLevel" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleStand" resultType="com.alms.entity.bas.BasSampleStand" >
+    {call dbo.P_Get_SampleStandByLevel(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{standlevel,javaType=int,jdbcType=INTEGER}
+    )}
+  </select>
+  
+  <select id="GetListBasSampleStand" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleStand" resultType="com.alms.entity.bas.BasSampleStand" >
+    {call dbo.P_Get_BasSampleStand(
+      #{sampleid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveBasSampleStand" statementType="CALLABLE" parameterType="com.alms.entity.bas.BasSampleStand" flushCache="true">
+    {call dbo.P_Save_BasSampleStand(
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{standlevel,javaType=int,jdbcType=INTEGER},
+      #{standtype,javaType=String,jdbcType=VARCHAR},
+      #{standtypename,javaType=String,jdbcType=NVARCHAR},
+      #{standlabel,javaType=String,jdbcType=NVARCHAR},
+      #{standid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+</mapper>

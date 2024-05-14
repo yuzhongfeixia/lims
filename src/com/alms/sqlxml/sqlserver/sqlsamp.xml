@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.alms.mapper.sqlserver.SampMapper">
+
+  <select id="GetSampleBackup" statementType="CALLABLE" parameterType="com.alms.entity.samp.SampleBackup" resultType="com.alms.entity.samp.SampleBackup" >
+    {call dbo.P_Get_SampleBackup(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchSampleBackup" statementType="CALLABLE" parameterType="com.alms.entity.samp.SampleBackup" resultType="com.alms.entity.samp.SampleBackup" >
+    {call dbo.P_Search_SampleBackup(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveSampleBackup" statementType="CALLABLE" parameterType="com.alms.entity.samp.SampleBackup" flushCache="true">
+    {call dbo.P_Save_SampleBackup(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{complaintid,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{samplename,javaType=String,jdbcType=VARCHAR},
+      #{backupstatus,javaType=String,jdbcType=VARCHAR},
+      #{backupreason,javaType=String,jdbcType=NVARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{tranuser,javaType=String,jdbcType=VARCHAR},
+      #{tranusername,javaType=String,jdbcType=NVARCHAR},
+      #{trandate,javaType=java.util.Date,jdbcType=DATE},
+      #{qualityuser,javaType=String,jdbcType=VARCHAR},
+      #{qualityusername,javaType=String,jdbcType=NVARCHAR},
+      #{qualitydate,javaType=java.util.Date,jdbcType=DATE},
+      #{backupbefore,javaType=String,jdbcType=NVARCHAR},
+      #{certuser,javaType=String,jdbcType=VARCHAR},
+      #{certusername,javaType=String,jdbcType=NVARCHAR},
+      #{certdate,javaType=java.util.Date,jdbcType=DATE},
+      #{backuprecord,javaType=String,jdbcType=NVARCHAR},
+      #{sealuser,javaType=String,jdbcType=VARCHAR},
+      #{sealusername,javaType=String,jdbcType=NVARCHAR},
+      #{sealdate,javaType=java.util.Date,jdbcType=DATE},
+      #{backupdate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetListSampleEnvDetail" statementType="CALLABLE" parameterType="com.alms.entity.samp.SampleEnvDetail" resultType="com.alms.entity.samp.SampleEnvDetail" >
+    {call dbo.P_Get_SampleEnvDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveSampleEnvDetail" statementType="CALLABLE" parameterType="com.alms.entity.samp.SampleEnvDetail" flushCache="true">
+    {call dbo.P_Save_SampleEnvDetail(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{envid,javaType=String,jdbcType=VARCHAR},
+      #{sampleaddress,javaType=String,jdbcType=NVARCHAR},
+      #{samplequantity,javaType=String,jdbcType=VARCHAR},
+      #{sampleposi,javaType=String,jdbcType=VARCHAR},
+      #{samplepic,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetSampleEnv" statementType="CALLABLE" parameterType="com.alms.entity.samp.SampleEnv" resultType="com.alms.entity.samp.SampleEnv" >
+    {call dbo.P_Get_SampleEnv(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchSampleEnv" statementType="CALLABLE" parameterType="com.alms.entity.samp.SampleEnv" resultType="com.alms.entity.samp.SampleEnv" >
+    {call dbo.P_Search_SampleEnv(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveSampleEnv" statementType="CALLABLE" parameterType="com.alms.entity.samp.SampleEnv" flushCache="true">
+    {call dbo.P_Save_SampleEnv(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{entername,javaType=String,jdbcType=NVARCHAR},
+      #{enterlegal,javaType=String,jdbcType=NVARCHAR},
+      #{entertype,javaType=String,jdbcType=VARCHAR},
+      #{enterpost,javaType=String,jdbcType=VARCHAR},
+      #{entertele,javaType=String,jdbcType=VARCHAR},
+      #{enteraddress,javaType=String,jdbcType=NVARCHAR},
+      #{testtype,javaType=String,jdbcType=VARCHAR},
+      #{enterbase,javaType=String,jdbcType=NVARCHAR},
+      #{sampledate,javaType=java.util.Date,jdbcType=DATE},
+      #{sampledeep,javaType=String,jdbcType=VARCHAR},
+      #{sampleplant,javaType=String,jdbcType=NVARCHAR},
+      #{basearea,javaType=String,jdbcType=VARCHAR},
+      #{remark,javaType=String,jdbcType=NVARCHAR},
+      #{sampleuser,javaType=String,jdbcType=VARCHAR},
+      #{sampleusername,javaType=String,jdbcType=NVARCHAR},
+      #{sampleuserdate,javaType=java.util.Date,jdbcType=DATE},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetSampleDeal" statementType="CALLABLE" parameterType="com.alms.entity.samp.SampleDeal" resultType="com.alms.entity.samp.SampleDeal" >
+    {call dbo.P_Get_SampleDeal(
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetSampleDealByTaskID" statementType="CALLABLE" parameterType="com.alms.entity.samp.SampleDeal" resultType="com.alms.entity.samp.SampleDeal" >
+    {call dbo.P_Get_SampleDealByTaskID(
+      #{taskid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchSampleDeal" statementType="CALLABLE" parameterType="com.alms.entity.samp.SampleDeal" resultType="com.alms.entity.samp.SampleDeal" >
+    {call dbo.P_Search_SampleDeal(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveSampleDeal" statementType="CALLABLE" parameterType="com.alms.entity.samp.SampleDeal" flushCache="true">
+    {call dbo.P_Save_SampleDeal(
+      #{tranid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{samplename,javaType=String,jdbcType=NVARCHAR},
+      #{samplecode,javaType=String,jdbcType=VARCHAR},
+      #{dealway,javaType=String,jdbcType=NVARCHAR},
+      #{collectdate,javaType=java.util.Date,jdbcType=DATE},
+      #{finishdate,javaType=java.util.Date,jdbcType=DATE},
+      #{storeend,javaType=java.util.Date,jdbcType=DATE},
+      #{dealdate,javaType=java.util.Date,jdbcType=DATE},
+      #{dealmethod,javaType=String,jdbcType=NVARCHAR},
+      #{flowaction,javaType=String,jdbcType=VARCHAR},
+      #{flowstatus,javaType=String,jdbcType=VARCHAR},
+      #{dealuser,javaType=String,jdbcType=VARCHAR},
+      #{dealusername,javaType=String,jdbcType=NVARCHAR},
+      #{dealuserdate,javaType=java.util.Date,jdbcType=DATE},
+      #{dealstatus,javaType=String,jdbcType=VARCHAR},
+      #{approveuser,javaType=String,jdbcType=VARCHAR},
+      #{approveusername,javaType=String,jdbcType=NVARCHAR},
+      #{approvedate,javaType=java.util.Date,jdbcType=DATE},
+      #{taskid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetListSampleIceDetail" statementType="CALLABLE" parameterType="com.alms.entity.samp.SampleIceDetail" resultType="com.alms.entity.samp.SampleIceDetail" >
+    {call dbo.P_Get_SampleIceDetail(
+      #{iceid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveSampleIceDetail" statementType="CALLABLE" parameterType="com.alms.entity.samp.SampleIceDetail" flushCache="true">
+    {call dbo.P_Save_SampleIceDetail(
+      #{iceid,javaType=String,jdbcType=VARCHAR},
+      #{icedate,javaType=java.util.Date,jdbcType=DATE},
+      #{lowtemp,javaType=String,jdbcType=VARCHAR},
+      #{hightemp,javaType=String,jdbcType=VARCHAR},
+      #{iceuser,javaType=String,jdbcType=VARCHAR},
+      #{iceusername,javaType=String,jdbcType=NVARCHAR},
+      #{iceuserdate,javaType=java.util.Date,jdbcType=DATE},
+      #{iceremark,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+  <select id="GetSampleIce" statementType="CALLABLE" parameterType="com.alms.entity.samp.SampleIce" resultType="com.alms.entity.samp.SampleIce" >
+    {call dbo.P_Get_SampleIce(
+      #{iceid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchSampleIce" statementType="CALLABLE" parameterType="com.alms.entity.samp.SampleIce" resultType="com.alms.entity.samp.SampleIce" >
+    {call dbo.P_Search_SampleIce(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveSampleIce" statementType="CALLABLE" parameterType="com.alms.entity.samp.SampleIce" flushCache="true">
+    {call dbo.P_Save_SampleIce(
+      #{iceid,javaType=String,jdbcType=VARCHAR},
+      #{icename,javaType=String,jdbcType=NVARCHAR},
+      #{icespec,javaType=String,jdbcType=VARCHAR},
+      #{icecapa,javaType=double,jdbcType=DECIMAL},
+      #{factorydate,javaType=java.util.Date,jdbcType=DATE},
+      #{icestore,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+</mapper>

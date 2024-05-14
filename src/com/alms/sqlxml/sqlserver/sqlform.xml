@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd">
+<mapper namespace="com.alms.mapper.sqlserver.FormMapper">
+
+  <select id="GetIntInterface" statementType="CALLABLE" parameterType="com.alms.entity.form.IntInterface" resultType="com.alms.entity.form.IntInterface" >
+    {call dbo.P_Get_IntInterface(
+      #{intid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+   <select id="GetIntInterfaceByTask" statementType="CALLABLE" parameterType="com.alms.entity.lab.BusTaskSingle" resultType="com.alms.entity.form.IntInterface" >
+    {call dbo.P_Get_IntInterfaceByTask(
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{labid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetIntInterfaceBase" statementType="CALLABLE" parameterType="java.lang.String" resultType="com.alms.entity.form.IntInterface" >
+    {call dbo.P_Get_IntInterfaceBase(
+      #{sampletran,javaType=String,jdbcType=VARCHAR},
+      #{tranid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetListIntInterface" statementType="CALLABLE" parameterType="com.alms.entity.form.IntInterface" resultType="com.alms.entity.form.IntInterface" >
+    {call dbo.P_Get_IntInterface(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchIntInterface" statementType="CALLABLE" parameterType="com.alms.entity.form.IntInterface" resultType="com.alms.entity.form.IntInterface" >
+    {call dbo.P_Search_IntInterface(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveIntInterface" statementType="CALLABLE" parameterType="com.alms.entity.form.IntInterface" flushCache="true">
+    {call dbo.P_Save_IntInterface(
+      #{intid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{intname,javaType=String,jdbcType=NVARCHAR},
+      #{intcode,javaType=String,jdbcType=VARCHAR},
+      #{specserial,javaType=int,jdbcType=INTEGER},
+      #{inttype,javaType=String,jdbcType=VARCHAR},
+      #{methodcode,javaType=String,jdbcType=NVARCHAR},
+<!--       #{ismutil,javaType=boolean,jdbcType=BOOLEAN}, -->
+      #{intorder,javaType=int,jdbcType=INTEGER},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  
+  <select id="GetIntField" statementType="CALLABLE" parameterType="com.alms.entity.form.IntField" resultType="com.alms.entity.form.IntField" >
+    {call dbo.P_Get_IntField(
+      #{intid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListIntField" statementType="CALLABLE" parameterType="com.alms.entity.form.IntField" resultType="com.alms.entity.form.IntField" >
+    {call dbo.P_Get_ListIntField(
+      #{intid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetLogIntFieldName" statementType="CALLABLE" parameterType="com.alms.entity.form.IntField" resultType="com.alms.entity.form.IntField" >
+    {call dbo.P_Get_LogIntFieldName(
+      #{fieldcode,javaType=String,jdbcType=VARCHAR},
+      #{fieldserial,javaType=int,jdbcType=INTEGER}
+    )}
+  </select>
+  <select id="GetListIntFieldBySample" statementType="CALLABLE" parameterType="com.alms.entity.form.IntField" resultType="com.alms.entity.form.IntField" >
+    {call dbo.P_Get_ListIntFieldBySample(
+      #{intid,javaType=String,jdbcType=VARCHAR},
+      #{sampletran,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="SearchIntField" statementType="CALLABLE" parameterType="com.alms.entity.form.IntField" resultType="com.alms.entity.form.IntField" >
+    {call dbo.P_Search_IntField(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveIntField" statementType="CALLABLE" parameterType="com.alms.entity.form.IntField" flushCache="true">
+    {call dbo.P_Save_IntField(
+      #{intid,javaType=String,jdbcType=VARCHAR},
+      #{fieldtable,javaType=int,jdbcType=INTEGER},
+      #{fieldrow,javaType=int,jdbcType=INTEGER},
+      #{fieldrowcount,javaType=int,jdbcType=INTEGER},
+      #{fieldcolumn,javaType=int,jdbcType=INTEGER},
+      #{fieldwidth,javaType=int,jdbcType=INTEGER},
+      #{fieldlabel,javaType=String,jdbcType=NVARCHAR},
+      #{labelwidth,javaType=int,jdbcType=INTEGER},
+      #{fieldtype,javaType=String,jdbcType=VARCHAR},
+      #{fieldclass,javaType=String,jdbcType=VARCHAR},
+      #{fieldcode,javaType=String,jdbcType=VARCHAR},
+      #{fieldserial,javaType=int,jdbcType=INTEGER},
+      #{isnull,javaType=boolean,jdbcType=BOOLEAN},
+      #{fieldmax,javaType=int,jdbcType=INTEGER},
+      #{fieldlines,javaType=int,jdbcType=INTEGER},
+      #{storecode,javaType=String,jdbcType=VARCHAR},
+      #{validcode,javaType=String,jdbcType=VARCHAR},
+      #{defaultvalue,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+
+
+  <select id="GetFrmRecord" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmRecord" resultType="com.alms.entity.form.FrmRecord" >
+    {call dbo.P_Get_FrmRecord(
+      #{formid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListFrmRecord" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmRecord" resultType="com.alms.entity.form.FrmRecord" >
+    {call dbo.P_Get_FrmRecord(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchFrmRecord" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmRecord" resultType="com.alms.entity.form.FrmRecord" >
+    {call dbo.P_Search_FrmRecord(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveFrmRecord" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmRecord" flushCache="true">
+    {call dbo.P_Save_FrmRecord(
+      #{formid,javaType=String,jdbcType=VARCHAR,mode=INOUT},
+      #{formname,javaType=String,jdbcType=NVARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=VARCHAR},
+      #{formlength,javaType=int,jdbcType=INTEGER},
+      #{formwidth,javaType=int,jdbcType=INTEGER},
+      #{formdirect,javaType=String,jdbcType=VARCHAR},
+      #{createdate,javaType=java.util.Date,jdbcType=DATE},
+      #{createuser,javaType=String,jdbcType=VARCHAR},
+      #{createusername,javaType=String,jdbcType=NVARCHAR},
+      #{modifydate,javaType=java.util.Date,jdbcType=DATE},
+      #{modifyuser,javaType=String,jdbcType=VARCHAR},
+      #{modifyusername,javaType=String,jdbcType=NVARCHAR},
+      #{modiyserial,javaType=int,jdbcType=INTEGER},
+      #{pagegroup,javaType=int,jdbcType=INTEGER},
+      #{pagespec,javaType=int,jdbcType=INTEGER},
+      #{pagewidth,javaType=int,jdbcType=INTEGER},
+      #{methodcode,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetPreviewRecordDetailByID" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmRecord" resultType="com.alms.entity.dat.BusRecordDetail" >
+    {call dbo.P_Get_PreviewRecordDetailByID(
+      #{formid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetPreviewGetDetailByID" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmGet" resultType="com.alms.entity.dat.BusRecordDetail" >
+    {call dbo.P_Get_PreviewGetDetailByID(
+      #{formid,javaType=String,jdbcType=VARCHAR},
+      #{tranid,javaType=String,jdbcType=VARCHAR},
+      #{pagecount,javaType=int,jdbcType=INTEGER}
+    )}
+  </select>
+
+
+  <select id="GetFrmRecordDetail" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmRecordDetail" resultType="com.alms.entity.form.FrmRecordDetail" >
+    {call dbo.P_Get_FrmRecordDetail(
+      #{formid,javaType=String,jdbcType=VARCHAR},
+      #{cellserial,javaType=int,jdbcType=INTEGER},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListFrmRecordDetail" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmRecordDetail" resultType="com.alms.entity.form.FrmRecordDetail" >
+    {call dbo.P_Get_FrmRecordDetail(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetFrmRecordDetailByForm" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmRecordDetail" resultType="com.alms.entity.form.FrmRecordDetail" >
+    {call dbo.P_Get_FrmRecordDetailByForm(
+      #{formid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchFrmRecordDetail" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmRecordDetail" resultType="com.alms.entity.form.FrmRecordDetail" >
+    {call dbo.P_Search_FrmRecordDetail(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveFrmRecordDetail" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmRecordDetail" flushCache="true">
+    {call dbo.P_Save_FrmRecordDetail(
+      #{formid,javaType=String,jdbcType=VARCHAR},
+      #{cellserial,javaType=int,jdbcType=INTEGER},
+      #{beginrow,javaType=int,jdbcType=INTEGER},
+      #{endrow,javaType=int,jdbcType=INTEGER},
+      #{begincolumn,javaType=int,jdbcType=INTEGER},
+      #{endcolumn,javaType=int,jdbcType=INTEGER},
+      #{cellname,javaType=String,jdbcType=NVARCHAR},
+      #{valuesource,javaType=String,jdbcType=VARCHAR},
+      #{valuetype,javaType=String,jdbcType=VARCHAR},
+      #{classsource,javaType=String,jdbcType=VARCHAR},
+      #{fieldcode,javaType=String,jdbcType=VARCHAR},
+      #{groupserial,javaType=int,jdbcType=INTEGER},
+      #{specserial,javaType=int,jdbcType=INTEGER},
+      #{celltext,javaType=String,jdbcType=NVARCHAR},
+      #{cellformat,javaType=String,jdbcType=VARCHAR},
+      #{isborder,javaType=boolean,jdbcType=BOOLEAN},
+      #{isline,javaType=boolean,jdbcType=BOOLEAN},
+      #{isbold,javaType=boolean,jdbcType=BOOLEAN},
+      #{fontsize,javaType=int,jdbcType=INTEGER},
+      #{aligntype,javaType=String,jdbcType=VARCHAR},
+      #{prefixtext,javaType=String,jdbcType=NVARCHAR},
+      #{postfixtext,javaType=String,jdbcType=NVARCHAR},
+      #{ismutil,javaType=boolean,jdbcType=BOOLEAN},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetFrmGet" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmGet" resultType="com.alms.entity.form.FrmGet" >
+    {call dbo.P_Get_FrmGet(
+      #{formid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListFrmGet" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmGet" resultType="com.alms.entity.form.FrmGet" >
+    {call dbo.P_Get_FrmGet(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchFrmGet" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmGet" resultType="com.alms.entity.form.FrmGet" >
+    {call dbo.P_Search_FrmGet(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveFrmGet" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmGet" flushCache="true">
+    {call dbo.P_Save_FrmGet(
+      #{formid,javaType=String,jdbcType=VARCHAR},
+      #{formname,javaType=String,jdbcType=NVARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{gettype,javaType=String,jdbcType=VARCHAR},
+      #{formlength,javaType=int,jdbcType=INTEGER},
+      #{formwidth,javaType=int,jdbcType=INTEGER},
+      #{formdirect,javaType=String,jdbcType=VARCHAR},
+      #{createdate,javaType=java.util.Date,jdbcType=DATE},
+      #{createuser,javaType=String,jdbcType=VARCHAR},
+      #{createusername,javaType=String,jdbcType=NVARCHAR},
+      #{modifydate,javaType=java.util.Date,jdbcType=DATE},
+      #{modifyuser,javaType=String,jdbcType=VARCHAR},
+      #{modifyusername,javaType=String,jdbcType=NVARCHAR},
+      #{modiyserial,javaType=int,jdbcType=INTEGER},
+      #{pagegroup,javaType=int,jdbcType=INTEGER},
+      #{pagespec,javaType=int,jdbcType=INTEGER},
+      #{pagewidth,javaType=int,jdbcType=INTEGER},
+      #{methodcode,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetFrmGetDetail" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmGetDetail" resultType="com.alms.entity.form.FrmGetDetail" >
+    {call dbo.P_Get_FrmGetDetail(
+      #{formid,javaType=String,jdbcType=VARCHAR},
+      #{cellserial,javaType=int,jdbcType=INTEGER},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListFrmGetDetail" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmGetDetail" resultType="com.alms.entity.form.FrmGetDetail" >
+    {call dbo.P_Get_FrmGetDetail(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetFrmGetDetailByForm" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmGetDetail" resultType="com.alms.entity.form.FrmGetDetail" >
+    {call dbo.P_Get_FrmGetDetailByForm(
+      #{formid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchFrmGetDetail" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmGetDetail" resultType="com.alms.entity.form.FrmGetDetail" >
+    {call dbo.P_Search_FrmGetDetail(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveFrmGetDetail" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmGetDetail" flushCache="true">
+    {call dbo.P_Save_FrmGetDetail(
+      #{formid,javaType=String,jdbcType=VARCHAR},
+      #{cellserial,javaType=int,jdbcType=INTEGER},
+      #{beginrow,javaType=int,jdbcType=INTEGER},
+      #{endrow,javaType=int,jdbcType=INTEGER},
+      #{begincolumn,javaType=int,jdbcType=INTEGER},
+      #{endcolumn,javaType=int,jdbcType=INTEGER},
+      #{cellname,javaType=String,jdbcType=NVARCHAR},
+      #{valuesource,javaType=String,jdbcType=VARCHAR},
+      #{valuetype,javaType=String,jdbcType=VARCHAR},
+      #{classsource,javaType=String,jdbcType=VARCHAR},
+      #{fieldcode,javaType=String,jdbcType=VARCHAR},
+      #{groupserial,javaType=int,jdbcType=INTEGER},
+      #{specserial,javaType=int,jdbcType=INTEGER},
+      #{celltext,javaType=String,jdbcType=NVARCHAR},
+      #{cellformat,javaType=String,jdbcType=VARCHAR},
+      #{isborder,javaType=boolean,jdbcType=BOOLEAN},
+      #{isline,javaType=boolean,jdbcType=BOOLEAN},
+      #{isbold,javaType=boolean,jdbcType=BOOLEAN},
+      #{fontsize,javaType=int,jdbcType=INTEGER},
+      #{aligntype,javaType=String,jdbcType=VARCHAR},
+      #{prefixtext,javaType=String,jdbcType=NVARCHAR},
+      #{postfixtext,javaType=String,jdbcType=NVARCHAR},
+      #{ismutil,javaType=boolean,jdbcType=BOOLEAN},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="SearchFrmRecordParameter" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmRecordParameter" resultType="com.alms.entity.form.FrmRecordParameter" >
+    {call dbo.P_Search_FrmRecordParameter(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <update id="SaveFrmRecordParameter" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmRecordDetail" flushCache="true">
+    {call dbo.P_Save_FrmRecordParameter(
+      #{formid,javaType=String,jdbcType=VARCHAR},
+      #{parameterid,javaType=String,jdbcType=NVARCHAR},
+      #{teststandard,javaType=String,jdbcType=VARCHAR},
+      #{judgestandard,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  
+  <select id="GetFrmReport" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmReport" resultType="com.alms.entity.form.FrmReport" >
+    {call dbo.P_Get_FrmReport(
+      #{formid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListFrmReport" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmReport" resultType="com.alms.entity.form.FrmReport" >
+    {call dbo.P_Get_FrmReport(
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchFrmReport" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmReport" resultType="com.alms.entity.form.FrmReport" >
+    {call dbo.P_Search_FrmReport(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveFrmReport" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmReport" flushCache="true">
+    {call dbo.P_Save_FrmReport(
+      #{formid,javaType=String,jdbcType=VARCHAR},
+      #{formname,javaType=String,jdbcType=NVARCHAR},
+      #{sampleid,javaType=String,jdbcType=VARCHAR},
+      #{gettype,javaType=String,jdbcType=VARCHAR},
+      #{formlength,javaType=int,jdbcType=INTEGER},
+      #{formwidth,javaType=int,jdbcType=INTEGER},
+      #{formdirect,javaType=String,jdbcType=VARCHAR},
+      #{pagegroup,javaType=int,jdbcType=INTEGER},
+      #{pagespec,javaType=int,jdbcType=INTEGER},
+      #{pagewidth,javaType=int,jdbcType=INTEGER},
+      #{createdate,javaType=java.util.Date,jdbcType=DATE},
+      #{createuser,javaType=String,jdbcType=VARCHAR},
+      #{createusername,javaType=String,jdbcType=NVARCHAR},
+      #{modifydate,javaType=java.util.Date,jdbcType=DATE},
+      #{modifyuser,javaType=String,jdbcType=VARCHAR},
+      #{modifyusername,javaType=String,jdbcType=NVARCHAR},
+      #{modiyserial,javaType=int,jdbcType=INTEGER},
+      #{methodcode,javaType=String,jdbcType=NVARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  <select id="GetPreviewReportDetailByID" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmReport" resultType="com.alms.entity.dat.BusReportDetail" >
+    {call dbo.P_Get_PreviewReportDetailByID(
+      #{formid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  
+  <select id="GetFrmReportDetail" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmReportDetail" resultType="com.alms.entity.form.FrmReportDetail" >
+    {call dbo.P_Get_FrmReportDetail(
+      #{formid,javaType=String,jdbcType=VARCHAR},
+      #{item.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListFrmReportDetail" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmReportDetail" resultType="com.alms.entity.form.FrmReportDetail" >
+    {call dbo.P_Get_ListFrmReportDetail(
+      #{formid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="GetListBusReportDetail" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusReportDetail" resultType="com.alms.entity.dat.BusReportDetail" >
+    {call dbo.P_Get_ListBusReportDetail(
+      #{reportid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <select id="SearchFrmReportDetail" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmReportDetail" resultType="com.alms.entity.form.FrmReportDetail" >
+    {call dbo.P_Search_FrmReportDetail(
+      #{search.search,javaType=String,jdbcType=VARCHAR},
+      #{search.start,javaType=int,jdbcType=INTEGER},
+      #{search.end,javaType=int,jdbcType=INTEGER},
+      #{search.total,javaType=int,jdbcType=INTEGER,mode=OUT},
+      #{search.userid,javaType=String,jdbcType=VARCHAR},
+      #{search.getaction,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  <update id="SaveFrmReportDetail" statementType="CALLABLE" parameterType="com.alms.entity.form.FrmReportDetail" flushCache="true">
+    {call dbo.P_Save_FrmReportDetail(
+      #{formid,javaType=String,jdbcType=VARCHAR},
+      #{cellserial,javaType=int,jdbcType=INTEGER},
+      #{beginrow,javaType=int,jdbcType=INTEGER},
+      #{endrow,javaType=int,jdbcType=INTEGER},
+      #{begincolumn,javaType=int,jdbcType=INTEGER},
+      #{endcolumn,javaType=int,jdbcType=INTEGER},
+      #{cellname,javaType=String,jdbcType=NVARCHAR},
+      #{valuesource,javaType=String,jdbcType=VARCHAR},
+      #{valuetype,javaType=String,jdbcType=VARCHAR},
+      #{classsource,javaType=String,jdbcType=VARCHAR},
+      #{fieldcode,javaType=String,jdbcType=VARCHAR},
+      #{groupserial,javaType=int,jdbcType=INTEGER},
+      #{specserial,javaType=int,jdbcType=INTEGER},
+      #{celltext,javaType=String,jdbcType=NVARCHAR},
+      #{cellformat,javaType=String,jdbcType=VARCHAR},
+      #{isborder,javaType=boolean,jdbcType=BOOLEAN},
+      #{isline,javaType=boolean,jdbcType=BOOLEAN},
+      #{isbold,javaType=boolean,jdbcType=BOOLEAN},
+      #{fontsize,javaType=int,jdbcType=INTEGER},
+      #{aligntype,javaType=String,jdbcType=VARCHAR},
+      #{prefixtext,javaType=String,jdbcType=NVARCHAR},
+      #{postfixtext,javaType=String,jdbcType=NVARCHAR},
+      #{ismutil,javaType=boolean,jdbcType=BOOLEAN},
+      #{fonttype,javaType=String,jdbcType=VARCHAR},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  <update id="SaveBusPrintReport" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusReportDetail" flushCache="true">
+    {call dbo.P_Save_BusPrintReport (
+      #{reportid,javaType=String,jdbcType=VARCHAR},
+      #{cellserial,javaType=int,jdbcType=INTEGER},
+      #{beginrow,javaType=int,jdbcType=INTEGER},
+      #{endrow,javaType=int,jdbcType=INTEGER},
+      #{begincolumn,javaType=int,jdbcType=INTEGER},
+      #{endcolumn,javaType=int,jdbcType=INTEGER},
+      #{cellname,javaType=String,jdbcType=NVARCHAR},
+      #{valuesource,javaType=String,jdbcType=VARCHAR},
+      #{valuetype,javaType=String,jdbcType=VARCHAR},
+      #{classsource,javaType=String,jdbcType=VARCHAR},
+      #{fieldcode,javaType=String,jdbcType=VARCHAR},
+      #{groupserial,javaType=int,jdbcType=INTEGER},
+      #{specserial,javaType=int,jdbcType=INTEGER},
+      #{celltext,javaType=String,jdbcType=NVARCHAR},
+      #{cellformat,javaType=String,jdbcType=VARCHAR},
+      #{isborder,javaType=boolean,jdbcType=BOOLEAN},
+      #{isline,javaType=boolean,jdbcType=BOOLEAN},
+      #{isbold,javaType=boolean,jdbcType=BOOLEAN},
+      #{fontsize,javaType=int,jdbcType=INTEGER},
+      #{aligntype,javaType=String,jdbcType=VARCHAR},
+      #{prefixtext,javaType=String,jdbcType=NVARCHAR},
+      #{postfixtext,javaType=String,jdbcType=NVARCHAR},
+      #{fonttype,javaType=String,jdbcType=VARCHAR},
+      #{formserial,javaType=int,jdbcType=INTEGER},
+      #{deal.action,javaType=int,jdbcType=INTEGER}
+    )}
+  </update>
+  
+  <select id="GetBusRecordDetailMaxLength" statementType="CALLABLE" parameterType="com.alms.entity.dat.BusReport" resultType="int" >
+    {call dbo.P_Get_BusRecordDetailMaxLength(
+      #{recordid,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetLabSampleByMonth" statementType="CALLABLE" parameterType="com.alms.entity.form.LabSample" resultType="com.alms.entity.form.LabSample" >
+    {call P_Get_LabSampleByMonth(
+      #{deptid,javaType=String,jdbcType=VARCHAR},
+      #{begindate,javaType=String,jdbcType=VARCHAR},
+      #{enddate,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetLabParameterByYear" statementType="CALLABLE" parameterType="com.alms.entity.form.LabParameter" resultType="com.alms.entity.form.LabParameter" >
+    {call P_Get_LabParameterByYear(
+      #{deptid,javaType=String,jdbcType=VARCHAR},
+      #{begindate,javaType=String,jdbcType=VARCHAR},
+      #{enddate,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetPrdType" statementType="CALLABLE" resultType="com.alms.entity.form.PrdType" >
+    {call P_Get_PrdType}
+  </select>
+  
+  <select id="GetPrdCodeCount" statementType="CALLABLE" resultType="com.alms.entity.form.PrdCodeCount" >
+    {call P_Get_PrdCodeCount}
+  </select>
+  
+   <select id="GetPrdIn" statementType="CALLABLE" parameterType="com.alms.entity.form.PrdIn" resultType="com.alms.entity.form.PrdIn" >
+    {call P_Get_PrdIn(
+      #{begindate,javaType=String,jdbcType=VARCHAR},
+      #{enddate,javaType=String,jdbcType=VARCHAR}
+    )}
+   </select>
+   
+   <select id="GetPrdOut" statementType="CALLABLE" parameterType="com.alms.entity.form.PrdOut"  resultType="com.alms.entity.form.PrdOut" >
+    {call P_Get_PrdOut(
+      #{begindate,javaType=String,jdbcType=VARCHAR},
+      #{enddate,javaType=String,jdbcType=VARCHAR},
+      #{deptid,javaType=String,jdbcType=VARCHAR}
+    )}
+   </select>
+   
+   <select id="GetDevType" statementType="CALLABLE" parameterType="com.alms.entity.form.DevType" resultType="com.alms.entity.form.DevType" >
+    {call P_Get_DevType(
+      #{deptid,javaType=String,jdbcType=VARCHAR}
+    )}
+   </select>
+   
+   <select id="GetTesterParameter" statementType="CALLABLE" parameterType="com.alms.entity.form.TesterParameter" resultType="com.alms.entity.form.TesterParameter" >
+    {call P_Get_TesterParameter(
+      #{deptid,javaType=String,jdbcType=VARCHAR},
+      #{begindate,javaType=String,jdbcType=VARCHAR},
+      #{enddate,javaType=String,jdbcType=VARCHAR}
+    )}
+   </select>
+   
+   <select id="GetTesterSample" statementType="CALLABLE" parameterType="com.alms.entity.form.TesterSample" resultType="com.alms.entity.form.TesterSample" >
+    {call P_Get_TesterSample(
+      #{deptid,javaType=String,jdbcType=VARCHAR},
+      #{begindate,javaType=String,jdbcType=VARCHAR},
+      #{enddate,javaType=String,jdbcType=VARCHAR}
+    )}
+   </select>
+   
+   <select id="GetSamplePass" statementType="CALLABLE" parameterType="com.alms.entity.form.SamplePass" resultType="com.alms.entity.form.SamplePass" >
+    {call P_Get_SamplePass(
+      #{begindate,javaType=String,jdbcType=VARCHAR},
+      #{enddate,javaType=String,jdbcType=VARCHAR}
+    )}
+   </select>
+  
+  <select id="GetDevUseCount" statementType="CALLABLE" parameterType="com.alms.entity.form.DevUseCount" resultType="com.alms.entity.form.DevUseCount" >
+    {call P_Get_DevUseCount(
+      #{deptid,javaType=String,jdbcType=VARCHAR},
+      #{begindate,javaType=String,jdbcType=VARCHAR},
+      #{enddate,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetCusOrder" statementType="CALLABLE" parameterType="com.alms.entity.form.CusOrder" resultType="com.alms.entity.form.CusOrder" >
+    {call P_Get_CusOrder(
+      #{begindate,javaType=String,jdbcType=VARCHAR},
+      #{enddate,javaType=String,jdbcType=VARCHAR}
+    )}
+   </select>
+   
+   <select id="GetSendSample" statementType="CALLABLE" parameterType="com.alms.entity.form.SendSample" resultType="com.alms.entity.form.SendSample" >
+    {call P_Get_SendSample(
+      #{deptid,javaType=String,jdbcType=VARCHAR},
+      #{begindate,javaType=String,jdbcType=VARCHAR},
+      #{enddate,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+  
+  <select id="GetCustomerCount" statementType="CALLABLE" parameterType="com.alms.entity.form.CustomerCount"  resultType="com.alms.entity.form.CustomerCount" >
+    {call P_Get_CustomerCount(
+      #{begindate,javaType=String,jdbcType=VARCHAR},
+      #{enddate,javaType=String,jdbcType=VARCHAR}
+    )}
+  </select>
+
+</mapper>

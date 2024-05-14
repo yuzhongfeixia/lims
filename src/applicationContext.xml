@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xmlns:context="http://www.springframework.org/schema/context" 
+  xmlns:tx="http://www.springframework.org/schema/tx" 
+  xmlns:aop="http://www.springframework.org/schema/aop" 
+  xmlns:p="http://www.springframework.org/schema/p" 
+  xmlns:jaxws="http://cxf.apache.org/jaxws" 
+  xsi:schemaLocation="http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop-4.0.xsd 
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd 
+    http://cxf.apache.org/jaxws 
+    http://cxf.apache.org/schemas/jaxws.xsd 
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx-4.0.xsd 
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-4.0.xsd" >
+
+<import resource="classpath:META-INF/cxf/cxf.xml" />
+<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+<bean id="srvbas" class="com.alms.webservice.ServiceBas" />
+<jaxws:endpoint id="srvBas" implementor="#srvbas" address="/servicebas" />
+
+<bean id="srvuser" class="com.gpersist.webservice.ServiceUser" />
+<jaxws:endpoint id="srvUser" implementor="#srvuser" address="/serviceuser" />
+
+<bean id="srvtask" class="com.alms.webservice.ServiceTask" />
+<jaxws:endpoint id="srvTask" implementor="#srvtask" address="/servicetask" />
+
+<bean id="srvsamp" class="com.alms.webservice.ServiceSamp" />
+<jaxws:endpoint id="srvSamp" implementor="#srvsamp" address="/servicesamp" />
+
+</beans>
