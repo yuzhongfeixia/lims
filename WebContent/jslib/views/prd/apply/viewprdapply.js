@@ -305,6 +305,15 @@ Ext.define('alms.viewprdapply',{
      LODOP.PRINT_INIT("样品任务单打印");
      LODOP.SET_PRINT_PAGESIZE(1, 0, 0, "A4");
      LODOP.ADD_PRINT_HTM(0, 0, '100%', '100%', me.html);
+     
+     // 添加水印
+	 LODOP.ADD_PRINT_TEXT(550, 150, 500, 250, "Lims系统"); //距上，距左，宽，高
+	 LODOP.SET_PRINT_STYLEA(0, "ItemType", 1); // 设置水印类型为文本
+	 LODOP.SET_PRINT_STYLEA(0, "FontSize", 60); // 设置字体大小
+	 LODOP.SET_PRINT_STYLEA(0, "Alignment", 3); // 设置对齐方式（3为居中）
+	 LODOP.SET_PRINT_STYLEA(0, "Angle", 45); // 设置旋转角度（45度）
+	 LODOP.SET_PRINT_STYLEA(0, "Color", "#CBCBCB"); // 设置颜色（灰色）
+	 
      LODOP.SET_PRINTER_INDEXA(-1);
      LODOP.PREVIEW();//预览功能
 //       LODOP.PRINT();//打印功能
