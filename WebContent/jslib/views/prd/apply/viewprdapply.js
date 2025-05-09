@@ -148,6 +148,7 @@ Ext.define('alms.viewprdapply',{
     var record = tools.JsonGet('PrdGetPrdApply.do?prdapply.tranid='+item.tranid);
     var prds = tools.JsonGet('PrdGetListPrdApplyDetail.do?prddetail.tranid='+item.tranid).data;
     var checker = tools.JsonGet('FlowGetHBusTodo.do?htodo.tranid='+item.tranid+'&htodo.busflow=PrdApply&htodo.flownode=check');  
+    var approver = tools.JsonGet('FlowGetHBusTodo.do?htodo.tranid='+item.tranid+'&htodo.busflow=PrdApply&htodo.flownode=approve');  
     var judger = tools.JsonGet('FlowGetHBusTodo.do?htodo.tranid='+item.tranid+'&htodo.busflow=PrdApply&htodo.flownode=judge'); 
     var auditor = tools.JsonGet('FlowGetHBusTodo.do?htodo.tranid='+item.tranid+'&htodo.busflow=PrdApply&htodo.flownode=audit'); 
     var html = '<table cellspacing="0" cellpadding="0" border="0" align="center" style="width:90%;">' ;
@@ -207,16 +208,19 @@ Ext.define('alms.viewprdapply',{
     html += '<tr class="infotr" style="height: 40px;"><td class="infotr" colspan="2" align="center" width="20%">使用项目</td>' +
     '<td class="infotr" align="center" colspan="3" width="30%">'+alms.GetItemData(item.projectid) +'</td>'+
     '<td class="infotr" align="center" colspan="2" width="20%">室主任</td>' +
-    '<td class="infotr" align="center" colspan="3" width="30%">'+alms.GetItemData(checker.tranusername) +'</td></tr>';
+    '<td class="infotr" align="center" colspan="3" width="30%">'+alms.GetItemData(checker.tranusername) +'<image height="35px" src="images/sign/' +alms.GetItemData(checker.tranuser) + '.jpg" />' +'</td></tr>';
    
     html += '<tr class="infotr" style="height: 40px;"><td class="infotr" colspan="2" align="center" width="20%">经费渠道</td>' +
     '<td class="infotr" align="center" colspan="8" width="80%">'+alms.GetItemData(item.fundsource) +'</td></tr>';
     
+    (JSON.stringify(approver) == "{}") ? html += '<tr class="infotr" style="height: 40px;"><td class="infotr" colspan="10" align="left" width="20%">办公室意见：' + '</td></tr>':
     html += '<tr class="infotr" style="height: 40px;"><td class="infotr" colspan="10" align="left" width="20%">办公室意见：' +
-    alms.GetItemData(checker.tododesc) +'</td></tr>';
+    alms.GetItemData(approver.tododesc) +'<image height="35px" src="images/sign/' +alms.GetItemData(approver.tranuser) + '.jpg" />' +'</td></tr>';
     
+    (JSON.stringify(judger) == "{}") ?html += '<tr class="infotr" style="height: 40px;"><td class="infotr" colspan="10" align="left" width="20%">分管主任意见：' + '</td></tr>':
     html += '<tr class="infotr" style="height: 40px;"><td class="infotr" colspan="10" align="left" width="20%">分管主任意见：' +
-    alms.GetItemData(judger.tododesc) +'</td></tr>';
+    alms.GetItemData(judger.tododesc) +'<image height="35px" src="images/sign/' +alms.GetItemData(judger.tranuser) + '.jpg" />'+'</td></tr>';
+    
     html += '</table>';
     html += '<table  cellspacing="0" cellpadding="0" border="1"  align="center" style="font-size:12px;" width="90%">';
     
